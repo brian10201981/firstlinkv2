@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "805012302266",
+    "project_id": "first-link-v2",
+    "storage_bucket": "first-link-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805012302266:android:51ebc329198c9ec0b45583",
+        "android_client_info": {
+          "package_name": "com.firstlinkv2.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805012302266-0m8agspdqqduea0k80tgs0ccukrhhe54.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgRdq1bnSB-NEw_b2DlhZWq23229bFTnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805012302266-0m8agspdqqduea0k80tgs0ccukrhhe54.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
