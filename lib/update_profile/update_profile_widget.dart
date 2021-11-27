@@ -142,48 +142,50 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: TextFormField(
-                            controller: emailAddressController1,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: 'Full Name',
-                              labelStyle: FlutterFlowTheme.bodyText1.override(
+                          child: AuthUserStreamWidget(
+                            child: TextFormField(
+                              controller: emailAddressController1,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Full Name',
+                                labelStyle: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF95A1AC),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                hintText: 'Enter your name here...',
+                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF95A1AC),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xFFDBE2E7),
+                                    width: 0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xFFDBE2E7),
+                                    width: 0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                filled: true,
+                                fillColor: Color(0xFF1E37B8),
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16, 24, 0, 24),
+                              ),
+                              style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
-                                color: Color(0xFF95A1AC),
+                                color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
                               ),
-                              hintText: 'Enter your name here...',
-                              hintStyle: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Lexend Deca',
-                                color: Color(0xFF95A1AC),
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFFDBE2E7),
-                                  width: 0,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFFDBE2E7),
-                                  width: 0,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              filled: true,
-                              fillColor: Color(0xFF1E37B8),
-                              contentPadding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
-                            ),
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
                             ),
                           ),
                         )
@@ -197,48 +199,50 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: TextFormField(
-                            controller: emailAddressController2,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: 'Email Address',
-                              labelStyle: FlutterFlowTheme.bodyText1.override(
+                          child: AuthUserStreamWidget(
+                            child: TextFormField(
+                              controller: emailAddressController2,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Email Address',
+                                labelStyle: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF95A1AC),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                hintText: 'Enter your email here...',
+                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF95A1AC),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xFFDBE2E7),
+                                    width: 0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xFFDBE2E7),
+                                    width: 0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                filled: true,
+                                fillColor: Color(0xFF1E37B8),
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16, 24, 0, 24),
+                              ),
+                              style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
-                                color: Color(0xFF95A1AC),
+                                color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
                               ),
-                              hintText: 'Enter your email here...',
-                              hintStyle: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Lexend Deca',
-                                color: Color(0xFF95A1AC),
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFFDBE2E7),
-                                  width: 0,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFFDBE2E7),
-                                  width: 0,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              filled: true,
-                              fillColor: Color(0xFF1E37B8),
-                              contentPadding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
-                            ),
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
                             ),
                           ),
                         )

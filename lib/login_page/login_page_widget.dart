@@ -1,8 +1,9 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
+import '../update_profile/update_profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,11 +22,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
   TextEditingController emailAddressController2;
-  TextEditingController emailAddressController3;
+  TextEditingController fullNameController;
   TextEditingController passwordController2;
   bool passwordVisibility2;
-  TextEditingController passwordController3;
-  bool passwordVisibility3;
+  TextEditingController passwordconfirmController;
+  bool passwordconfirmVisibility;
   bool _loadingButton3 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -36,11 +37,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     passwordController1 = TextEditingController();
     passwordVisibility1 = false;
     emailAddressController2 = TextEditingController();
-    emailAddressController3 = TextEditingController();
+    fullNameController = TextEditingController();
     passwordController2 = TextEditingController();
     passwordVisibility2 = false;
-    passwordController3 = TextEditingController();
-    passwordVisibility3 = false;
+    passwordconfirmController = TextEditingController();
+    passwordconfirmVisibility = false;
   }
 
   @override
@@ -392,10 +393,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     .pushAndRemoveUntil(
                                                                   context,
                                                                   MaterialPageRoute(
-                                                                    builder: (context) =>
-                                                                        NavBarPage(
-                                                                            initialPage:
-                                                                                'UpdateProfile'),
+                                                                    builder:
+                                                                        (context) =>
+                                                                            UpdateProfileWidget(),
                                                                   ),
                                                                   (r) => false,
                                                                 );
@@ -598,10 +598,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   .pushAndRemoveUntil(
                                                                 context,
                                                                 MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      NavBarPage(
-                                                                          initialPage:
-                                                                              'UpdateProfile'),
+                                                                  builder:
+                                                                      (context) =>
+                                                                          UpdateProfileWidget(),
                                                                 ),
                                                                 (r) => false,
                                                               );
@@ -642,7 +641,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       MaterialPageRoute(
                                                                         builder:
                                                                             (context) =>
-                                                                                NavBarPage(initialPage: 'UpdateProfile'),
+                                                                                UpdateProfileWidget(),
                                                                       ),
                                                                       (r) =>
                                                                           false,
@@ -689,10 +688,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     .pushAndRemoveUntil(
                                                                   context,
                                                                   MaterialPageRoute(
-                                                                    builder: (context) =>
-                                                                        NavBarPage(
-                                                                            initialPage:
-                                                                                'UpdateProfile'),
+                                                                    builder:
+                                                                        (context) =>
+                                                                            UpdateProfileWidget(),
                                                                   ),
                                                                   (r) => false,
                                                                 );
@@ -761,7 +759,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             child:
                                                                 TextFormField(
                                                               controller:
-                                                                  emailAddressController2,
+                                                                  fullNameController,
                                                               obscureText:
                                                                   false,
                                                               decoration:
@@ -801,7 +799,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: Color(
-                                                                        0xFFDBE2E7),
+                                                                        0xFF1E37B8),
                                                                     width: 2,
                                                                   ),
                                                                   borderRadius:
@@ -814,7 +812,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: Color(
-                                                                        0xFFDBE2E7),
+                                                                        0xFF1E37B8),
                                                                     width: 2,
                                                                   ),
                                                                   borderRadius:
@@ -839,8 +837,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       .override(
                                                                 fontFamily:
                                                                     'Lexend Deca',
-                                                                color: Color(
-                                                                    0xFF2B343A),
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -867,7 +865,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             child:
                                                                 TextFormField(
                                                               controller:
-                                                                  emailAddressController3,
+                                                                  emailAddressController2,
                                                               obscureText:
                                                                   false,
                                                               decoration:
@@ -907,7 +905,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: Color(
-                                                                        0xFFDBE2E7),
+                                                                        0xFF1E37B8),
                                                                     width: 2,
                                                                   ),
                                                                   borderRadius:
@@ -920,7 +918,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: Color(
-                                                                        0xFFDBE2E7),
+                                                                        0xFF1E37B8),
                                                                     width: 2,
                                                                   ),
                                                                   borderRadius:
@@ -945,8 +943,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       .override(
                                                                 fontFamily:
                                                                     'Lexend Deca',
-                                                                color: Color(
-                                                                    0xFF2B343A),
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -1013,7 +1011,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: Color(
-                                                                        0xFFDBE2E7),
+                                                                        0xFF1E37B8),
                                                                     width: 2,
                                                                   ),
                                                                   borderRadius:
@@ -1026,7 +1024,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: Color(
-                                                                        0xFFDBE2E7),
+                                                                        0xFF1E37B8),
                                                                     width: 2,
                                                                   ),
                                                                   borderRadius:
@@ -1069,8 +1067,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       .override(
                                                                 fontFamily:
                                                                     'Lexend Deca',
-                                                                color: Color(
-                                                                    0xFF2B343A),
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -1097,9 +1095,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             child:
                                                                 TextFormField(
                                                               controller:
-                                                                  passwordController3,
+                                                                  passwordconfirmController,
                                                               obscureText:
-                                                                  !passwordVisibility3,
+                                                                  !passwordconfirmVisibility,
                                                               decoration:
                                                                   InputDecoration(
                                                                 labelText:
@@ -1137,7 +1135,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: Color(
-                                                                        0xFFDBE2E7),
+                                                                        0xFF1E37B8),
                                                                     width: 2,
                                                                   ),
                                                                   borderRadius:
@@ -1150,7 +1148,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: Color(
-                                                                        0xFFDBE2E7),
+                                                                        0xFF1E37B8),
                                                                     width: 2,
                                                                   ),
                                                                   borderRadius:
@@ -1172,11 +1170,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     InkWell(
                                                                   onTap: () =>
                                                                       setState(
-                                                                    () => passwordVisibility3 =
-                                                                        !passwordVisibility3,
+                                                                    () => passwordconfirmVisibility =
+                                                                        !passwordconfirmVisibility,
                                                                   ),
                                                                   child: Icon(
-                                                                    passwordVisibility3
+                                                                    passwordconfirmVisibility
                                                                         ? Icons
                                                                             .visibility_outlined
                                                                         : Icons
@@ -1193,8 +1191,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       .override(
                                                                 fontFamily:
                                                                     'Lexend Deca',
-                                                                color: Color(
-                                                                    0xFF2B343A),
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -1224,8 +1222,25 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   _loadingButton3 =
                                                                       true);
                                                               try {
+                                                                if (passwordController1
+                                                                        .text !=
+                                                                    passwordconfirmController
+                                                                        .text) {
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        "Passwords don't match!",
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                  return;
+                                                                }
+
                                                                 final user =
-                                                                    await signInWithEmail(
+                                                                    await createAccountWithEmail(
                                                                   context,
                                                                   emailAddressController1
                                                                       .text,
@@ -1237,14 +1252,34 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   return;
                                                                 }
 
+                                                                final usersCreateData =
+                                                                    createUsersRecordData(
+                                                                  password:
+                                                                      passwordconfirmController
+                                                                          .text,
+                                                                  dateCreated:
+                                                                      getCurrentTimestamp,
+                                                                  firstLastName:
+                                                                      passwordController2
+                                                                          .text,
+                                                                  email:
+                                                                      emailAddressController2
+                                                                          .text,
+                                                                );
+                                                                await UsersRecord
+                                                                    .collection
+                                                                    .doc(user
+                                                                        .uid)
+                                                                    .update(
+                                                                        usersCreateData);
+
                                                                 await Navigator
                                                                     .pushAndRemoveUntil(
                                                                   context,
                                                                   MaterialPageRoute(
-                                                                    builder: (context) =>
-                                                                        NavBarPage(
-                                                                            initialPage:
-                                                                                'UpdateProfile'),
+                                                                    builder:
+                                                                        (context) =>
+                                                                            UpdateProfileWidget(),
                                                                   ),
                                                                   (r) => false,
                                                                 );
@@ -1394,10 +1429,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   .pushAndRemoveUntil(
                                                                 context,
                                                                 MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      NavBarPage(
-                                                                          initialPage:
-                                                                              'UpdateProfile'),
+                                                                  builder:
+                                                                      (context) =>
+                                                                          UpdateProfileWidget(),
                                                                 ),
                                                                 (r) => false,
                                                               );
@@ -1438,7 +1472,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       MaterialPageRoute(
                                                                         builder:
                                                                             (context) =>
-                                                                                NavBarPage(initialPage: 'UpdateProfile'),
+                                                                                UpdateProfileWidget(),
                                                                       ),
                                                                       (r) =>
                                                                           false,
@@ -1485,10 +1519,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     .pushAndRemoveUntil(
                                                                   context,
                                                                   MaterialPageRoute(
-                                                                    builder: (context) =>
-                                                                        NavBarPage(
-                                                                            initialPage:
-                                                                                'UpdateProfile'),
+                                                                    builder:
+                                                                        (context) =>
+                                                                            UpdateProfileWidget(),
                                                                   ),
                                                                   (r) => false,
                                                                 );

@@ -1,4 +1,3 @@
-import '../backend/backend.dart';
 import '../county_landing_page/county_landing_page_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -114,61 +113,39 @@ class _ServicesCountyPageWidgetState extends State<ServicesCountyPageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  StreamBuilder<List<AgenciesRecord>>(
-                    stream: queryAgenciesRecord(
-                      queryBuilder: (agenciesRecord) => agenciesRecord
-                          .where('county', isEqualTo: dropDownValue),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      setState(() => _loadingButton = true);
+                      try {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CountyLandingPageWidget(),
                           ),
                         );
+                      } finally {
+                        setState(() => _loadingButton = false);
                       }
-                      List<AgenciesRecord> buttonAgenciesRecordList =
-                          snapshot.data;
-                      return FFButtonWidget(
-                        onPressed: () async {
-                          setState(() => _loadingButton = true);
-                          try {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CountyLandingPageWidget(),
-                              ),
-                            );
-                          } finally {
-                            setState(() => _loadingButton = false);
-                          }
-                        },
-                        text: 'See Local Services',
-                        options: FFButtonOptions(
-                          width: 210,
-                          height: 60,
-                          color: Colors.white,
-                          textStyle: FlutterFlowTheme.subtitle1.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Color(0xFF1E37B8),
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          elevation: 3,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
-                          ),
-                          borderRadius: 8,
-                        ),
-                        loading: _loadingButton,
-                      );
                     },
+                    text: 'See Local Services',
+                    options: FFButtonOptions(
+                      width: 210,
+                      height: 60,
+                      color: Colors.white,
+                      textStyle: FlutterFlowTheme.subtitle1.override(
+                        fontFamily: 'Lexend Deca',
+                        color: Color(0xFF1E37B8),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      elevation: 3,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: 8,
+                    ),
+                    loading: _loadingButton,
                   )
                 ],
               ),

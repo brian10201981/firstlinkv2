@@ -1,6 +1,7 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../login_page/login_page_widget.dart';
 import '../services_county_page/services_county_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +17,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
   bool _loadingButton3 = false;
+  bool _loadingButton4 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -71,9 +73,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               setState(() => _loadingButton1 = false);
                             }
                           },
-                          text: 'Services',
+                          text: 'Services/Events',
                           options: FFButtonOptions(
-                            width: 80,
+                            width: 120,
                             height: 40,
                             color: FlutterFlowTheme.primaryColor,
                             textStyle: FlutterFlowTheme.bodyText2.override(
@@ -96,7 +98,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Image.network(
-                        'https://picsum.photos/seed/264/600',
+                        'https://picsum.photos/seed/734/600',
                         width: 75,
                         height: 75,
                         fit: BoxFit.cover,
@@ -107,9 +109,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           onPressed: () {
                             print('Button pressed ...');
                           },
-                          text: 'Button',
+                          text: '1st time here?',
                           options: FFButtonOptions(
-                            width: 80,
+                            width: 120,
                             height: 40,
                             color: FlutterFlowTheme.primaryColor,
                             textStyle: FlutterFlowTheme.subtitle2.override(
@@ -124,6 +126,61 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             borderRadius: 12,
                           ),
                           loading: _loadingButton2,
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Image.network(
+                        'https://picsum.photos/seed/735/600',
+                        width: 75,
+                        height: 75,
+                        fit: BoxFit.cover,
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            setState(() => _loadingButton3 = true);
+                            try {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginPageWidget(),
+                                ),
+                              );
+                            } finally {
+                              setState(() => _loadingButton3 = false);
+                            }
+                          },
+                          text: 'Account/Register',
+                          options: FFButtonOptions(
+                            width: 120,
+                            height: 40,
+                            color: FlutterFlowTheme.primaryColor,
+                            textStyle: FlutterFlowTheme.bodyText2.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: 12,
+                          ),
+                          loading: _loadingButton3,
                         ),
                       )
                     ],
@@ -145,7 +202,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           },
                           text: '1st Time?',
                           options: FFButtonOptions(
-                            width: 80,
+                            width: 120,
                             height: 40,
                             color: FlutterFlowTheme.primaryColor,
                             textStyle: FlutterFlowTheme.subtitle2.override(
@@ -159,7 +216,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                             borderRadius: 12,
                           ),
-                          loading: _loadingButton3,
+                          loading: _loadingButton4,
                         ),
                       )
                     ],
