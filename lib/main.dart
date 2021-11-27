@@ -3,16 +3,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'auth/firebase_user_provider.dart';
-import 'auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import 'package:first_link/home_page/home_page_widget.dart';
+import 'package:first_link_v2/home_page/home_page_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'login_page/login_page_widget.dart';
 import 'home_page/home_page_widget.dart';
-import 'main_profile_page/main_profile_page_widget.dart';
-import 'main_category/main_category_widget.dart';
+import 'login_page/login_page_widget.dart';
+import 'update_profile/update_profile_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,28 +24,20 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Stream<FirstLinkFirebaseUser> userStream;
-  FirstLinkFirebaseUser initialUser;
-  final authUserSub = authenticatedUserStream.listen((_) {});
+  Stream<FirstLinkV2FirebaseUser> userStream;
+  FirstLinkV2FirebaseUser initialUser;
 
   @override
   void initState() {
     super.initState();
-    userStream = firstLinkFirebaseUserStream()
+    userStream = firstLinkV2FirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
-  }
-
-  @override
-  void dispose() {
-    authUserSub.cancel();
-
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'First Link',
+      title: 'First Link V2',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -58,14 +47,11 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null
           ? Container(
-              color: Color(0xFF1A1C5C),
-              child: Center(
-                child: Builder(
-                  builder: (context) => Image.asset(
-                    'assets/images/firstlinkwhite.png',
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    fit: BoxFit.fitWidth,
-                  ),
+              color: Colors.transparent,
+              child: Builder(
+                builder: (context) => Image.asset(
+                  'assets/images/firstlinkwhite.png',
+                  fit: BoxFit.cover,
                 ),
               ),
             )
@@ -87,7 +73,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'mainProfilePage';
+  String _currentPage = 'UpdateProfile';
 
   @override
   void initState() {
@@ -98,10 +84,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'loginPage': LoginPageWidget(),
-      'homePage': HomePageWidget(),
-      'mainProfilePage': MainProfilePageWidget(),
-      'mainCategory': MainCategoryWidget(),
+      'HomePage': HomePageWidget(),
+      'LoginPage': LoginPageWidget(),
+      'UpdateProfile': UpdateProfileWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
@@ -109,10 +94,10 @@ class _NavBarPageState extends State<NavBarPage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.sensor_door_rounded,
+              Icons.home_outlined,
               size: 24,
             ),
-            label: 'Login',
+            label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -125,25 +110,17 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.people,
+              Icons.home_outlined,
               size: 24,
             ),
-            label: 'My Profile',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.confirmation_num,
-              size: 24,
-            ),
-            label: 'Categories',
+            label: 'Update Profile',
             tooltip: '',
           )
         ],
-        backgroundColor: FlutterFlowTheme.darkBackground,
+        backgroundColor: Color(0xFF1E37B8),
         currentIndex: tabs.keys.toList().indexOf(_currentPage),
         selectedItemColor: Colors.white,
-        unselectedItemColor: FlutterFlowTheme.grayLight,
+        unselectedItemColor: Color(0xFF9E9E9E),
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
         showSelectedLabels: true,
         showUnselectedLabels: true,

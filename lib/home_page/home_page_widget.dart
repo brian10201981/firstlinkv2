@@ -1,7 +1,8 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../services_county_page/services_county_page_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -12,6 +13,9 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
+  bool _loadingButton1 = false;
+  bool _loadingButton2 = false;
+  bool _loadingButton3 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -19,26 +23,146 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.primaryColor,
-      body: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+      body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              width: double.infinity,
-              height: 100,
-              decoration: BoxDecoration(
-                color: Color(0x00EEEEEE),
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/firstlinkwhite.png',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                )
+              ],
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset(
-                    'assets/images/firstlinkwhite.png',
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Image.network(
+                        'https://picsum.photos/seed/735/600',
+                        width: 75,
+                        height: 75,
+                        fit: BoxFit.cover,
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            setState(() => _loadingButton1 = true);
+                            try {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ServicesCountyPageWidget(),
+                                ),
+                              );
+                            } finally {
+                              setState(() => _loadingButton1 = false);
+                            }
+                          },
+                          text: 'Services',
+                          options: FFButtonOptions(
+                            width: 80,
+                            height: 40,
+                            color: FlutterFlowTheme.primaryColor,
+                            textStyle: FlutterFlowTheme.bodyText2.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: 12,
+                          ),
+                          loading: _loadingButton1,
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Image.network(
+                        'https://picsum.photos/seed/264/600',
+                        width: 75,
+                        height: 75,
+                        fit: BoxFit.cover,
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Button',
+                          options: FFButtonOptions(
+                            width: 80,
+                            height: 40,
+                            color: FlutterFlowTheme.primaryColor,
+                            textStyle: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: 12,
+                          ),
+                          loading: _loadingButton2,
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Image.network(
+                        'https://picsum.photos/seed/734/600',
+                        width: 75,
+                        height: 75,
+                        fit: BoxFit.cover,
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: '1st Time?',
+                          options: FFButtonOptions(
+                            width: 80,
+                            height: 40,
+                            color: FlutterFlowTheme.primaryColor,
+                            textStyle: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: 12,
+                          ),
+                          loading: _loadingButton3,
+                        ),
+                      )
+                    ],
                   )
                 ],
               ),

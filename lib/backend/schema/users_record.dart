@@ -10,47 +10,44 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   static Serializer<UsersRecord> get serializer => _$usersRecordSerializer;
 
   @nullable
-  String get email;
-
-  @nullable
-  @BuiltValueField(wireName: 'first_Name')
+  @BuiltValueField(wireName: 'First_Name')
   String get firstName;
 
   @nullable
-  @BuiltValueField(wireName: 'CircleImage')
-  String get circleImage;
+  @BuiltValueField(wireName: 'Last_Name')
+  String get lastName;
 
   @nullable
-  @BuiltValueField(wireName: 'display_name')
-  String get displayName;
+  @BuiltValueField(wireName: 'Email_Address')
+  String get emailAddress;
 
   @nullable
-  @BuiltValueField(wireName: 'created_time')
-  DateTime get createdTime;
+  @BuiltValueField(wireName: 'Agency_Name')
+  String get agencyName;
+
+  @nullable
+  @BuiltValueField(wireName: 'Avatar_Image')
+  String get avatarImage;
 
   @nullable
   String get uid;
 
   @nullable
-  @BuiltValueField(wireName: 'phone_number')
-  String get phoneNumber;
-
-  @nullable
-  @BuiltValueField(wireName: 'photo_url')
-  String get photoUrl;
+  @BuiltValueField(wireName: 'Password')
+  String get password;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(UsersRecordBuilder builder) => builder
-    ..email = ''
     ..firstName = ''
-    ..circleImage = ''
-    ..displayName = ''
+    ..lastName = ''
+    ..emailAddress = ''
+    ..agencyName = ''
+    ..avatarImage = ''
     ..uid = ''
-    ..phoneNumber = ''
-    ..photoUrl = '';
+    ..password = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -70,23 +67,21 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 }
 
 Map<String, dynamic> createUsersRecordData({
-  String email,
   String firstName,
-  String circleImage,
-  String displayName,
-  DateTime createdTime,
+  String lastName,
+  String emailAddress,
+  String agencyName,
+  String avatarImage,
   String uid,
-  String phoneNumber,
-  String photoUrl,
+  String password,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
         UsersRecord((u) => u
-          ..email = email
           ..firstName = firstName
-          ..circleImage = circleImage
-          ..displayName = displayName
-          ..createdTime = createdTime
+          ..lastName = lastName
+          ..emailAddress = emailAddress
+          ..agencyName = agencyName
+          ..avatarImage = avatarImage
           ..uid = uid
-          ..phoneNumber = phoneNumber
-          ..photoUrl = photoUrl));
+          ..password = password));

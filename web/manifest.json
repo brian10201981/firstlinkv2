@@ -1,6 +1,6 @@
 {
-    "name": "first_link",
-    "short_name": "first_link",
+    "name": "first_link_v2",
+    "short_name": "first_link_v2",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
