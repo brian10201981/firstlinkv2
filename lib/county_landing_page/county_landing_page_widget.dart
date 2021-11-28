@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CountyLandingPageWidget extends StatefulWidget {
-  CountyLandingPageWidget({Key key}) : super(key: key);
+  CountyLandingPageWidget({
+    Key key,
+    this.countyName,
+  }) : super(key: key);
+
+  final String countyName;
 
   @override
   _CountyLandingPageWidgetState createState() =>
@@ -26,7 +31,7 @@ class _CountyLandingPageWidgetState extends State<CountyLandingPageWidget> {
         title: Align(
           alignment: AlignmentDirectional(-1, 0),
           child: Text(
-            'Choose your County',
+            widget.countyName,
             style: FlutterFlowTheme.title2.override(
               fontFamily: 'Montserrat',
               color: Colors.white,

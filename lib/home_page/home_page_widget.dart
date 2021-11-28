@@ -25,7 +25,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.primaryColor,
-      body: SafeArea(
+      body: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -200,7 +201,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           onPressed: () {
                             print('Button pressed ...');
                           },
-                          text: '1st Time?',
+                          text: 'Training',
                           options: FFButtonOptions(
                             width: 120,
                             height: 40,

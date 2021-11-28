@@ -120,7 +120,9 @@ class _ServicesCountyPageWidgetState extends State<ServicesCountyPageWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CountyLandingPageWidget(),
+                            builder: (context) => CountyLandingPageWidget(
+                              countyName: dropDownValue,
+                            ),
                           ),
                         );
                       } finally {
