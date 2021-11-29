@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../complete_profile/complete_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -1358,28 +1357,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       null) {
                                                                     return;
                                                                   }
-
-                                                                  final users2CreateData =
-                                                                      createUsers2RecordData(
-                                                                    firstName:
-                                                                        firstNameController
-                                                                            .text,
-                                                                    lastName:
-                                                                        lastNameController
-                                                                            .text,
-                                                                    email:
-                                                                        emailAddressController2
-                                                                            .text,
-                                                                    password:
-                                                                        passConfirmController
-                                                                            .text,
-                                                                  );
-                                                                  await Users2Record
-                                                                      .collection
-                                                                      .doc(user
-                                                                          .uid)
-                                                                      .update(
-                                                                          users2CreateData);
 
                                                                   await Navigator
                                                                       .push(

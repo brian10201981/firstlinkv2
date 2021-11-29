@@ -1,6 +1,8 @@
 import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,69 +21,46 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.primaryColor,
+        automaticallyImplyLeading: true,
+        actions: [
+          Align(
+            alignment: AlignmentDirectional(0, 0.25),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 0,
+                borderWidth: 1,
+                buttonSize: 40,
+                icon: Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                onPressed: () async {
+                  await signOut();
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NavBarPage(initialPage: 'HomePage'),
+                    ),
+                  );
+                },
+              ),
+            ),
+          )
+        ],
+        centerTitle: true,
+        elevation: 4,
+      ),
       backgroundColor: FlutterFlowTheme.primaryColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: 120,
-                          height: 120,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            'https://picsum.photos/seed/152/600',
-                          ),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                'Hi ',
-                                style: FlutterFlowTheme.title1.override(
-                                  fontFamily: 'Montserrat',
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              AuthUserStreamWidget(
-                                child: Text(
-                                  currentUserDisplayName,
-                                  style: FlutterFlowTheme.title1.override(
-                                    fontFamily: 'Montserrat',
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
                 child: Container(
