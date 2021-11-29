@@ -25,29 +25,35 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget> {
         backgroundColor: FlutterFlowTheme.primaryColor,
         automaticallyImplyLeading: true,
         actions: [
-          Align(
-            alignment: AlignmentDirectional(0, 0.25),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-              child: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 0,
-                borderWidth: 1,
-                buttonSize: 40,
-                icon: Icon(
-                  Icons.logout,
-                  color: Colors.white,
-                  size: 30,
-                ),
-                onPressed: () async {
-                  await signOut();
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => NavBarPage(initialPage: 'HomePage'),
+          Visibility(
+            visible: currentUserEmailVerified ?? true,
+            child: Align(
+              alignment: AlignmentDirectional(0, 0.25),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                child: AuthUserStreamWidget(
+                  child: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 0,
+                    borderWidth: 1,
+                    buttonSize: 40,
+                    icon: Icon(
+                      Icons.logout,
+                      color: Colors.white,
+                      size: 30,
                     ),
-                  );
-                },
+                    onPressed: () async {
+                      await signOut();
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              NavBarPage(initialPage: 'HomePage'),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
             ),
           )
