@@ -1,4 +1,6 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
+import '../complete_profile/complete_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -17,16 +19,17 @@ class LoginPageWidget extends StatefulWidget {
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
   TextEditingController emailAddressController1;
-  TextEditingController passwordController1;
-  bool passwordVisibility1;
+  TextEditingController passwordController;
+  bool passwordVisibility;
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
   TextEditingController emailAddressController2;
-  TextEditingController fullNameController;
-  TextEditingController passwordController2;
-  bool passwordVisibility2;
-  TextEditingController passwordconfirmController;
-  bool passwordconfirmVisibility;
+  TextEditingController firstNameController;
+  TextEditingController lastNameController;
+  TextEditingController passOriginalController;
+  bool passOriginalVisibility;
+  TextEditingController passConfirmController;
+  bool passConfirmVisibility;
   bool _loadingButton3 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -34,14 +37,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   void initState() {
     super.initState();
     emailAddressController1 = TextEditingController();
-    passwordController1 = TextEditingController();
-    passwordVisibility1 = false;
+    passwordController = TextEditingController();
+    passwordVisibility = false;
     emailAddressController2 = TextEditingController();
-    fullNameController = TextEditingController();
-    passwordController2 = TextEditingController();
-    passwordVisibility2 = false;
-    passwordconfirmController = TextEditingController();
-    passwordconfirmVisibility = false;
+    firstNameController = TextEditingController();
+    lastNameController = TextEditingController();
+    passOriginalController = TextEditingController();
+    passOriginalVisibility = false;
+    passConfirmController = TextEditingController();
+    passConfirmVisibility = false;
   }
 
   @override
@@ -228,6 +232,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     FontWeight
                                                                         .normal,
                                                               ),
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .emailAddress,
                                                             ),
                                                           ),
                                                         )
@@ -249,9 +256,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             child:
                                                                 TextFormField(
                                                               controller:
-                                                                  passwordController1,
+                                                                  passwordController,
                                                               obscureText:
-                                                                  !passwordVisibility1,
+                                                                  !passwordVisibility,
                                                               decoration:
                                                                   InputDecoration(
                                                                 labelText:
@@ -324,11 +331,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     InkWell(
                                                                   onTap: () =>
                                                                       setState(
-                                                                    () => passwordVisibility1 =
-                                                                        !passwordVisibility1,
+                                                                    () => passwordVisibility =
+                                                                        !passwordVisibility,
                                                                   ),
                                                                   child: Icon(
-                                                                    passwordVisibility1
+                                                                    passwordVisibility
                                                                         ? Icons
                                                                             .visibility_outlined
                                                                         : Icons
@@ -381,7 +388,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   context,
                                                                   emailAddressController1
                                                                       .text,
-                                                                  passwordController1
+                                                                  passwordController
                                                                       .text,
                                                                 );
                                                                 if (user ==
@@ -390,14 +397,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                 }
 
                                                                 await Navigator
-                                                                    .pushAndRemoveUntil(
+                                                                    .push(
                                                                   context,
                                                                   MaterialPageRoute(
                                                                     builder:
                                                                         (context) =>
-                                                                            UpdateProfileWidget(),
+                                                                            MyProfilePageWidget(),
                                                                   ),
-                                                                  (r) => false,
                                                                 );
                                                               } finally {
                                                                 setState(() =>
@@ -759,13 +765,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             child:
                                                                 TextFormField(
                                                               controller:
-                                                                  fullNameController,
+                                                                  firstNameController,
                                                               obscureText:
                                                                   false,
                                                               decoration:
                                                                   InputDecoration(
                                                                 labelText:
-                                                                    'Full Name',
+                                                                    'First Name',
                                                                 labelStyle:
                                                                     FlutterFlowTheme
                                                                         .bodyText1
@@ -780,7 +786,113 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                           .normal,
                                                                 ),
                                                                 hintText:
-                                                                    'Enter your name here...',
+                                                                    'Enter your first name here...',
+                                                                hintStyle:
+                                                                    FlutterFlowTheme
+                                                                        .bodyText1
+                                                                        .override(
+                                                                  fontFamily:
+                                                                      'Lexend Deca',
+                                                                  color: Color(
+                                                                      0xFF95A1AC),
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                                enabledBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: Color(
+                                                                        0xFF1E37B8),
+                                                                    width: 2,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8),
+                                                                ),
+                                                                focusedBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: Color(
+                                                                        0xFF1E37B8),
+                                                                    width: 2,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8),
+                                                                ),
+                                                                filled: true,
+                                                                fillColor: Color(
+                                                                    0xFF1E37B8),
+                                                                contentPadding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16,
+                                                                            24,
+                                                                            0,
+                                                                            24),
+                                                              ),
+                                                              style:
+                                                                  FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                fontFamily:
+                                                                    'Lexend Deca',
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        15,
+                                                                        0,
+                                                                        0),
+                                                            child:
+                                                                TextFormField(
+                                                              controller:
+                                                                  lastNameController,
+                                                              obscureText:
+                                                                  false,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                labelText:
+                                                                    'Last Name',
+                                                                labelStyle:
+                                                                    FlutterFlowTheme
+                                                                        .bodyText1
+                                                                        .override(
+                                                                  fontFamily:
+                                                                      'Lexend Deca',
+                                                                  color: Color(
+                                                                      0xFF95A1AC),
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                                hintText:
+                                                                    'Enter your last name here...',
                                                                 hintStyle:
                                                                     FlutterFlowTheme
                                                                         .bodyText1
@@ -950,6 +1062,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     FontWeight
                                                                         .normal,
                                                               ),
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .emailAddress,
                                                             ),
                                                           ),
                                                         )
@@ -971,9 +1086,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             child:
                                                                 TextFormField(
                                                               controller:
-                                                                  passwordController2,
+                                                                  passOriginalController,
                                                               obscureText:
-                                                                  !passwordVisibility2,
+                                                                  !passOriginalVisibility,
                                                               decoration:
                                                                   InputDecoration(
                                                                 labelText:
@@ -992,7 +1107,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                           .normal,
                                                                 ),
                                                                 hintText:
-                                                                    'Enter your email here...',
+                                                                    'Enter your password here...',
                                                                 hintStyle:
                                                                     FlutterFlowTheme
                                                                         .bodyText1
@@ -1046,11 +1161,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     InkWell(
                                                                   onTap: () =>
                                                                       setState(
-                                                                    () => passwordVisibility2 =
-                                                                        !passwordVisibility2,
+                                                                    () => passOriginalVisibility =
+                                                                        !passOriginalVisibility,
                                                                   ),
                                                                   child: Icon(
-                                                                    passwordVisibility2
+                                                                    passOriginalVisibility
                                                                         ? Icons
                                                                             .visibility_outlined
                                                                         : Icons
@@ -1095,9 +1210,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             child:
                                                                 TextFormField(
                                                               controller:
-                                                                  passwordconfirmController,
+                                                                  passConfirmController,
                                                               obscureText:
-                                                                  !passwordconfirmVisibility,
+                                                                  !passConfirmVisibility,
                                                               decoration:
                                                                   InputDecoration(
                                                                 labelText:
@@ -1116,7 +1231,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                           .normal,
                                                                 ),
                                                                 hintText:
-                                                                    'Enter your email here...',
+                                                                    'Confirm your password here...',
                                                                 hintStyle:
                                                                     FlutterFlowTheme
                                                                         .bodyText1
@@ -1170,11 +1285,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     InkWell(
                                                                   onTap: () =>
                                                                       setState(
-                                                                    () => passwordconfirmVisibility =
-                                                                        !passwordconfirmVisibility,
+                                                                    () => passConfirmVisibility =
+                                                                        !passConfirmVisibility,
                                                                   ),
                                                                   child: Icon(
-                                                                    passwordconfirmVisibility
+                                                                    passConfirmVisibility
                                                                         ? Icons
                                                                             .visibility_outlined
                                                                         : Icons
@@ -1222,9 +1337,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   _loadingButton3 =
                                                                       true);
                                                               try {
-                                                                if (passwordController1
+                                                                if (passOriginalController
                                                                         .text !=
-                                                                    passwordconfirmController
+                                                                    passConfirmController
                                                                         .text) {
                                                                   ScaffoldMessenger.of(
                                                                           context)
@@ -1244,7 +1359,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   context,
                                                                   emailAddressController1
                                                                       .text,
-                                                                  passwordController1
+                                                                  passOriginalController
                                                                       .text,
                                                                 );
                                                                 if (user ==
@@ -1252,17 +1367,40 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   return;
                                                                 }
 
-                                                                if (currentUserEmailVerified) {
-                                                                  await Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              MyProfilePageWidget(),
+                                                                final users2CreateData =
+                                                                    createUsers2RecordData(
+                                                                  firstName:
+                                                                      firstNameController
+                                                                          .text,
+                                                                  lastName:
+                                                                      lastNameController
+                                                                          .text,
+                                                                  email:
+                                                                      emailAddressController2
+                                                                          .text,
+                                                                  password: '',
+                                                                );
+                                                                await Users2Record
+                                                                    .collection
+                                                                    .doc(user
+                                                                        .uid)
+                                                                    .update(
+                                                                        users2CreateData);
+
+                                                                await Navigator
+                                                                    .push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            CompleteProfileWidget(
+                                                                      firstName:
+                                                                          '',
+                                                                      lastName:
+                                                                          '',
                                                                     ),
-                                                                  );
-                                                                }
+                                                                  ),
+                                                                );
                                                               } finally {
                                                                 setState(() =>
                                                                     _loadingButton3 =
@@ -1334,219 +1472,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                           ),
                                                         )
                                                       ],
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(20, 16,
-                                                                  20, 20),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        8,
-                                                                        0),
-                                                            child: Card(
-                                                              clipBehavior: Clip
-                                                                  .antiAliasWithSaveLayer,
-                                                              color: Color(
-                                                                  0xFF090F13),
-                                                              elevation: 3,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            50),
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            2,
-                                                                            2,
-                                                                            2,
-                                                                            2),
-                                                                child:
-                                                                    Container(
-                                                                  width: 50,
-                                                                  height: 50,
-                                                                  clipBehavior:
-                                                                      Clip.antiAlias,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    shape: BoxShape
-                                                                        .circle,
-                                                                  ),
-                                                                  child:
-                                                                      SvgPicture
-                                                                          .asset(
-                                                                    'assets/images/social_facebook.svg',
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          InkWell(
-                                                            onTap: () async {
-                                                              final user =
-                                                                  await signInWithGoogle(
-                                                                      context);
-                                                              if (user ==
-                                                                  null) {
-                                                                return;
-                                                              }
-                                                              await Navigator
-                                                                  .pushAndRemoveUntil(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          UpdateProfileWidget(),
-                                                                ),
-                                                                (r) => false,
-                                                              );
-                                                            },
-                                                            child: Card(
-                                                              clipBehavior: Clip
-                                                                  .antiAliasWithSaveLayer,
-                                                              color: Color(
-                                                                  0xFF090F13),
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            50),
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            2,
-                                                                            2,
-                                                                            2,
-                                                                            2),
-                                                                child: InkWell(
-                                                                  onTap:
-                                                                      () async {
-                                                                    final user =
-                                                                        await signInWithGoogle(
-                                                                            context);
-                                                                    if (user ==
-                                                                        null) {
-                                                                      return;
-                                                                    }
-                                                                    await Navigator
-                                                                        .pushAndRemoveUntil(
-                                                                      context,
-                                                                      MaterialPageRoute(
-                                                                        builder:
-                                                                            (context) =>
-                                                                                UpdateProfileWidget(),
-                                                                      ),
-                                                                      (r) =>
-                                                                          false,
-                                                                    );
-                                                                  },
-                                                                  child:
-                                                                      Container(
-                                                                    width: 50,
-                                                                    height: 50,
-                                                                    clipBehavior:
-                                                                        Clip.antiAlias,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      shape: BoxShape
-                                                                          .circle,
-                                                                    ),
-                                                                    child: SvgPicture
-                                                                        .asset(
-                                                                      'assets/images/social_GoogleWhite.svg',
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                            child: InkWell(
-                                                              onTap: () async {
-                                                                final user =
-                                                                    await signInWithApple(
-                                                                        context);
-                                                                if (user ==
-                                                                    null) {
-                                                                  return;
-                                                                }
-                                                                await Navigator
-                                                                    .pushAndRemoveUntil(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            UpdateProfileWidget(),
-                                                                  ),
-                                                                  (r) => false,
-                                                                );
-                                                              },
-                                                              child: Card(
-                                                                clipBehavior: Clip
-                                                                    .antiAliasWithSaveLayer,
-                                                                color: Color(
-                                                                    0xFF090F13),
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              50),
-                                                                ),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          2,
-                                                                          2,
-                                                                          2,
-                                                                          2),
-                                                                  child:
-                                                                      Container(
-                                                                    width: 50,
-                                                                    height: 50,
-                                                                    clipBehavior:
-                                                                        Clip.antiAlias,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      shape: BoxShape
-                                                                          .circle,
-                                                                    ),
-                                                                    child: SvgPicture
-                                                                        .asset(
-                                                                      'assets/images/social_Apple.svg',
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
                                                     )
                                                   ],
                                                 )

@@ -82,7 +82,7 @@ class _ServicesCountyPageWidgetState extends State<ServicesCountyPageWidget> {
                         'Antelope',
                         'Arthur',
                         'Banner',
-                        '',
+                        'Lincoln',
                         '',
                         '',
                         '',
