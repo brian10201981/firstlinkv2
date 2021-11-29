@@ -849,6 +849,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       FontWeight
                                                                           .normal,
                                                                 ),
+                                                                keyboardType:
+                                                                    TextInputType
+                                                                        .name,
                                                               ),
                                                             ),
                                                           )
@@ -952,6 +955,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       FontWeight
                                                                           .normal,
                                                                 ),
+                                                                keyboardType:
+                                                                    TextInputType
+                                                                        .name,
                                                               ),
                                                             ),
                                                           )
@@ -1179,6 +1185,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       FontWeight
                                                                           .normal,
                                                                 ),
+                                                                keyboardType:
+                                                                    TextInputType
+                                                                        .visiblePassword,
                                                               ),
                                                             ),
                                                           )
@@ -1300,6 +1309,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       FontWeight
                                                                           .normal,
                                                                 ),
+                                                                keyboardType:
+                                                                    TextInputType
+                                                                        .visiblePassword,
                                                               ),
                                                             ),
                                                           )
