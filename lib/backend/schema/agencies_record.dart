@@ -46,6 +46,30 @@ abstract class AgenciesRecord
   String get createdBy;
 
   @nullable
+  @BuiltValueField(wireName: 'Street_Address')
+  String get streetAddress;
+
+  @nullable
+  @BuiltValueField(wireName: 'Suite_Apt')
+  String get suiteApt;
+
+  @nullable
+  @BuiltValueField(wireName: 'Po_Box')
+  String get poBox;
+
+  @nullable
+  @BuiltValueField(wireName: 'City')
+  String get city;
+
+  @nullable
+  @BuiltValueField(wireName: 'State')
+  String get state;
+
+  @nullable
+  @BuiltValueField(wireName: 'Zip_Code')
+  String get zipCode;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -57,7 +81,13 @@ abstract class AgenciesRecord
     ..agencyAvatar = ''
     ..agencyDescription = ''
     ..countiesServed = ''
-    ..createdBy = '';
+    ..createdBy = ''
+    ..streetAddress = ''
+    ..suiteApt = ''
+    ..poBox = ''
+    ..city = ''
+    ..state = ''
+    ..zipCode = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('agencies');
@@ -86,6 +116,12 @@ Map<String, dynamic> createAgenciesRecordData({
   String agencyDescription,
   String countiesServed,
   String createdBy,
+  String streetAddress,
+  String suiteApt,
+  String poBox,
+  String city,
+  String state,
+  String zipCode,
 }) =>
     serializers.toFirestore(
         AgenciesRecord.serializer,
@@ -98,4 +134,10 @@ Map<String, dynamic> createAgenciesRecordData({
           ..dateCreated = dateCreated
           ..agencyDescription = agencyDescription
           ..countiesServed = countiesServed
-          ..createdBy = createdBy));
+          ..createdBy = createdBy
+          ..streetAddress = streetAddress
+          ..suiteApt = suiteApt
+          ..poBox = poBox
+          ..city = city
+          ..state = state
+          ..zipCode = zipCode));

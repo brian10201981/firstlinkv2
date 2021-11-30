@@ -11,7 +11,6 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'home_page/home_page_widget.dart';
 import 'login_page/login_page_widget.dart';
 import 'services_county_page/services_county_page_widget.dart';
-import 'my_profile_page/my_profile_page_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -83,7 +82,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'MyProfilePage';
+  String _currentPage = 'mainProfilePage';
 
   @override
   void initState() {
@@ -97,7 +96,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'HomePage': HomePageWidget(),
       'LoginPage': LoginPageWidget(),
       'ServicesCountyPage': ServicesCountyPageWidget(),
-      'MyProfilePage': MyProfilePageWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
@@ -125,14 +123,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Directory',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.supervisor_account_sharp,
-              size: 24,
-            ),
-            label: 'Account',
             tooltip: '',
           )
         ],
