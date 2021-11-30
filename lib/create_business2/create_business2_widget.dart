@@ -168,7 +168,7 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                           padding:
                               EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                           child: Text(
-                            'If you have created a profile already, make\nsure to edit that profile from the \"My \nBusiness list.',
+                            'Please add your address information.\nThis will appear as map directions\nto your business',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.title2.override(
                               fontFamily: 'Montserrat',
