@@ -1,8 +1,7 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../login_page/login_page_widget.dart';
-import '../services_county_page/services_county_page_widget.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -67,8 +66,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        ServicesCountyPageWidget(),
+                                    builder: (context) => NavBarPage(
+                                        initialPage: 'ServicesCountyPage'),
                                   ),
                                 );
                               } finally {
@@ -159,7 +158,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => LoginPageWidget(),
+                                    builder: (context) =>
+                                        NavBarPage(initialPage: 'LoginPage'),
                                   ),
                                 );
                               } finally {
