@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPageWidget extends StatefulWidget {
-  LoginPageWidget({Key key}) : super(key: key);
+  const LoginPageWidget({Key key}) : super(key: key);
 
   @override
   _LoginPageWidgetState createState() => _LoginPageWidgetState();
@@ -109,7 +109,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                 .bodyText1
                                                 .override(
                                               fontFamily: 'Poppins',
-                                              fontSize: 16,
+                                              fontSize: 18,
                                             ),
                                             indicatorColor: Colors.white,
                                             indicatorWeight: 5,
@@ -1324,140 +1324,154 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             MainAxisAlignment
                                                                 .center,
                                                         children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        25,
-                                                                        0,
-                                                                        0),
-                                                            child:
-                                                                FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                setState(() =>
-                                                                    _loadingButton3 =
-                                                                        true);
-                                                                try {
-                                                                  if (passOriginalController
-                                                                          .text !=
-                                                                      passConfirmController
-                                                                          .text) {
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .showSnackBar(
-                                                                      SnackBar(
-                                                                        content:
-                                                                            Text(
-                                                                          "Passwords don't match!",
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                    return;
-                                                                  }
+                                                          Visibility(
+                                                            visible:
+                                                                currentUserEmailVerified ??
+                                                                    true,
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          25,
+                                                                          0,
+                                                                          0),
+                                                              child:
+                                                                  AuthUserStreamWidget(
+                                                                child:
+                                                                    FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    setState(() =>
+                                                                        _loadingButton3 =
+                                                                            true);
+                                                                    try {
+                                                                      if (passOriginalController
+                                                                              .text !=
+                                                                          passConfirmController
+                                                                              .text) {
+                                                                        ScaffoldMessenger.of(context)
+                                                                            .showSnackBar(
+                                                                          SnackBar(
+                                                                            content:
+                                                                                Text(
+                                                                              "Passwords don't match!",
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                        return;
+                                                                      }
 
-                                                                  final user =
-                                                                      await createAccountWithEmail(
-                                                                    context,
-                                                                    emailAddressController1
-                                                                        .text,
-                                                                    passOriginalController
-                                                                        .text,
-                                                                  );
-                                                                  if (user ==
-                                                                      null) {
-                                                                    return;
-                                                                  }
+                                                                      final user =
+                                                                          await createAccountWithEmail(
+                                                                        context,
+                                                                        emailAddressController1
+                                                                            .text,
+                                                                        passOriginalController
+                                                                            .text,
+                                                                      );
+                                                                      if (user ==
+                                                                          null) {
+                                                                        return;
+                                                                      }
 
-                                                                  await Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
+                                                                      await Navigator
+                                                                          .push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                          builder: (context) =>
                                                                               CompleteProfileWidget(
-                                                                        firstName:
-                                                                            '',
-                                                                        lastName:
-                                                                            '',
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                } finally {
-                                                                  setState(() =>
-                                                                      _loadingButton3 =
-                                                                          false);
-                                                                }
-                                                              },
-                                                              text: 'Register',
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                width: 230,
-                                                                height: 60,
-                                                                color: Colors
-                                                                    .white,
-                                                                textStyle:
-                                                                    FlutterFlowTheme
+                                                                            firstName:
+                                                                                '',
+                                                                            lastName:
+                                                                                '',
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    } finally {
+                                                                      setState(() =>
+                                                                          _loadingButton3 =
+                                                                              false);
+                                                                    }
+                                                                  },
+                                                                  text:
+                                                                      'Register',
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    width: 230,
+                                                                    height: 60,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    textStyle: FlutterFlowTheme
                                                                         .subtitle2
                                                                         .override(
-                                                                  fontFamily:
-                                                                      'Lexend Deca',
-                                                                  color: Color(
-                                                                      0xFF4B39EF),
-                                                                  fontSize: 16,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
+                                                                      fontFamily:
+                                                                          'Lexend Deca',
+                                                                      color: Color(
+                                                                          0xFF4B39EF),
+                                                                      fontSize:
+                                                                          16,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                    ),
+                                                                    elevation:
+                                                                        3,
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        8,
+                                                                  ),
+                                                                  loading:
+                                                                      _loadingButton3,
                                                                 ),
-                                                                elevation: 3,
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  width: 1,
-                                                                ),
-                                                                borderRadius: 8,
                                                               ),
-                                                              loading:
-                                                                  _loadingButton3,
                                                             ),
                                                           )
                                                         ],
                                                       ),
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        12,
-                                                                        0,
-                                                                        0),
-                                                            child: Text(
-                                                              'Or use a social account to register',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Lexend Deca',
-                                                                color: Color(
-                                                                    0x98FFFFFF),
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    0, 10),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          12,
+                                                                          0,
+                                                                          0),
+                                                              child: Text(
+                                                                'Or use a social account to register',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Lexend Deca',
+                                                                  color: Color(
+                                                                      0x98FFFFFF),
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          )
-                                                        ],
+                                                            )
+                                                          ],
+                                                        ),
                                                       )
                                                     ],
                                                   ),

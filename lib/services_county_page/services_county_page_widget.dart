@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ServicesCountyPageWidget extends StatefulWidget {
-  ServicesCountyPageWidget({Key key}) : super(key: key);
+  const ServicesCountyPageWidget({Key key}) : super(key: key);
 
   @override
   _ServicesCountyPageWidgetState createState() =>

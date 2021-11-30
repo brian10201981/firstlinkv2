@@ -39,9 +39,6 @@ abstract class Users2Record
   String get lastName;
 
   @nullable
-  String get password;
-
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -52,8 +49,7 @@ abstract class Users2Record
     ..uid = ''
     ..phoneNumber = ''
     ..firstName = ''
-    ..lastName = ''
-    ..password = '';
+    ..lastName = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users2');
@@ -81,7 +77,6 @@ Map<String, dynamic> createUsers2RecordData({
   String phoneNumber,
   String firstName,
   String lastName,
-  String password,
 }) =>
     serializers.toFirestore(
         Users2Record.serializer,
@@ -93,5 +88,4 @@ Map<String, dynamic> createUsers2RecordData({
           ..createdTime = createdTime
           ..phoneNumber = phoneNumber
           ..firstName = firstName
-          ..lastName = lastName
-          ..password = password));
+          ..lastName = lastName));

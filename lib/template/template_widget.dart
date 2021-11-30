@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TemplateWidget extends StatefulWidget {
-  TemplateWidget({
+  const TemplateWidget({
     Key key,
     this.countyName,
   }) : super(key: key);
@@ -222,7 +222,7 @@ class _TemplateWidgetState extends State<TemplateWidget>
                                         onPressed: () {
                                           print('Button pressed ...');
                                         },
-                                        text: 'Button',
+                                        text: 'Categories',
                                         options: FFButtonOptions(
                                           width: 130,
                                           height: 40,
@@ -258,7 +258,7 @@ class _TemplateWidgetState extends State<TemplateWidget>
                                         onPressed: () {
                                           print('Button pressed ...');
                                         },
-                                        text: 'Button',
+                                        text: 'Events',
                                         options: FFButtonOptions(
                                           width: 130,
                                           height: 40,

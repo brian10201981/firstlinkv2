@@ -54,6 +54,30 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get lastName;
 
   @nullable
+  @BuiltValueField(wireName: 'Street_Address')
+  String get streetAddress;
+
+  @nullable
+  @BuiltValueField(wireName: 'Street_Address_2')
+  String get streetAddress2;
+
+  @nullable
+  @BuiltValueField(wireName: 'PO_Box')
+  String get pOBox;
+
+  @nullable
+  @BuiltValueField(wireName: 'City')
+  String get city;
+
+  @nullable
+  @BuiltValueField(wireName: 'State')
+  String get state;
+
+  @nullable
+  @BuiltValueField(wireName: 'Zip_Code')
+  int get zipCode;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -67,7 +91,13 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..phoneNumber = ''
     ..email = ''
     ..firstName = ''
-    ..lastName = '';
+    ..lastName = ''
+    ..streetAddress = ''
+    ..streetAddress2 = ''
+    ..pOBox = ''
+    ..city = ''
+    ..state = ''
+    ..zipCode = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -99,6 +129,12 @@ Map<String, dynamic> createUsersRecordData({
   String email,
   String firstName,
   String lastName,
+  String streetAddress,
+  String streetAddress2,
+  String pOBox,
+  String city,
+  String state,
+  int zipCode,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
@@ -114,4 +150,10 @@ Map<String, dynamic> createUsersRecordData({
           ..phoneNumber = phoneNumber
           ..email = email
           ..firstName = firstName
-          ..lastName = lastName));
+          ..lastName = lastName
+          ..streetAddress = streetAddress
+          ..streetAddress2 = streetAddress2
+          ..pOBox = pOBox
+          ..city = city
+          ..state = state
+          ..zipCode = zipCode));
