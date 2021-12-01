@@ -91,7 +91,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               children: [
                                 Container(
                                   width: MediaQuery.of(context).size.width,
-                                  height: 550,
+                                  height:
+                                      MediaQuery.of(context).size.height * 1,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.primaryColor,
                                   ),
@@ -1324,112 +1325,103 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             MainAxisAlignment
                                                                 .center,
                                                         children: [
-                                                          Visibility(
-                                                            visible:
-                                                                currentUserEmailVerified ??
-                                                                    true,
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          25,
-                                                                          0,
-                                                                          0),
-                                                              child:
-                                                                  AuthUserStreamWidget(
-                                                                child:
-                                                                    FFButtonWidget(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    setState(() =>
-                                                                        _loadingButton3 =
-                                                                            true);
-                                                                    try {
-                                                                      if (passOriginalController
-                                                                              .text !=
-                                                                          passConfirmController
-                                                                              .text) {
-                                                                        ScaffoldMessenger.of(context)
-                                                                            .showSnackBar(
-                                                                          SnackBar(
-                                                                            content:
-                                                                                Text(
-                                                                              "Passwords don't match!",
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                        return;
-                                                                      }
-
-                                                                      final user =
-                                                                          await createAccountWithEmail(
-                                                                        context,
-                                                                        emailAddressController1
-                                                                            .text,
-                                                                        passOriginalController
-                                                                            .text,
-                                                                      );
-                                                                      if (user ==
-                                                                          null) {
-                                                                        return;
-                                                                      }
-
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              CompleteProfileWidget(
-                                                                            firstName:
-                                                                                '',
-                                                                            lastName:
-                                                                                '',
-                                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        25,
+                                                                        0,
+                                                                        0),
+                                                            child:
+                                                                FFButtonWidget(
+                                                              onPressed:
+                                                                  () async {
+                                                                setState(() =>
+                                                                    _loadingButton3 =
+                                                                        true);
+                                                                try {
+                                                                  if (passOriginalController
+                                                                          .text !=
+                                                                      passConfirmController
+                                                                          .text) {
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
+                                                                        .showSnackBar(
+                                                                      SnackBar(
+                                                                        content:
+                                                                            Text(
+                                                                          "Passwords don't match!",
                                                                         ),
-                                                                      );
-                                                                    } finally {
-                                                                      setState(() =>
-                                                                          _loadingButton3 =
-                                                                              false);
-                                                                    }
-                                                                  },
-                                                                  text:
-                                                                      'Register',
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    width: 230,
-                                                                    height: 60,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    textStyle: FlutterFlowTheme
+                                                                      ),
+                                                                    );
+                                                                    return;
+                                                                  }
+
+                                                                  final user =
+                                                                      await createAccountWithEmail(
+                                                                    context,
+                                                                    emailAddressController1
+                                                                        .text,
+                                                                    passOriginalController
+                                                                        .text,
+                                                                  );
+                                                                  if (user ==
+                                                                      null) {
+                                                                    return;
+                                                                  }
+
+                                                                  await Navigator
+                                                                      .push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              CompleteProfileWidget(
+                                                                        firstName:
+                                                                            '',
+                                                                        lastName:
+                                                                            '',
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                } finally {
+                                                                  setState(() =>
+                                                                      _loadingButton3 =
+                                                                          false);
+                                                                }
+                                                              },
+                                                              text: 'Register',
+                                                              options:
+                                                                  FFButtonOptions(
+                                                                width: 230,
+                                                                height: 60,
+                                                                color: Colors
+                                                                    .white,
+                                                                textStyle:
+                                                                    FlutterFlowTheme
                                                                         .subtitle2
                                                                         .override(
-                                                                      fontFamily:
-                                                                          'Lexend Deca',
-                                                                      color: Color(
-                                                                          0xFF4B39EF),
-                                                                      fontSize:
-                                                                          16,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                    ),
-                                                                    elevation:
-                                                                        3,
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: Colors
-                                                                          .transparent,
-                                                                      width: 1,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        8,
-                                                                  ),
-                                                                  loading:
-                                                                      _loadingButton3,
+                                                                  fontFamily:
+                                                                      'Lexend Deca',
+                                                                  color: Color(
+                                                                      0xFF4B39EF),
+                                                                  fontSize: 16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
                                                                 ),
+                                                                elevation: 3,
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  width: 1,
+                                                                ),
+                                                                borderRadius: 8,
                                                               ),
+                                                              loading:
+                                                                  _loadingButton3,
                                                             ),
                                                           )
                                                         ],

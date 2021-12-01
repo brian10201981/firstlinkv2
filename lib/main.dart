@@ -57,11 +57,14 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null
           ? Container(
-              color: Colors.transparent,
-              child: Builder(
-                builder: (context) => Image.asset(
-                  'assets/images/firstlinkwhite.png',
-                  fit: BoxFit.cover,
+              color: FlutterFlowTheme.primaryColor,
+              child: Center(
+                child: Builder(
+                  builder: (context) => Image.asset(
+                    'assets/images/firstlinkwhite.png',
+                    width: 150,
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
             )
