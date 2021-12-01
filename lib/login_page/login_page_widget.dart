@@ -16,12 +16,12 @@ class LoginPageWidget extends StatefulWidget {
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
-  TextEditingController emailAddressController1;
+  TextEditingController emailAddressController;
   TextEditingController passwordController;
   bool passwordVisibility;
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
-  TextEditingController emailAddressController2;
+  TextEditingController emailController;
   TextEditingController firstNameController;
   TextEditingController lastNameController;
   TextEditingController passOriginalController;
@@ -34,10 +34,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   @override
   void initState() {
     super.initState();
-    emailAddressController1 = TextEditingController();
+    emailAddressController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
-    emailAddressController2 = TextEditingController();
+    emailController = TextEditingController();
     firstNameController = TextEditingController();
     lastNameController = TextEditingController();
     passOriginalController = TextEditingController();
@@ -146,7 +146,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             child:
                                                                 TextFormField(
                                                               controller:
-                                                                  emailAddressController1,
+                                                                  emailAddressController,
                                                               obscureText:
                                                                   false,
                                                               decoration:
@@ -385,7 +385,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                 final user =
                                                                     await signInWithEmail(
                                                                   context,
-                                                                  emailAddressController1
+                                                                  emailAddressController
                                                                       .text,
                                                                   passwordController
                                                                       .text,
@@ -980,7 +980,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller:
-                                                                    emailAddressController2,
+                                                                    emailController,
                                                                 obscureText:
                                                                     false,
                                                                 decoration:
@@ -1361,7 +1361,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   final user =
                                                                       await createAccountWithEmail(
                                                                     context,
-                                                                    emailAddressController1
+                                                                    emailController
                                                                         .text,
                                                                     passOriginalController
                                                                         .text,
@@ -1372,7 +1372,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   }
 
                                                                   await Navigator
-                                                                      .push(
+                                                                      .pushAndRemoveUntil(
                                                                     context,
                                                                     MaterialPageRoute(
                                                                       builder:
@@ -1384,6 +1384,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                             '',
                                                                       ),
                                                                     ),
+                                                                    (r) =>
+                                                                        false,
                                                                   );
                                                                 } finally {
                                                                   setState(() =>
