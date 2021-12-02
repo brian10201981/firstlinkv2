@@ -684,6 +684,7 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
                                 websiteAddress:
                                     businessNewWebsiteController.text,
                                 primaryCounty: dropDownValue,
+                                uid: businessNewNameController.text,
                               );
                               await AgenciesRecord.collection
                                   .doc()

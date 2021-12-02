@@ -1,7 +1,4 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../create_business3/create_business3_widget.dart';
-import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -11,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CreateBusiness2Widget extends StatefulWidget {
-  const CreateBusiness2Widget({
+class CreateBusiness3Widget extends StatefulWidget {
+  const CreateBusiness3Widget({
     Key key,
     this.countyName,
     this.businessName,
@@ -32,28 +29,12 @@ class CreateBusiness2Widget extends StatefulWidget {
   final DocumentReference documentId;
 
   @override
-  _CreateBusiness2WidgetState createState() => _CreateBusiness2WidgetState();
+  _CreateBusiness3WidgetState createState() => _CreateBusiness3WidgetState();
 }
 
-class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
-  String dropDownValue;
-  TextEditingController cityController;
-  TextEditingController poBoxController;
-  TextEditingController streetAddressController;
-  TextEditingController suiteAptController;
-  TextEditingController zipCodeController;
+class _CreateBusiness3WidgetState extends State<CreateBusiness3Widget> {
   bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    cityController = TextEditingController();
-    poBoxController = TextEditingController();
-    streetAddressController = TextEditingController();
-    suiteAptController = TextEditingController();
-    zipCodeController = TextEditingController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +57,14 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
             ),
           );
         }
-        List<AgenciesRecord> createBusiness2AgenciesRecordList = snapshot.data;
+        List<AgenciesRecord> createBusiness3AgenciesRecordList = snapshot.data;
         // Return an empty Container when the document does not exist.
         if (snapshot.data.isEmpty) {
           return Container();
         }
-        final createBusiness2AgenciesRecord =
-            createBusiness2AgenciesRecordList.isNotEmpty
-                ? createBusiness2AgenciesRecordList.first
+        final createBusiness3AgenciesRecord =
+            createBusiness3AgenciesRecordList.isNotEmpty
+                ? createBusiness3AgenciesRecordList.first
                 : null;
         return Scaffold(
           key: scaffoldKey,
@@ -206,7 +187,7 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                             child: Text(
-                              'Here is what we have so far',
+                              'Here is what we have now',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.title2.override(
                                 fontFamily: 'Montserrat',
@@ -356,6 +337,23 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                                     await launchURL(
                                                         widget.businessWebsite);
                                                   },
+                                                ),
+                                                FlutterFlowIconButton(
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderRadius: 0,
+                                                  borderWidth: 1,
+                                                  buttonSize: 40,
+                                                  icon: FaIcon(
+                                                    FontAwesomeIcons
+                                                        .mapMarkerAlt,
+                                                    color: Colors.black,
+                                                    size: 20,
+                                                  ),
+                                                  onPressed: () async {
+                                                    await launchURL(
+                                                        widget.businessPhone);
+                                                  },
                                                 )
                                               ],
                                             ),
@@ -394,7 +392,7 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(20, 10, 20, 5),
                                               child: Text(
-                                                'Please add your address information.\nThis will appear as map directions\nto your business',
+                                                'What your profile page will look like',
                                                 textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.title2
                                                     .override(
@@ -421,313 +419,145 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: streetAddressController,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'Street Address',
-                                  labelStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  hintText: 'Enter your street address here...',
-                                  hintStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  filled: true,
-                                  fillColor: Color(0xFF1E37B8),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          16, 24, 0, 24),
+                            Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: Color(0xFFF5F5F5),
+                              child: Container(
+                                width: 325,
+                                height: 300,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFEEEEEE),
                                 ),
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: suiteAptController,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'Suite/Apt#',
-                                  labelStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  hintText: 'Enter your suite/apt# here...',
-                                  hintStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 10, 10, 10),
+                                          child: Container(
+                                            width: 90,
+                                            height: 90,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.network(
+                                              widget.businessLogo,
+                                              fit: BoxFit.scaleDown,
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 10, 0, 0),
+                                          child: Text(
+                                            widget.businessName,
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  filled: true,
-                                  fillColor: Color(0xFF1E37B8),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          16, 24, 0, 24),
-                                ),
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: poBoxController,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'P.O. Box',
-                                  labelStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  hintText: 'Enter your p.o. box here...',
-                                  hintStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 5, 0, 0),
+                                          child: Text(
+                                            createBusiness3AgenciesRecord
+                                                .streetAddress,
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 5, 0, 0),
+                                          child: Text(
+                                            createBusiness3AgenciesRecord.poBox,
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  filled: true,
-                                  fillColor: Color(0xFF1E37B8),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          16, 24, 0, 24),
-                                ),
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                              child: TextFormField(
-                                controller: cityController,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'City',
-                                  labelStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  hintText: 'Enter your city here...',
-                                  hintStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  filled: true,
-                                  fillColor: Color(0xFF1E37B8),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          16, 24, 0, 24),
-                                ),
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            FlutterFlowDropDown(
-                              options: ['Nebraska'].toList(),
-                              onChanged: (val) =>
-                                  setState(() => dropDownValue = val),
-                              width: MediaQuery.of(context).size.width * 0.89,
-                              height: 55,
-                              textStyle: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                              ),
-                              icon: Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.white,
-                                size: 15,
-                              ),
-                              fillColor: Color(0xFF1E37B8),
-                              elevation: 2,
-                              borderColor: Colors.transparent,
-                              borderWidth: 0,
-                              borderRadius: 8,
-                              margin:
-                                  EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
-                              hidesUnderline: true,
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: zipCodeController,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'Zip Code',
-                                  labelStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  hintText: 'Enter your zip code here...',
-                                  hintStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1E37B8),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  filled: true,
-                                  fillColor: Color(0xFF1E37B8),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          16, 24, 0, 24),
-                                ),
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 5, 0, 0),
+                                          child: Text(
+                                            createBusiness3AgenciesRecord.city,
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 5, 0, 0),
+                                          child: Text(
+                                            createBusiness3AgenciesRecord.state,
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 5, 0, 0),
+                                          child: Text(
+                                            createBusiness3AgenciesRecord
+                                                .zipCode,
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
                                 ),
                               ),
                             )
@@ -743,31 +573,8 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                             Align(
                               alignment: AlignmentDirectional(0, 0.55),
                               child: FFButtonWidget(
-                                onPressed: () async {
-                                  setState(() => _loadingButton = true);
-                                  try {
-                                    final agenciesUpdateData =
-                                        createAgenciesRecordData(
-                                      streetAddress: '',
-                                      suiteApt: suiteAptController.text,
-                                      poBox: poBoxController.text,
-                                      city: cityController.text,
-                                      state: dropDownValue,
-                                      agencyName: zipCodeController.text,
-                                    );
-                                    await createBusiness2AgenciesRecord
-                                        .reference
-                                        .update(agenciesUpdateData);
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            CreateBusiness3Widget(),
-                                      ),
-                                    );
-                                  } finally {
-                                    setState(() => _loadingButton = false);
-                                  }
+                                onPressed: () {
+                                  print('Button pressed ...');
                                 },
                                 text: 'Next Step',
                                 options: FFButtonOptions(
