@@ -18,6 +18,7 @@ class CreateBusiness2Widget extends StatefulWidget {
     this.businessEmailAddress,
     this.businessWebsite,
     this.businessPhone,
+    this.businessLogo,
   }) : super(key: key);
 
   final String countyName;
@@ -25,6 +26,7 @@ class CreateBusiness2Widget extends StatefulWidget {
   final String businessEmailAddress;
   final String businessWebsite;
   final String businessPhone;
+  final String businessLogo;
 
   @override
   _CreateBusiness2WidgetState createState() => _CreateBusiness2WidgetState();
@@ -208,7 +210,7 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
-                                      'https://picsum.photos/seed/527/600',
+                                      widget.businessLogo,
                                       fit: BoxFit.contain,
                                     ),
                                   ),
