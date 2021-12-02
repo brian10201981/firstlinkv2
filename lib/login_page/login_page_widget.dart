@@ -1377,12 +1377,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     MaterialPageRoute(
                                                                       builder:
                                                                           (context) =>
-                                                                              CompleteProfileWidget(
-                                                                        firstName:
-                                                                            '',
-                                                                        lastName:
-                                                                            '',
-                                                                      ),
+                                                                              CompleteProfileWidget(),
                                                                     ),
                                                                     (r) =>
                                                                         false,
