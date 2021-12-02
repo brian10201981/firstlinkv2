@@ -16,13 +16,6 @@ abstract class AgenciesRecord
   String get agencyName;
 
   @nullable
-  String get county;
-
-  @nullable
-  @BuiltValueField(wireName: 'CategoryId')
-  String get categoryId;
-
-  @nullable
   String get uid;
 
   @nullable
@@ -70,13 +63,35 @@ abstract class AgenciesRecord
   String get zipCode;
 
   @nullable
+  @BuiltValueField(wireName: 'Primary_County')
+  String get primaryCounty;
+
+  @nullable
+  @BuiltValueField(wireName: 'Phone_Number')
+  String get phoneNumber;
+
+  @nullable
+  @BuiltValueField(wireName: 'Email_Address')
+  String get emailAddress;
+
+  @nullable
+  @BuiltValueField(wireName: 'Primary_category')
+  String get primaryCategory;
+
+  @nullable
+  @BuiltValueField(wireName: 'Secondary_Categories')
+  String get secondaryCategories;
+
+  @nullable
+  @BuiltValueField(wireName: 'Website_Address')
+  String get websiteAddress;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(AgenciesRecordBuilder builder) => builder
     ..agencyName = ''
-    ..county = ''
-    ..categoryId = ''
     ..uid = ''
     ..agencyAvatar = ''
     ..agencyDescription = ''
@@ -87,7 +102,13 @@ abstract class AgenciesRecord
     ..poBox = ''
     ..city = ''
     ..state = ''
-    ..zipCode = '';
+    ..zipCode = ''
+    ..primaryCounty = ''
+    ..phoneNumber = ''
+    ..emailAddress = ''
+    ..primaryCategory = ''
+    ..secondaryCategories = ''
+    ..websiteAddress = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('agencies');
@@ -108,8 +129,6 @@ abstract class AgenciesRecord
 
 Map<String, dynamic> createAgenciesRecordData({
   String agencyName,
-  String county,
-  String categoryId,
   String uid,
   String agencyAvatar,
   DateTime dateCreated,
@@ -122,13 +141,17 @@ Map<String, dynamic> createAgenciesRecordData({
   String city,
   String state,
   String zipCode,
+  String primaryCounty,
+  String phoneNumber,
+  String emailAddress,
+  String primaryCategory,
+  String secondaryCategories,
+  String websiteAddress,
 }) =>
     serializers.toFirestore(
         AgenciesRecord.serializer,
         AgenciesRecord((a) => a
           ..agencyName = agencyName
-          ..county = county
-          ..categoryId = categoryId
           ..uid = uid
           ..agencyAvatar = agencyAvatar
           ..dateCreated = dateCreated
@@ -140,4 +163,10 @@ Map<String, dynamic> createAgenciesRecordData({
           ..poBox = poBox
           ..city = city
           ..state = state
-          ..zipCode = zipCode));
+          ..zipCode = zipCode
+          ..primaryCounty = primaryCounty
+          ..phoneNumber = phoneNumber
+          ..emailAddress = emailAddress
+          ..primaryCategory = primaryCategory
+          ..secondaryCategories = secondaryCategories
+          ..websiteAddress = websiteAddress));

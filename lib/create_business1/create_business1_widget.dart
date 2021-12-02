@@ -1,8 +1,12 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../create_business2/create_business2_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,278 +24,642 @@ class CreateBusiness1Widget extends StatefulWidget {
 
 class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
   String dropDownValue;
-  bool checkboxListTileValue1;
-  bool checkboxListTileValue2;
-  bool checkboxListTileValue3;
+  TextEditingController businessNewEmailController;
+  TextEditingController businessNewNameController;
+  TextEditingController businessNewPhoneController;
+  TextEditingController businessNewWebsiteController;
+  bool _loadingButton = false;
+  final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    businessNewEmailController = TextEditingController();
+    businessNewNameController = TextEditingController();
+    businessNewPhoneController = TextEditingController();
+    businessNewWebsiteController = TextEditingController();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.primaryColor,
-        automaticallyImplyLeading: false,
-        leading: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30,
-                borderWidth: 0,
-                buttonSize: 50,
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                  size: 30,
-                ),
-                onPressed: () async {
-                  Navigator.pop(context);
-                },
-              ),
-            )
-          ],
-        ),
-        title: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-          child: Row(
+    return Form(
+      key: formKey,
+      child: Scaffold(
+        key: scaffoldKey,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.primaryColor,
+          automaticallyImplyLeading: false,
+          leading: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                      child: Image.asset(
-                        'assets/images/50top.png',
-                        width: 45,
-                        height: 45,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  ],
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30,
+                  borderWidth: 0,
+                  buttonSize: 50,
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
                 ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'First Link',
-                        style: FlutterFlowTheme.title2.override(
-                          fontFamily: 'Montserrat',
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        'Resource Directory',
-                        style: FlutterFlowTheme.title2.override(
-                          fontFamily: 'Montserrat',
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  )
-                ],
               )
             ],
           ),
-        ),
-        actions: [],
-        centerTitle: false,
-        elevation: 4,
-      ),
-      backgroundColor: FlutterFlowTheme.primaryColor,
-      body: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Row(
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+            child: Row(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                  child: Text(
-                    'Create a business profile',
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.title2.override(
-                      fontFamily: 'Montserrat',
-                      color: Colors.white,
-                      fontSize: 25,
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                          child: Image.asset(
+                            'assets/images/50top.png',
+                            width: 45,
+                            height: 45,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      ],
                     ),
                   ),
-                )
-              ],
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
-                  child: Text(
-                    'Chose the primary county where your\nbusiness is based',
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.title2.override(
-                      fontFamily: 'Montserrat',
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-              child: SingleChildScrollView(
-                child: Column(
+                ),
+                Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Row(
+                    Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        FlutterFlowDropDown(
-                          initialOption: dropDownValue ??= 'Choose your County',
-                          options: [
-                            'Adams',
-                            'Antelope',
-                            'Arthur',
-                            'Banner',
-                            'Lincoln',
-                            '',
-                            '',
-                            '',
-                            ''
-                          ].toList(),
-                          onChanged: (val) =>
-                              setState(() => dropDownValue = val),
-                          width: MediaQuery.of(context).size.width * 0.85,
-                          height: 50,
-                          textStyle: FlutterFlowTheme.bodyText1.override(
+                        Text(
+                          'First Link',
+                          style: FlutterFlowTheme.title2.override(
                             fontFamily: 'Montserrat',
                             color: Colors.white,
+                            fontSize: 18,
                           ),
-                          icon: Icon(
-                            Icons.arrow_drop_down,
-                            color: FlutterFlowTheme.tertiaryColor,
-                            size: 15,
+                        ),
+                        Text(
+                          'Resource Directory',
+                          style: FlutterFlowTheme.title2.override(
+                            fontFamily: 'Montserrat',
+                            color: Colors.white,
+                            fontSize: 18,
                           ),
-                          fillColor: Color(0xFF1E37B8),
-                          elevation: 2,
-                          borderColor: Color(0x00FFFFFF),
-                          borderWidth: 0,
-                          borderRadius: 0,
-                          margin: EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
-                          hidesUnderline: true,
                         )
                       ],
                     )
                   ],
-                ),
-              ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                  child: Text(
-                    'Please choose the counties you serve',
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.title2.override(
-                      fontFamily: 'Montserrat',
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
                 )
               ],
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-              child: Row(
+          ),
+          actions: [],
+          centerTitle: false,
+          elevation: 4,
+        ),
+        backgroundColor: FlutterFlowTheme.primaryColor,
+        body: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: StreamBuilder<List<NebraskaCountyRecord>>(
-                      stream: queryNebraskaCountyRecord(
-                        queryBuilder: (nebraskaCountyRecord) =>
-                            nebraskaCountyRecord.orderBy('CountyName'),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: Text(
+                      'Create a business profile',
+                      textAlign: TextAlign.center,
+                      style: FlutterFlowTheme.title2.override(
+                        fontFamily: 'Montserrat',
+                        color: Colors.white,
+                        fontSize: 25,
                       ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child: CircularProgressIndicator(
-                                color: Colors.white,
-                              ),
-                            ),
-                          );
-                        }
-                        List<NebraskaCountyRecord>
-                            listViewNebraskaCountyRecordList = snapshot.data;
-                        return ListView.builder(
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemCount: listViewNebraskaCountyRecordList.length,
-                          itemBuilder: (context, listViewIndex) {
-                            final listViewNebraskaCountyRecord =
-                                listViewNebraskaCountyRecordList[listViewIndex];
-                            return Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: Colors.black,
-                              elevation: 4,
-                              child: CheckboxListTile(
-                                value: checkboxListTileValue1 ??= false,
-                                onChanged: (newValue) => setState(
-                                    () => checkboxListTileValue1 = newValue),
-                                title: Text(
-                                  widget.countyName,
-                                  style: FlutterFlowTheme.title3.override(
-                                    fontFamily: 'Montserrat',
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                tileColor: Color(0xFF1E37B8),
-                                activeColor: Colors.white,
-                                checkColor: Colors.black,
-                                dense: false,
-                                controlAffinity:
-                                    ListTileControlAffinity.trailing,
-                              ),
-                            );
-                          },
-                        );
-                      },
                     ),
                   )
                 ],
               ),
-            )
-          ],
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 5, 20, 0),
+                    child: Text(
+                      'Business Info',
+                      textAlign: TextAlign.center,
+                      style: FlutterFlowTheme.title2.override(
+                        fontFamily: 'Montserrat',
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                      child: TextFormField(
+                        controller: businessNewNameController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Business Name',
+                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF95A1AC),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          hintText: 'Enter your first name here...',
+                          hintStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF95A1AC),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF1E37B8),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF1E37B8),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Color(0xFF1E37B8),
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
+                        ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return 'Business Name Required';
+                          }
+
+                          return null;
+                        },
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                      child: TextFormField(
+                        controller: businessNewPhoneController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Phone Number',
+                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF95A1AC),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          hintText: 'Enter your phone number here...',
+                          hintStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF95A1AC),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF1E37B8),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF1E37B8),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Color(0xFF1E37B8),
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
+                        ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                        keyboardType: TextInputType.phone,
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return 'Please fill in your phone number';
+                          }
+
+                          return null;
+                        },
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                      child: TextFormField(
+                        controller: businessNewEmailController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Email Address',
+                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF95A1AC),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          hintText: 'Enter your email address here...',
+                          hintStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF95A1AC),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF1E37B8),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF1E37B8),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Color(0xFF1E37B8),
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
+                        ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return 'Please complete your email address.';
+                          }
+
+                          return null;
+                        },
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                      child: TextFormField(
+                        controller: businessNewWebsiteController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Website Address',
+                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF95A1AC),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          hintText: 'Enter your website address here...',
+                          hintStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF95A1AC),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF1E37B8),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF1E37B8),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Color(0xFF1E37B8),
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
+                        ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                        keyboardType: TextInputType.url,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 5, 20, 0),
+                    child: Text(
+                      'Location',
+                      textAlign: TextAlign.center,
+                      style: FlutterFlowTheme.title2.override(
+                        fontFamily: 'Montserrat',
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FlutterFlowDropDown(
+                            initialOption: dropDownValue ??=
+                                'Choose your County',
+                            options: [
+                              'Adams',
+                              'Antelope',
+                              'Arthur',
+                              'Banner',
+                              'Blaine',
+                              'Boone',
+                              'Box Butte',
+                              'Boyd',
+                              'Brown',
+                              'Buffalo',
+                              'Burt',
+                              'Butler',
+                              'Cass',
+                              'Cedar',
+                              'Chase',
+                              'Cherry',
+                              'Cheyenne',
+                              'Clay',
+                              'Colfax',
+                              'Cuming',
+                              'Custer',
+                              'Dakota',
+                              'Dawes',
+                              'Dawson',
+                              'Deuel',
+                              'Dixon',
+                              'Dodge',
+                              'Douglas',
+                              'Dundy',
+                              'Fillmore',
+                              'Franklin',
+                              'Frontier',
+                              'Furnas',
+                              'Gage',
+                              'Garden',
+                              'Garfield',
+                              'Gosper',
+                              'Grant',
+                              'Greeley',
+                              'Hall',
+                              'Hamilton',
+                              'Harlan',
+                              'Hayes',
+                              'Hitchcock',
+                              'Holt',
+                              'Hooker',
+                              'Howard',
+                              'Jefferson',
+                              'Johnson',
+                              'Kearney',
+                              'Keith',
+                              'Keya Paha',
+                              'Kimball',
+                              'Knox',
+                              'Lancaster',
+                              'Lincoln',
+                              'Logan',
+                              'Loup',
+                              'McPherson',
+                              'Madison',
+                              'Merrick',
+                              'Morrill',
+                              'Nance',
+                              'Nemaha',
+                              'Nuckolls',
+                              'Otoe',
+                              'Pawnee',
+                              'Perkins',
+                              'Phelps',
+                              'Pierce',
+                              'Platte',
+                              'Polk',
+                              'Red Willow',
+                              'Richardson',
+                              'Rock',
+                              'Saline',
+                              'Sarpy',
+                              'Saunders',
+                              'Scotts Bluff',
+                              'Seward',
+                              'Sheridan',
+                              'Sherman',
+                              'Sioux',
+                              'Stanton',
+                              'Thayer',
+                              'Thomas',
+                              'Thurston',
+                              'Valley',
+                              'Washington',
+                              'Wayne',
+                              'Webster',
+                              'Wheeler',
+                              'York'
+                            ].toList(),
+                            onChanged: (val) =>
+                                setState(() => dropDownValue = val),
+                            width: MediaQuery.of(context).size.width * 0.89,
+                            height: 50,
+                            textStyle: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Montserrat',
+                              color: Colors.white,
+                            ),
+                            icon: Icon(
+                              Icons.arrow_drop_down,
+                              color: FlutterFlowTheme.tertiaryColor,
+                              size: 15,
+                            ),
+                            fillColor: Color(0xFF1E37B8),
+                            elevation: 2,
+                            borderColor: Color(0x00FFFFFF),
+                            borderWidth: 0,
+                            borderRadius: 8,
+                            margin: EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
+                            hidesUnderline: true,
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                    child: Text(
+                      'Please choose your primary county of\nbusiness\n\nYou will be able to add additional counties\nand offices once your business profile\nis created.',
+                      textAlign: TextAlign.center,
+                      style: FlutterFlowTheme.title2.override(
+                        fontFamily: 'Montserrat',
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0, 0.55),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          setState(() => _loadingButton = true);
+                          try {
+                            if (!formKey.currentState.validate()) {
+                              return;
+                            }
+                            final agenciesCreateData = createAgenciesRecordData(
+                              agencyName: businessNewNameController.text,
+                              dateCreated: getCurrentTimestamp,
+                              createdBy: currentUserUid,
+                              phoneNumber: businessNewPhoneController.text,
+                              emailAddress: businessNewEmailController.text,
+                              websiteAddress: businessNewWebsiteController.text,
+                              primaryCounty: dropDownValue,
+                            );
+                            await AgenciesRecord.collection
+                                .doc()
+                                .set(agenciesCreateData);
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CreateBusiness2Widget(
+                                  countyName: dropDownValue,
+                                  businessName: businessNewNameController.text,
+                                  businessEmailAddress:
+                                      businessNewWebsiteController.text,
+                                  businessWebsite:
+                                      businessNewWebsiteController.text,
+                                  businessPhone:
+                                      businessNewPhoneController.text,
+                                ),
+                              ),
+                            );
+                          } finally {
+                            setState(() => _loadingButton = false);
+                          }
+                        },
+                        text: 'Next Step',
+                        options: FFButtonOptions(
+                          width: 130,
+                          height: 45,
+                          color: Color(0xFFC70039),
+                          textStyle: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 12,
+                        ),
+                        loading: _loadingButton,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
