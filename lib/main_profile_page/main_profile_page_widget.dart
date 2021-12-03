@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../create_business1/create_business1_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -24,338 +25,239 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.primaryColor,
-        automaticallyImplyLeading: false,
-        leading: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30,
-                borderWidth: 0,
-                buttonSize: 50,
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                  size: 30,
-                ),
-                onPressed: () async {
-                  Navigator.pop(context);
-                },
+    return StreamBuilder<Users2Record>(
+      stream: Users2Record.getDocument(currentUserReference),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 50,
+              height: 50,
+              child: CircularProgressIndicator(
+                color: Colors.white,
               ),
-            )
-          ],
-        ),
-        title: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                      child: Image.asset(
-                        'assets/images/50top.png',
-                        width: 45,
-                        height: 45,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'First Link',
-                        style: FlutterFlowTheme.title2.override(
-                          fontFamily: 'Montserrat',
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        'Resource Directory',
-                        style: FlutterFlowTheme.title2.override(
-                          fontFamily: 'Montserrat',
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-        actions: [],
-        centerTitle: false,
-        elevation: 4,
-      ),
-      backgroundColor: FlutterFlowTheme.primaryColor,
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 15),
+            ),
+          );
+        }
+        final mainProfilePageUsers2Record = snapshot.data;
+        return Scaffold(
+          key: scaffoldKey,
+          appBar: AppBar(
+            backgroundColor: FlutterFlowTheme.primaryColor,
+            automaticallyImplyLeading: false,
+            leading: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0, 0),
+                  child: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 30,
+                    borderWidth: 0,
+                    buttonSize: 40,
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    onPressed: () async {
+                      Navigator.pop(context);
+                    },
+                  ),
+                )
+              ],
+            ),
+            title: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 80,
-                        height: 80,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.network(
-                          'https://picsum.photos/seed/62/600',
-                        ),
-                      )
-                    ],
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                          child: Image.asset(
+                            'assets/images/50top.png',
+                            width: 35,
+                            height: 35,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  Column(
+                  Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
+                      Column(
                         mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                            child: Text(
-                              'Hi ',
-                              style: FlutterFlowTheme.title2.override(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                              ),
+                          Text(
+                            'First Link',
+                            style: FlutterFlowTheme.title2.override(
+                              fontFamily: 'Montserrat',
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            'Resource Directory',
+                            style: FlutterFlowTheme.title2.override(
+                              fontFamily: 'Montserrat',
+                              color: Colors.white,
+                              fontSize: 16,
                             ),
                           )
                         ],
                       )
                     ],
-                  ),
-                  AuthUserStreamWidget(
-                    child: Text(
-                      currentUserDisplayName,
-                      style: FlutterFlowTheme.title2.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                      ),
-                    ),
                   )
                 ],
               ),
             ),
-            Row(
+            actions: [],
+            centerTitle: false,
+            elevation: 4,
+          ),
+          backgroundColor: FlutterFlowTheme.primaryColor,
+          body: SingleChildScrollView(
+            child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.44,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4B39EF),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 3,
-                        color: Color(0x39000000),
-                        offset: Offset(0, 1),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 15),
+                  child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: Icon(
-                          Icons.event,
-                          color: Colors.white,
-                          size: 44,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                        child: AutoSizeText(
-                          'My Events',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.subtitle1.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
-                          child: Text(
-                            'Active and upcoming events',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.getFont(
-                              'Lexend Deca',
-                              color: Color(0xB3FFFFFF),
-                              fontSize: 12,
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 80,
+                            height: 80,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
                             ),
-                          ),
+                            child: Image.network(
+                              mainProfilePageUsers2Record.photoUrl,
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Text(
+                                  'Hi ',
+                                  style: FlutterFlowTheme.title2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      Text(
+                        mainProfilePageUsers2Record.firstName,
+                        style: FlutterFlowTheme.title2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
                         ),
                       )
                     ],
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.44,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFC70039),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 4,
-                        color: Color(0x37000000),
-                        offset: Offset(0, 1),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: Icon(
-                          Icons.business_sharp,
-                          color: Colors.white,
-                          size: 44,
-                        ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.44,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF4B39EF),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 3,
+                            color: Color(0x39000000),
+                            offset: Offset(0, 1),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                        child: AutoSizeText(
-                          'My Businesses',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.subtitle1.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
-                          child: Text(
-                            'View your posted businesses and agencies.',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.getFont(
-                              'Lexend Deca',
-                              color: Color(0xB3FFFFFF),
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.44,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF4B39EF),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 3,
-                          color: Color(0x39000000),
-                          offset: Offset(0, 1),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                          child: Icon(
-                            Icons.event,
-                            color: Colors.white,
-                            size: 44,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                          child: AutoSizeText(
-                            'Create a new \nEvent',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.subtitle1.override(
-                              fontFamily: 'Lexend Deca',
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                            child: Icon(
+                              Icons.event,
                               color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
+                              size: 44,
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.44,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFC70039),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4,
-                          color: Color(0x37000000),
-                          offset: Offset(0, 1),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CreateBusiness1Widget(),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                            child: AutoSizeText(
+                              'My Events',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.subtitle1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
-                        );
-                      },
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
+                              child: Text(
+                                'Active and upcoming events',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.getFont(
+                                  'Lexend Deca',
+                                  color: Color(0xB3FFFFFF),
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.44,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFC70039),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4,
+                            color: Color(0x37000000),
+                            offset: Offset(0, 1),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -371,7 +273,7 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                             child: AutoSizeText(
-                              'Create a New\nBusiness',
+                              'My Businesses',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.subtitle1.override(
                                 fontFamily: 'Lexend Deca',
@@ -380,17 +282,139 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
+                              child: Text(
+                                'View your posted businesses and agencies.',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.getFont(
+                                  'Lexend Deca',
+                                  color: Color(0xB3FFFFFF),
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
                           )
                         ],
                       ),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
+                    )
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.44,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF4B39EF),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 3,
+                              color: Color(0x39000000),
+                              offset: Offset(0, 1),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                              child: Icon(
+                                Icons.event,
+                                color: Colors.white,
+                                size: 44,
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                              child: AutoSizeText(
+                                'Create a new \nEvent',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.subtitle1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.44,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFC70039),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Color(0x37000000),
+                              offset: Offset(0, 1),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CreateBusiness1Widget(),
+                              ),
+                            );
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                                child: Icon(
+                                  Icons.business_sharp,
+                                  color: Colors.white,
+                                  size: 44,
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                                child: AutoSizeText(
+                                  'Create a New\nBusiness',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.subtitle1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
