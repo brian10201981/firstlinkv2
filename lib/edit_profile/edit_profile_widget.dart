@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
+import '../main_profile_page/main_profile_page_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,9 +26,9 @@ class EditProfileWidget extends StatefulWidget {
 
 class _EditProfileWidgetState extends State<EditProfileWidget> {
   String uploadedFileUrl = '';
-  TextEditingController firstNameController1;
-  TextEditingController firstNameController2;
-  TextEditingController firstNameController3;
+  TextEditingController firstNameController;
+  TextEditingController lastNameController;
+  TextEditingController emailAddressController;
   bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -304,7 +305,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                           child: TextFormField(
-                            controller: firstNameController1 ??=
+                            controller: firstNameController ??=
                                 TextEditingController(
                               text: columnUsers2Record.firstName,
                             ),
@@ -363,7 +364,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
                         child: TextFormField(
-                          controller: firstNameController2 ??=
+                          controller: lastNameController ??=
                               TextEditingController(
                             text: columnUsers2Record.lastName,
                           ),
@@ -421,7 +422,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
                         child: TextFormField(
-                          controller: firstNameController3 ??=
+                          controller: emailAddressController ??=
                               TextEditingController(
                             text: columnUsers2Record.email,
                           ),
@@ -484,9 +485,20 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           onPressed: () async {
                             setState(() => _loadingButton = true);
                             try {
-                              final users2UpdateData = createUsers2RecordData();
+                              final users2UpdateData = createUsers2RecordData(
+                                photoUrl: uploadedFileUrl,
+                                email: emailAddressController?.text ?? '',
+                                firstName: firstNameController?.text ?? '',
+                                lastName: lastNameController?.text ?? '',
+                              );
                               await currentUserReference
                                   .update(users2UpdateData);
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainProfilePageWidget(),
+                                ),
+                              );
                             } finally {
                               setState(() => _loadingButton = false);
                             }
