@@ -127,19 +127,22 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    borderWidth: 1,
-                    buttonSize: 60,
-                    icon: Icon(
-                      Icons.menu_sharp,
-                      color: Colors.white,
-                      size: 30,
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30,
+                      borderWidth: 1,
+                      buttonSize: 50,
+                      icon: Icon(
+                        Icons.menu_sharp,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      onPressed: () async {
+                        scaffoldKey.currentState.openEndDrawer();
+                      },
                     ),
-                    onPressed: () async {
-                      scaffoldKey.currentState.openEndDrawer();
-                    },
                   )
                 ],
               )
