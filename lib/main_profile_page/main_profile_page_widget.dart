@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../home_page/home_page_widget.dart';
+import '../my_businesses/my_businesses_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -544,47 +545,58 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                         ],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: Icon(
-                              Icons.business_sharp,
-                              color: Colors.white,
-                              size: 44,
+                      child: InkWell(
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyBusinessesWidget(),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                            child: AutoSizeText(
-                              'My Businesses',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.subtitle1.override(
-                                fontFamily: 'Lexend Deca',
+                          );
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                              child: Icon(
+                                Icons.business_sharp,
                                 color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
+                                size: 44,
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: Padding(
+                            Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
-                              child: Text(
-                                'View your posted businesses and agencies.',
+                                  EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                              child: AutoSizeText(
+                                'My Businesses',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.getFont(
-                                  'Lexend Deca',
-                                  color: Color(0xB3FFFFFF),
-                                  fontSize: 12,
+                                style: FlutterFlowTheme.subtitle1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                          )
-                        ],
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
+                                child: Text(
+                                  'View your posted businesses and agencies.',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.getFont(
+                                    'Lexend Deca',
+                                    color: Color(0xB3FFFFFF),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],
