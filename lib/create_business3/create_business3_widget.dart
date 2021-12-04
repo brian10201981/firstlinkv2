@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main_profile_page/main_profile_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -658,8 +659,19 @@ class _CreateBusiness3WidgetState extends State<CreateBusiness3Widget> {
                               Align(
                                 alignment: AlignmentDirectional(0, 0.55),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    setState(() => _loadingButton = true);
+                                    try {
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              MainProfilePageWidget(),
+                                        ),
+                                      );
+                                    } finally {
+                                      setState(() => _loadingButton = false);
+                                    }
                                   },
                                   text: 'Complete profile setup',
                                   options: FFButtonOptions(
