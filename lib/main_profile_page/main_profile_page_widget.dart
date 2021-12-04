@@ -407,6 +407,34 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                           ),
                         )
                       ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          buttonSize: 40,
+                          icon: Icon(
+                            Icons.logout,
+                            color: Color(0xFFC70039),
+                            size: 20,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                          child: Text(
+                            'Logout',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Montserrat',
+                            ),
+                          ),
+                        )
+                      ],
                     )
                   ],
                 ),
@@ -434,6 +462,7 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                             ),
                             child: Image.network(
                               mainProfilePageUsers2Record.photoUrl,
+                              fit: BoxFit.fitWidth,
                             ),
                           )
                         ],

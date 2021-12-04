@@ -57,120 +57,119 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<AgenciesRecord>>(
-      stream: queryAgenciesRecord(
-        queryBuilder: (agenciesRecord) =>
-            agenciesRecord.where('AgencyName', isEqualTo: widget.businessName),
-        singleRecord: true,
-      ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50,
-              height: 50,
-              child: CircularProgressIndicator(
-                color: Colors.white,
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.primaryColor,
+        automaticallyImplyLeading: false,
+        leading: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30,
+                borderWidth: 0,
+                buttonSize: 50,
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                onPressed: () async {
+                  Navigator.pop(context);
+                },
               ),
-            ),
-          );
-        }
-        List<AgenciesRecord> createBusiness2AgenciesRecordList = snapshot.data;
-        // Return an empty Container when the document does not exist.
-        if (snapshot.data.isEmpty) {
-          return Container();
-        }
-        final createBusiness2AgenciesRecord =
-            createBusiness2AgenciesRecordList.isNotEmpty
-                ? createBusiness2AgenciesRecordList.first
-                : null;
-        return Scaffold(
-          key: scaffoldKey,
-          appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.primaryColor,
-            automaticallyImplyLeading: false,
-            leading: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(0, 0),
-                  child: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    borderWidth: 0,
-                    buttonSize: 50,
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () async {
-                      Navigator.pop(context);
-                    },
-                  ),
-                )
-              ],
-            ),
-            title: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-              child: Row(
+            )
+          ],
+        ),
+        title: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                      child: Image.asset(
+                        'assets/images/50top.png',
+                        width: 45,
+                        height: 45,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                          child: Image.asset(
-                            'assets/images/50top.png',
-                            width: 45,
-                            height: 45,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Row(
+                  Column(
                     mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'First Link',
-                            style: FlutterFlowTheme.title2.override(
-                              fontFamily: 'Montserrat',
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'Resource Directory',
-                            style: FlutterFlowTheme.title2.override(
-                              fontFamily: 'Montserrat',
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
-                          )
-                        ],
+                      Text(
+                        'First Link',
+                        style: FlutterFlowTheme.title2.override(
+                          fontFamily: 'Montserrat',
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        'Resource Directory',
+                        style: FlutterFlowTheme.title2.override(
+                          fontFamily: 'Montserrat',
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
                       )
                     ],
                   )
                 ],
-              ),
-            ),
-            actions: [],
-            centerTitle: false,
-            elevation: 4,
+              )
+            ],
           ),
-          backgroundColor: FlutterFlowTheme.primaryColor,
-          body: SingleChildScrollView(
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 4,
+      ),
+      backgroundColor: FlutterFlowTheme.primaryColor,
+      body: StreamBuilder<List<AgenciesRecord>>(
+        stream: queryAgenciesRecord(
+          queryBuilder: (agenciesRecord) => agenciesRecord.where('AgencyName',
+              isEqualTo: widget.businessName),
+          singleRecord: true,
+        ),
+        builder: (context, snapshot) {
+          // Customize what your widget looks like when it's loading.
+          if (!snapshot.hasData) {
+            return Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              ),
+            );
+          }
+          List<AgenciesRecord> columnAgenciesRecordList = snapshot.data;
+          // Return an empty Container when the document does not exist.
+          if (snapshot.data.isEmpty) {
+            return Container();
+          }
+          final columnAgenciesRecord = columnAgenciesRecordList.isNotEmpty
+              ? columnAgenciesRecordList.first
+              : null;
+          return SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -761,14 +760,15 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                       try {
                                         final agenciesUpdateData =
                                             createAgenciesRecordData(
-                                          streetAddress: '',
+                                          streetAddress:
+                                              streetAddressController.text,
                                           suiteApt: suiteAptController.text,
                                           poBox: poBoxController.text,
                                           city: cityController.text,
                                           state: dropDownValue,
+                                          zipCode: zipCodeController.text,
                                         );
-                                        await createBusiness2AgenciesRecord
-                                            .reference
+                                        await columnAgenciesRecord.reference
                                             .update(agenciesUpdateData);
                                         await Navigator.push(
                                           context,
@@ -826,9 +826,9 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                 )
               ],
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

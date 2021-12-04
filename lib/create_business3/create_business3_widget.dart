@@ -238,7 +238,7 @@ class _CreateBusiness3WidgetState extends State<CreateBusiness3Widget> {
                                             : null;
                                     return Container(
                                       width: MediaQuery.of(context).size.width *
-                                          0.88,
+                                          0.86,
                                       height: 500,
                                       decoration: BoxDecoration(
                                         color: Color(0xFFEEEEEE),

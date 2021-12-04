@@ -536,7 +536,7 @@ class _MyBusinessesWidgetState extends State<MyBusinessesWidget> {
                                                   borderWidth: 1,
                                                   buttonSize: 40,
                                                   icon: Icon(
-                                                    Icons.phone,
+                                                    Icons.edit,
                                                     color: Colors.black,
                                                     size: 20,
                                                   ),
@@ -552,25 +552,9 @@ class _MyBusinessesWidgetState extends State<MyBusinessesWidget> {
                                                   borderWidth: 1,
                                                   buttonSize: 40,
                                                   icon: Icon(
-                                                    Icons.email,
-                                                    color: Colors.black,
-                                                    size: 20,
-                                                  ),
-                                                  onPressed: () {
-                                                    print(
-                                                        'IconButton pressed ...');
-                                                  },
-                                                ),
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 0,
-                                                  borderWidth: 1,
-                                                  buttonSize: 40,
-                                                  icon: FaIcon(
-                                                    FontAwesomeIcons.globe,
-                                                    color: Colors.black,
-                                                    size: 20,
+                                                    Icons.delete_outline,
+                                                    color: Color(0xFFC70039),
+                                                    size: 25,
                                                   ),
                                                   onPressed: () {
                                                     print(
