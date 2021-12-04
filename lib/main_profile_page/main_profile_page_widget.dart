@@ -350,8 +350,8 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                             color: Colors.black,
                             size: 20,
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
+                          onPressed: () async {
+                            scaffoldKey.currentState.openEndDrawer();
                           },
                         ),
                         Padding(
