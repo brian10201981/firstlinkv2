@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../create_business1/create_business1_widget.dart';
+import '../edit_profile/edit_profile_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -324,6 +325,10 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                                 builder: (context) => HomePageWidget(),
                               ),
                             );
+                            if (scaffoldKey.currentState.isDrawerOpen ||
+                                scaffoldKey.currentState.isEndDrawerOpen) {
+                              Navigator.pop(context);
+                            }
                           },
                         ),
                         Padding(
@@ -351,7 +356,16 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                             size: 20,
                           ),
                           onPressed: () async {
-                            scaffoldKey.currentState.openEndDrawer();
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditProfileWidget(),
+                              ),
+                            );
+                            if (scaffoldKey.currentState.isDrawerOpen ||
+                                scaffoldKey.currentState.isEndDrawerOpen) {
+                              Navigator.pop(context);
+                            }
                           },
                         ),
                         Padding(
