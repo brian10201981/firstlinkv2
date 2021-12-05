@@ -67,7 +67,13 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                       size: 20,
                     ),
                     onPressed: () async {
-                      Navigator.pop(context);
+                      await Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePageWidget(),
+                        ),
+                        (r) => false,
+                      );
                     },
                   ),
                 )

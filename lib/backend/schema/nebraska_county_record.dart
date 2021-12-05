@@ -28,6 +28,12 @@ abstract class NebraskaCountyRecord
   String get countyAvatar;
 
   @nullable
+  bool get agree;
+
+  @nullable
+  bool get disagree;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -35,7 +41,9 @@ abstract class NebraskaCountyRecord
     ..countyName = ''
     ..countySeat = ''
     ..population = 0
-    ..countyAvatar = '';
+    ..countyAvatar = ''
+    ..agree = false
+    ..disagree = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('NebraskaCounty');
@@ -60,6 +68,8 @@ Map<String, dynamic> createNebraskaCountyRecordData({
   String countySeat,
   int population,
   String countyAvatar,
+  bool agree,
+  bool disagree,
 }) =>
     serializers.toFirestore(
         NebraskaCountyRecord.serializer,
@@ -67,4 +77,6 @@ Map<String, dynamic> createNebraskaCountyRecordData({
           ..countyName = countyName
           ..countySeat = countySeat
           ..population = population
-          ..countyAvatar = countyAvatar));
+          ..countyAvatar = countyAvatar
+          ..agree = agree
+          ..disagree = disagree));

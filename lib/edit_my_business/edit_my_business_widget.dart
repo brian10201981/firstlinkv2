@@ -5,6 +5,7 @@ import '../edit_profile/edit_profile_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
@@ -51,7 +52,6 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
   TextEditingController businessEditNameController3;
   bool _loadingButton1 = false;
   String dropDownValue14;
-  bool switchListTileValue3;
   bool _loadingButton2 = false;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -2496,69 +2496,123 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         List<NebraskaCountyRecord>
                                                             columnNebraskaCountyRecordList =
                                                             snapshot.data;
-                                                        return Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: List.generate(
-                                                              columnNebraskaCountyRecordList
-                                                                  .length,
-                                                              (columnIndex) {
-                                                            final columnNebraskaCountyRecord =
-                                                                columnNebraskaCountyRecordList[
-                                                                    columnIndex];
-                                                            return Container(
-                                                              width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width *
-                                                                  0.89,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Colors
-                                                                    .transparent,
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            10,
-                                                                            0,
-                                                                            0),
-                                                                child:
-                                                                    SwitchListTile(
-                                                                  value:
-                                                                      switchListTileValue3 ??=
-                                                                          false,
-                                                                  onChanged: (newValue) =>
-                                                                      setState(() =>
-                                                                          switchListTileValue3 =
-                                                                              newValue),
-                                                                  title: Text(
-                                                                    columnNebraskaCountyRecord
-                                                                        .countyName,
-                                                                    style: FlutterFlowTheme
-                                                                        .title3
-                                                                        .override(
-                                                                      fontFamily:
-                                                                          'Montserrat',
-                                                                      color: Colors
-                                                                          .white,
-                                                                    ),
-                                                                  ),
-                                                                  tileColor: Color(
-                                                                      0x00F5F5F5),
-                                                                  activeColor:
-                                                                      Colors
-                                                                          .white,
-                                                                  dense: false,
-                                                                  controlAffinity:
-                                                                      ListTileControlAffinity
-                                                                          .trailing,
+                                                        return SingleChildScrollView(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: List.generate(
+                                                                columnNebraskaCountyRecordList
+                                                                    .length,
+                                                                (columnIndex) {
+                                                              final columnNebraskaCountyRecord =
+                                                                  columnNebraskaCountyRecordList[
+                                                                      columnIndex];
+                                                              return Card(
+                                                                clipBehavior: Clip
+                                                                    .antiAliasWithSaveLayer,
+                                                                color: Color(
+                                                                    0xFFF5F5F5),
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              20),
                                                                 ),
-                                                              ),
-                                                            );
-                                                          }),
+                                                                child:
+                                                                    Container(
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.89,
+                                                                  height: 60,
+                                                                  constraints:
+                                                                      BoxConstraints(
+                                                                    maxWidth: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width *
+                                                                        0.89,
+                                                                  ),
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: Color(
+                                                                        0xFFEEEEEE),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(8),
+                                                                  ),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                                                                child: Column(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    Text(
+                                                                                      columnNebraskaCountyRecord.countyName,
+                                                                                      style: FlutterFlowTheme.bodyText1,
+                                                                                    )
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(150, 0, 0, 0),
+                                                                                child: Column(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                  children: [
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                                                                      child: ToggleIcon(
+                                                                                        onPressed: () async {
+                                                                                          final nebraskaCountyUpdateData = createNebraskaCountyRecordData(
+                                                                                            agree: !columnNebraskaCountyRecord.agree,
+                                                                                          );
+                                                                                          await columnNebraskaCountyRecord.reference.update(nebraskaCountyUpdateData);
+                                                                                        },
+                                                                                        value: columnNebraskaCountyRecord.agree,
+                                                                                        onIcon: Icon(
+                                                                                          Icons.check_box,
+                                                                                          color: Colors.black,
+                                                                                          size: 25,
+                                                                                        ),
+                                                                                        offIcon: Icon(
+                                                                                          Icons.check_box_outline_blank,
+                                                                                          color: Colors.black,
+                                                                                          size: 25,
+                                                                                        ),
+                                                                                      ),
+                                                                                    )
+                                                                                  ],
+                                                                                ),
+                                                                              )
+                                                                            ],
+                                                                          )
+                                                                        ],
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }),
+                                                          ),
                                                         );
                                                       },
                                                     ),
@@ -2584,24 +2638,9 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                 .fromSTEB(0, 0,
                                                                     0, 25),
                                                         child: FFButtonWidget(
-                                                          onPressed: () async {
-                                                            setState(() =>
-                                                                _loadingButton2 =
-                                                                    true);
-                                                            try {
-                                                              final agenciesUpdateData =
-                                                                  createAgenciesRecordData(
-                                                                agencyName: '',
-                                                              );
-                                                              await tabBarAgenciesRecord
-                                                                  .reference
-                                                                  .update(
-                                                                      agenciesUpdateData);
-                                                            } finally {
-                                                              setState(() =>
-                                                                  _loadingButton2 =
-                                                                      false);
-                                                            }
+                                                          onPressed: () {
+                                                            print(
+                                                                'Button pressed ...');
                                                           },
                                                           text:
                                                               'Update Location',
