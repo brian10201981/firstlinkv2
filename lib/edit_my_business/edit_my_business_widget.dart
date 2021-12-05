@@ -29,6 +29,20 @@ class EditMyBusinessWidget extends StatefulWidget {
 }
 
 class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
+  String dropDownValue10;
+  String dropDownValue8;
+  String dropDownValue9;
+  String dropDownValue2;
+  String dropDownValue3;
+  String dropDownValue4;
+  String dropDownValue5;
+  String dropDownValue6;
+  String dropDownValue7;
+  bool switchListTileValue1;
+  String dropDownValue11;
+  String dropDownValue12;
+  String dropDownValue13;
+  bool switchListTileValue2;
   String dropDownValue1;
   String uploadedFileUrl = '';
   TextEditingController businessEditNameController1;
@@ -36,12 +50,6 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
   TextEditingController businessEditNameController2;
   TextEditingController businessEditNameController3;
   bool _loadingButton = false;
-  String dropDownValue2;
-  String dropDownValue3;
-  String dropDownValue4;
-  String dropDownValue5;
-  String dropDownValue6;
-  String dropDownValue7;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -898,7 +906,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         decoration:
                                                             InputDecoration(
                                                           labelText:
-                                                              'Business Name',
+                                                              'Website Address',
                                                           labelStyle:
                                                               FlutterFlowTheme
                                                                   .bodyText1
@@ -1288,50 +1296,59 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                       alignment:
                                                           AlignmentDirectional(
                                                               0, 0.55),
-                                                      child: FFButtonWidget(
-                                                        onPressed: () async {
-                                                          setState(() =>
-                                                              _loadingButton =
-                                                                  true);
-                                                          try {
-                                                            final agenciesUpdateData =
-                                                                createAgenciesRecordData(
-                                                              agencyName: '',
-                                                            );
-                                                            await tabBarAgenciesRecord
-                                                                .reference
-                                                                .update(
-                                                                    agenciesUpdateData);
-                                                          } finally {
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    0, 25),
+                                                        child: FFButtonWidget(
+                                                          onPressed: () async {
                                                             setState(() =>
                                                                 _loadingButton =
-                                                                    false);
-                                                          }
-                                                        },
-                                                        text: 'Update Business',
-                                                        options:
-                                                            FFButtonOptions(
-                                                          width: 170,
-                                                          height: 45,
-                                                          color:
-                                                              Color(0xFFC70039),
-                                                          textStyle:
-                                                              FlutterFlowTheme
-                                                                  .subtitle2
-                                                                  .override(
-                                                            fontFamily:
-                                                                'Poppins',
-                                                            color: Colors.white,
+                                                                    true);
+                                                            try {
+                                                              final agenciesUpdateData =
+                                                                  createAgenciesRecordData(
+                                                                agencyName: '',
+                                                              );
+                                                              await tabBarAgenciesRecord
+                                                                  .reference
+                                                                  .update(
+                                                                      agenciesUpdateData);
+                                                            } finally {
+                                                              setState(() =>
+                                                                  _loadingButton =
+                                                                      false);
+                                                            }
+                                                          },
+                                                          text:
+                                                              'Update Business',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            width: 170,
+                                                            height: 45,
+                                                            color: Color(
+                                                                0xFFC70039),
+                                                            textStyle:
+                                                                FlutterFlowTheme
+                                                                    .subtitle2
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius: 12,
                                                           ),
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors
-                                                                .transparent,
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius: 12,
+                                                          loading:
+                                                              _loadingButton,
                                                         ),
-                                                        loading: _loadingButton,
                                                       ),
                                                     )
                                                   ],
@@ -1358,6 +1375,8 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           .override(
                                                         fontFamily: 'Poppins',
                                                         color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                       ),
                                                     )
                                                   ],
@@ -1365,7 +1384,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 5, 0, 10),
+                                                    .fromSTEB(0, 5, 0, 5),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -1391,6 +1410,9 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                   'Montserrat',
                                                               color:
                                                                   Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
                                                             ),
                                                           ),
                                                         )
@@ -1487,8 +1509,12 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           MainAxisSize.max,
                                                       children: [
                                                         FlutterFlowDropDown(
-                                                          options:
-                                                              ['01'].toList(),
+                                                          options: [
+                                                            '00',
+                                                            '15',
+                                                            '30',
+                                                            '45'
+                                                          ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
                                                                   dropDownValue3 =
@@ -1593,8 +1619,20 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                   10, 0, 0, 0),
                                                       child:
                                                           FlutterFlowDropDown(
-                                                        options:
-                                                            ['01'].toList(),
+                                                        options: [
+                                                          '01',
+                                                          '02',
+                                                          '03',
+                                                          '04',
+                                                          '05',
+                                                          '06',
+                                                          '07',
+                                                          '08',
+                                                          '09',
+                                                          '10',
+                                                          '11',
+                                                          '12'
+                                                        ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
                                                                 dropDownValue5 =
@@ -1629,8 +1667,12 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                   10, 0, 0, 0),
                                                       child:
                                                           FlutterFlowDropDown(
-                                                        options:
-                                                            ['01'].toList(),
+                                                        options: [
+                                                          '00',
+                                                          '15',
+                                                          '30',
+                                                          '45'
+                                                        ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
                                                                 dropDownValue6 =
@@ -1696,17 +1738,487 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                     )
                                                   ],
                                                 ),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: SwitchListTile(
+                                                      value:
+                                                          switchListTileValue1 ??=
+                                                              false,
+                                                      onChanged: (newValue) =>
+                                                          setState(() =>
+                                                              switchListTileValue1 =
+                                                                  newValue),
+                                                      title: Text(
+                                                        'Closed all day',
+                                                        style: FlutterFlowTheme
+                                                            .title3
+                                                            .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: Colors.white,
+                                                          fontSize: 16,
+                                                        ),
+                                                      ),
+                                                      tileColor:
+                                                          Color(0x00FFFFFF),
+                                                      activeColor: Colors.white,
+                                                      activeTrackColor:
+                                                          Colors.white,
+                                                      dense: false,
+                                                      controlAffinity:
+                                                          ListTileControlAffinity
+                                                              .trailing,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 10, 0, 5),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 0, 10),
+                                                          child: Text(
+                                                            'Sunday',
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .title3
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Montserrat',
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Text(
+                                                        'Open',
+                                                        style: FlutterFlowTheme
+                                                            .title3
+                                                            .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: Colors.white,
+                                                          fontSize: 16,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(10, 0,
+                                                                    0, 0),
+                                                        child:
+                                                            FlutterFlowDropDown(
+                                                          options: [
+                                                            '01',
+                                                            '02',
+                                                            '03',
+                                                            '04',
+                                                            '05',
+                                                            '06',
+                                                            '07',
+                                                            '08',
+                                                            '09',
+                                                            '10',
+                                                            '11',
+                                                            '12'
+                                                          ].toList(),
+                                                          onChanged: (val) =>
+                                                              setState(() =>
+                                                                  dropDownValue8 =
+                                                                      val),
+                                                          width: 80,
+                                                          height: 50,
+                                                          textStyle:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: Colors.black,
+                                                            fontSize: 18,
+                                                          ),
+                                                          fillColor:
+                                                              Colors.white,
+                                                          elevation: 2,
+                                                          borderColor:
+                                                              Colors.white,
+                                                          borderWidth: 1,
+                                                          borderRadius: 0,
+                                                          margin:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(12,
+                                                                      4, 12, 4),
+                                                          hidesUnderline: true,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        FlutterFlowDropDown(
+                                                          options: [
+                                                            '00',
+                                                            '15',
+                                                            '30',
+                                                            '45'
+                                                          ].toList(),
+                                                          onChanged: (val) =>
+                                                              setState(() =>
+                                                                  dropDownValue9 =
+                                                                      val),
+                                                          width: 80,
+                                                          height: 50,
+                                                          textStyle:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: Colors.black,
+                                                            fontSize: 18,
+                                                          ),
+                                                          fillColor:
+                                                              Colors.white,
+                                                          elevation: 2,
+                                                          borderColor: Colors
+                                                              .transparent,
+                                                          borderWidth: 0,
+                                                          borderRadius: 0,
+                                                          margin:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(12,
+                                                                      4, 12, 4),
+                                                          hidesUnderline: true,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(10, 0,
+                                                                    0, 0),
+                                                        child:
+                                                            FlutterFlowDropDown(
+                                                          options: ['AM', 'PM']
+                                                              .toList(),
+                                                          onChanged: (val) =>
+                                                              setState(() =>
+                                                                  dropDownValue10 =
+                                                                      val),
+                                                          width: 80,
+                                                          height: 50,
+                                                          textStyle:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: Colors.black,
+                                                            fontSize: 18,
+                                                          ),
+                                                          fillColor:
+                                                              Colors.white,
+                                                          elevation: 2,
+                                                          borderColor: Colors
+                                                              .transparent,
+                                                          borderWidth: 0,
+                                                          borderRadius: 0,
+                                                          margin:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(12,
+                                                                      4, 12, 4),
+                                                          hidesUnderline: true,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 10, 0, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Close',
+                                                      style: FlutterFlowTheme
+                                                          .title3
+                                                          .override(
+                                                        fontFamily:
+                                                            'Montserrat',
+                                                        color: Colors.white,
+                                                        fontSize: 16,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child:
+                                                          FlutterFlowDropDown(
+                                                        options: [
+                                                          '01',
+                                                          '02',
+                                                          '03',
+                                                          '04',
+                                                          '05',
+                                                          '06',
+                                                          '07',
+                                                          '08',
+                                                          '09',
+                                                          '10',
+                                                          '11',
+                                                          '12'
+                                                        ].toList(),
+                                                        onChanged: (val) =>
+                                                            setState(() =>
+                                                                dropDownValue11 =
+                                                                    val),
+                                                        width: 80,
+                                                        height: 50,
+                                                        textStyle:
+                                                            FlutterFlowTheme
+                                                                .bodyText1
+                                                                .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: Colors.black,
+                                                          fontSize: 18,
+                                                        ),
+                                                        fillColor: Colors.white,
+                                                        elevation: 2,
+                                                        borderColor:
+                                                            Colors.white,
+                                                        borderWidth: 1,
+                                                        borderRadius: 0,
+                                                        margin:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(12, 4,
+                                                                    12, 4),
+                                                        hidesUnderline: true,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child:
+                                                          FlutterFlowDropDown(
+                                                        options: [
+                                                          '00',
+                                                          '15',
+                                                          '30',
+                                                          '45'
+                                                        ].toList(),
+                                                        onChanged: (val) =>
+                                                            setState(() =>
+                                                                dropDownValue12 =
+                                                                    val),
+                                                        width: 80,
+                                                        height: 50,
+                                                        textStyle:
+                                                            FlutterFlowTheme
+                                                                .bodyText1
+                                                                .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: Colors.black,
+                                                          fontSize: 18,
+                                                        ),
+                                                        fillColor: Colors.white,
+                                                        elevation: 2,
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderWidth: 0,
+                                                        borderRadius: 0,
+                                                        margin:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(12, 4,
+                                                                    12, 4),
+                                                        hidesUnderline: true,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child:
+                                                          FlutterFlowDropDown(
+                                                        options: ['AM', 'PM']
+                                                            .toList(),
+                                                        onChanged: (val) =>
+                                                            setState(() =>
+                                                                dropDownValue13 =
+                                                                    val),
+                                                        width: 80,
+                                                        height: 50,
+                                                        textStyle:
+                                                            FlutterFlowTheme
+                                                                .bodyText1
+                                                                .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: Colors.black,
+                                                          fontSize: 18,
+                                                        ),
+                                                        fillColor: Colors.white,
+                                                        elevation: 2,
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderWidth: 0,
+                                                        borderRadius: 0,
+                                                        margin:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(12, 4,
+                                                                    12, 4),
+                                                        hidesUnderline: true,
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: SwitchListTile(
+                                                      value:
+                                                          switchListTileValue2 ??=
+                                                              false,
+                                                      onChanged: (newValue) =>
+                                                          setState(() =>
+                                                              switchListTileValue2 =
+                                                                  newValue),
+                                                      title: Text(
+                                                        'Closed all day',
+                                                        style: FlutterFlowTheme
+                                                            .title3
+                                                            .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: Colors.white,
+                                                          fontSize: 16,
+                                                        ),
+                                                      ),
+                                                      tileColor:
+                                                          Color(0x00FFFFFF),
+                                                      activeColor: Colors.white,
+                                                      activeTrackColor:
+                                                          Colors.white,
+                                                      dense: false,
+                                                      controlAffinity:
+                                                          ListTileControlAffinity
+                                                              .trailing,
+                                                    ),
+                                                  )
+                                                ],
                                               )
                                             ],
                                           ),
                                         ),
-                                        Text(
-                                          'Tab View 3',
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 32,
-                                          ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 5, 0, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'Main Office Location',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  'Main Office Location',
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
                                         ),
                                         Text(
                                           'Tab View 4',
