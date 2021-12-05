@@ -361,6 +361,19 @@ class _CreateBusiness3WidgetState extends State<CreateBusiness3Widget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(5, 5, 0, 0),
                                                   child: Text(
+                                                    ',',
+                                                    style: FlutterFlowTheme
+                                                        .title3
+                                                        .override(
+                                                      fontFamily: 'Montserrat',
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(5, 5, 0, 0),
+                                                  child: Text(
                                                     containerAgenciesRecord
                                                         .state,
                                                     style: FlutterFlowTheme

@@ -1379,6 +1379,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                     (r) =>
                                                                         false,
                                                                   );
+                                                                  await sendEmailVerification();
                                                                 } finally {
                                                                   setState(() =>
                                                                       _loadingButton3 =
