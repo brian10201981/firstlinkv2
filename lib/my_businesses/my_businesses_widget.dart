@@ -569,9 +569,48 @@ class _MyBusinessesWidgetState extends State<MyBusinessesWidget> {
                                                     color: Color(0xFFC70039),
                                                     size: 25,
                                                   ),
-                                                  onPressed: () {
-                                                    print(
-                                                        'IconButton pressed ...');
+                                                  onPressed: () async {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title:
+                                                              Text('Warning!'),
+                                                          content: Text(
+                                                              'Continuing will delete this business profile'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed:
+                                                                  () async {
+                                                                Navigator.pop(
+                                                                    alertDialogContext);
+                                                                await columnAgenciesRecord
+                                                                    .reference
+                                                                    .delete();
+                                                                ;
+                                                              },
+                                                              child: Text(
+                                                                  'Confirm'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                    await Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            MyBusinessesWidget(),
+                                                      ),
+                                                    );
                                                   },
                                                 )
                                               ],
