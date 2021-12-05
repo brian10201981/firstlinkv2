@@ -465,7 +465,7 @@ class _MyBusinessesWidgetState extends State<MyBusinessesWidget> {
                                           ),
                                           child: Image.network(
                                             columnAgenciesRecord.agencyAvatar,
-                                            fit: BoxFit.scaleDown,
+                                            fit: BoxFit.fitWidth,
                                           ),
                                         ),
                                       )

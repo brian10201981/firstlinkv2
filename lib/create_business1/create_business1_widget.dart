@@ -488,6 +488,7 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
                               ),
                               child: Image.asset(
                                 'assets/images/uiAvatar@2x.png',
+                                fit: BoxFit.fitWidth,
                               ),
                             ),
                           )

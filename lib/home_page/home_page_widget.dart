@@ -166,7 +166,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 setState(() => _loadingButton3 = false);
                               }
                             },
-                            text: 'Account/Register',
+                            text: 'Login',
                             options: FFButtonOptions(
                               width: 120,
                               height: 40,

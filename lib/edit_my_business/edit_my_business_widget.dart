@@ -49,7 +49,10 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
   TextEditingController businessEditPhoneController;
   TextEditingController businessEditNameController2;
   TextEditingController businessEditNameController3;
-  bool _loadingButton = false;
+  bool _loadingButton1 = false;
+  String dropDownValue14;
+  bool switchListTileValue3;
+  bool _loadingButton2 = false;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -502,7 +505,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                             }
                             final tabBarAgenciesRecord = snapshot.data;
                             return DefaultTabController(
-                              length: 4,
+                              length: 5,
                               initialIndex: 0,
                               child: Column(
                                 children: [
@@ -513,7 +516,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                     indicatorColor: Colors.white,
                                     tabs: [
                                       Tab(
-                                        text: 'Profile',
+                                        text: 'Info',
                                       ),
                                       Tab(
                                         text: 'Hours',
@@ -523,6 +526,9 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                       ),
                                       Tab(
                                         text: 'County',
+                                      ),
+                                      Tab(
+                                        text: 'Example 5',
                                       )
                                     ],
                                   ),
@@ -1304,7 +1310,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         child: FFButtonWidget(
                                                           onPressed: () async {
                                                             setState(() =>
-                                                                _loadingButton =
+                                                                _loadingButton1 =
                                                                     true);
                                                             try {
                                                               final agenciesUpdateData =
@@ -1317,7 +1323,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                       agenciesUpdateData);
                                                             } finally {
                                                               setState(() =>
-                                                                  _loadingButton =
+                                                                  _loadingButton1 =
                                                                       false);
                                                             }
                                                           },
@@ -1347,7 +1353,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             borderRadius: 12,
                                                           ),
                                                           loading:
-                                                              _loadingButton,
+                                                              _loadingButton1,
                                                         ),
                                                       ),
                                                     )
@@ -2220,8 +2226,421 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                             )
                                           ],
                                         ),
+                                        SingleChildScrollView(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 5, 0, 5),
+                                                    child: Text(
+                                                      'Primary Location',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  FlutterFlowDropDown(
+                                                    initialOption:
+                                                        dropDownValue14 ??=
+                                                            'Choose your County',
+                                                    options: [
+                                                      'Adams',
+                                                      'Antelope',
+                                                      'Arthur',
+                                                      'Banner',
+                                                      'Blaine',
+                                                      'Boone',
+                                                      'Box Butte',
+                                                      'Boyd',
+                                                      'Brown',
+                                                      'Buffalo',
+                                                      'Burt',
+                                                      'Butler',
+                                                      'Cass',
+                                                      'Cedar',
+                                                      'Chase',
+                                                      'Cherry',
+                                                      'Cheyenne',
+                                                      'Clay',
+                                                      'Colfax',
+                                                      'Cuming',
+                                                      'Custer',
+                                                      'Dakota',
+                                                      'Dawes',
+                                                      'Dawson',
+                                                      'Deuel',
+                                                      'Dixon',
+                                                      'Dodge',
+                                                      'Douglas',
+                                                      'Dundy',
+                                                      'Fillmore',
+                                                      'Franklin',
+                                                      'Frontier',
+                                                      'Furnas',
+                                                      'Gage',
+                                                      'Garden',
+                                                      'Garfield',
+                                                      'Gosper',
+                                                      'Grant',
+                                                      'Greeley',
+                                                      'Hall',
+                                                      'Hamilton',
+                                                      'Harlan',
+                                                      'Hayes',
+                                                      'Hitchcock',
+                                                      'Holt',
+                                                      'Hooker',
+                                                      'Howard',
+                                                      'Jefferson',
+                                                      'Johnson',
+                                                      'Kearney',
+                                                      'Keith',
+                                                      'Keya Paha',
+                                                      'Kimball',
+                                                      'Knox',
+                                                      'Lancaster',
+                                                      'Lincoln',
+                                                      'Logan',
+                                                      'Loup',
+                                                      'McPherson',
+                                                      'Madison',
+                                                      'Merrick',
+                                                      'Morrill',
+                                                      'Nance',
+                                                      'Nemaha',
+                                                      'Nuckolls',
+                                                      'Otoe',
+                                                      'Pawnee',
+                                                      'Perkins',
+                                                      'Phelps',
+                                                      'Pierce',
+                                                      'Platte',
+                                                      'Polk',
+                                                      'Red Willow',
+                                                      'Richardson',
+                                                      'Rock',
+                                                      'Saline',
+                                                      'Sarpy',
+                                                      'Saunders',
+                                                      'Scotts Bluff',
+                                                      'Seward',
+                                                      'Sheridan',
+                                                      'Sherman',
+                                                      'Sioux',
+                                                      'Stanton',
+                                                      'Thayer',
+                                                      'Thomas',
+                                                      'Thurston',
+                                                      'Valley',
+                                                      'Washington',
+                                                      'Wayne',
+                                                      'Webster',
+                                                      'Wheeler',
+                                                      'York'
+                                                    ].toList(),
+                                                    onChanged: (val) =>
+                                                        setState(() =>
+                                                            dropDownValue14 =
+                                                                val),
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.89,
+                                                    height: 50,
+                                                    textStyle: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Colors.white,
+                                                    ),
+                                                    icon: Icon(
+                                                      Icons.arrow_drop_down,
+                                                      color: FlutterFlowTheme
+                                                          .tertiaryColor,
+                                                      size: 15,
+                                                    ),
+                                                    fillColor:
+                                                        Color(0xFF1E37B8),
+                                                    elevation: 2,
+                                                    borderColor:
+                                                        Color(0x00FFFFFF),
+                                                    borderWidth: 0,
+                                                    borderRadius: 8,
+                                                    margin:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                8, 4, 8, 4),
+                                                    hidesUnderline: true,
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 5, 0, 0),
+                                                    child: Text(
+                                                      'Edit the primary county where you do \nbusiness',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 5, 0, 5),
+                                                    child: Text(
+                                                      'Other Counties',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily:
+                                                            'Montserrat',
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 5, 0, 0),
+                                                    child: Text(
+                                                      'Choose all the counties you do business in',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 10, 0, 0),
+                                                    child: StreamBuilder<
+                                                        List<
+                                                            NebraskaCountyRecord>>(
+                                                      stream:
+                                                          queryNebraskaCountyRecord(),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50,
+                                                              height: 50,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<NebraskaCountyRecord>
+                                                            columnNebraskaCountyRecordList =
+                                                            snapshot.data;
+                                                        return Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: List.generate(
+                                                              columnNebraskaCountyRecordList
+                                                                  .length,
+                                                              (columnIndex) {
+                                                            final columnNebraskaCountyRecord =
+                                                                columnNebraskaCountyRecordList[
+                                                                    columnIndex];
+                                                            return Container(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.89,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Colors
+                                                                    .transparent,
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0,
+                                                                            10,
+                                                                            0,
+                                                                            0),
+                                                                child:
+                                                                    SwitchListTile(
+                                                                  value:
+                                                                      switchListTileValue3 ??=
+                                                                          false,
+                                                                  onChanged: (newValue) =>
+                                                                      setState(() =>
+                                                                          switchListTileValue3 =
+                                                                              newValue),
+                                                                  title: Text(
+                                                                    columnNebraskaCountyRecord
+                                                                        .countyName,
+                                                                    style: FlutterFlowTheme
+                                                                        .title3
+                                                                        .override(
+                                                                      fontFamily:
+                                                                          'Montserrat',
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                  ),
+                                                                  tileColor: Color(
+                                                                      0x00F5F5F5),
+                                                                  activeColor:
+                                                                      Colors
+                                                                          .white,
+                                                                  dense: false,
+                                                                  controlAffinity:
+                                                                      ListTileControlAffinity
+                                                                          .trailing,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }),
+                                                        );
+                                                      },
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 10, 0, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0, 0.55),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    0, 25),
+                                                        child: FFButtonWidget(
+                                                          onPressed: () async {
+                                                            setState(() =>
+                                                                _loadingButton2 =
+                                                                    true);
+                                                            try {
+                                                              final agenciesUpdateData =
+                                                                  createAgenciesRecordData(
+                                                                agencyName: '',
+                                                              );
+                                                              await tabBarAgenciesRecord
+                                                                  .reference
+                                                                  .update(
+                                                                      agenciesUpdateData);
+                                                            } finally {
+                                                              setState(() =>
+                                                                  _loadingButton2 =
+                                                                      false);
+                                                            }
+                                                          },
+                                                          text:
+                                                              'Update Location',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            width: 170,
+                                                            height: 45,
+                                                            color: Color(
+                                                                0xFFC70039),
+                                                            textStyle:
+                                                                FlutterFlowTheme
+                                                                    .subtitle2
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius: 12,
+                                                          ),
+                                                          loading:
+                                                              _loadingButton2,
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                         Text(
-                                          'Tab View 4',
+                                          'Tab View 5',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
                                             fontFamily: 'Poppins',

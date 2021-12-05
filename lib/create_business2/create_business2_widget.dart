@@ -246,7 +246,7 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                             ),
                                             child: Image.network(
                                               widget.businessLogo,
-                                              fit: BoxFit.scaleDown,
+                                              fit: BoxFit.fitWidth,
                                             ),
                                           ),
                                         )
