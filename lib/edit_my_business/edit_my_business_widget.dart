@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/api_requests/api_calls.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../edit_profile/edit_profile_widget.dart';
@@ -30,6 +31,8 @@ class EditMyBusinessWidget extends StatefulWidget {
 }
 
 class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
+  ApiCallResponse countyName;
+  String dropDownValue13;
   String dropDownValue10;
   String dropDownValue11;
   String dropDownValue12;
@@ -49,7 +52,6 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
   TextEditingController businessEditPhoneController;
   TextEditingController businessEditNameController2;
   TextEditingController businessEditNameController3;
-  String dropDownValue13;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -2328,177 +2330,190 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                   )
                                                 ],
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 10, 0, 0),
-                                                    child: StreamBuilder<
-                                                        List<
-                                                            NebraskaCountyRecord>>(
-                                                      stream:
-                                                          queryNebraskaCountyRecord(),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50,
-                                                              height: 50,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                color: Colors
-                                                                    .white,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        List<NebraskaCountyRecord>
-                                                            columnNebraskaCountyRecordList =
-                                                            snapshot.data;
-                                                        return SingleChildScrollView(
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: List.generate(
-                                                                columnNebraskaCountyRecordList
-                                                                    .length,
-                                                                (columnIndex) {
-                                                              final columnNebraskaCountyRecord =
-                                                                  columnNebraskaCountyRecordList[
-                                                                      columnIndex];
-                                                              return Card(
-                                                                clipBehavior: Clip
-                                                                    .antiAliasWithSaveLayer,
-                                                                color: Color(
-                                                                    0xFFF5F5F5),
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              20),
+                                              StreamBuilder<
+                                                  List<NebraskaCountyRecord>>(
+                                                stream:
+                                                    queryNebraskaCountyRecord(),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50,
+                                                        height: 50,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  List<NebraskaCountyRecord>
+                                                      rowNebraskaCountyRecordList =
+                                                      snapshot.data;
+                                                  return Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: List.generate(
+                                                        rowNebraskaCountyRecordList
+                                                            .length,
+                                                        (rowIndex) {
+                                                      final rowNebraskaCountyRecord =
+                                                          rowNebraskaCountyRecordList[
+                                                              rowIndex];
+                                                      return Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 10,
+                                                                    0, 0),
+                                                        child: FutureBuilder<
+                                                            ApiCallResponse>(
+                                                          future:
+                                                              nebraskaCountiesCall(),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50,
+                                                                  height: 50,
+                                                                  child:
+                                                                      CircularProgressIndicator(
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
                                                                 ),
-                                                                child:
-                                                                    Container(
-                                                                  width: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .width *
-                                                                      0.86,
-                                                                  height: 60,
-                                                                  constraints:
-                                                                      BoxConstraints(
-                                                                    maxWidth: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width *
-                                                                        0.89,
-                                                                  ),
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Color(
-                                                                        0xFF1E37B8),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(8),
-                                                                  ),
-                                                                  child: Row(
+                                                              );
+                                                            }
+                                                            final columnNebraskaCountiesResponse =
+                                                                snapshot.data;
+                                                            return Builder(
+                                                              builder:
+                                                                  (context) {
+                                                                final name = getJsonField(
+                                                                            columnNebraskaCountiesResponse.jsonBody,
+                                                                            r'''$.Cnty_Name''')
+                                                                        ?.toList() ??
+                                                                    [];
+                                                                return SingleChildScrollView(
+                                                                  child: Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            20,
-                                                                            0,
-                                                                            0,
-                                                                            0),
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: List.generate(
+                                                                        name.length,
+                                                                        (nameIndex) {
+                                                                      final nameItem =
+                                                                          name[
+                                                                              nameIndex];
+                                                                      return Card(
+                                                                        clipBehavior:
+                                                                            Clip.antiAliasWithSaveLayer,
+                                                                        color: Color(
+                                                                            0xFFF5F5F5),
+                                                                        shape:
+                                                                            RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(20),
+                                                                        ),
                                                                         child:
                                                                             Container(
                                                                           width:
-                                                                              185,
+                                                                              MediaQuery.of(context).size.width * 0.86,
                                                                           height:
-                                                                              100,
+                                                                              60,
+                                                                          constraints:
+                                                                              BoxConstraints(
+                                                                            maxWidth:
+                                                                                MediaQuery.of(context).size.width * 0.89,
+                                                                          ),
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
                                                                                 Color(0xFF1E37B8),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8),
                                                                           ),
                                                                           child:
                                                                               Row(
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
                                                                             children: [
-                                                                              Text(
-                                                                                columnNebraskaCountyRecord.countyName,
-                                                                                style: FlutterFlowTheme.title3.override(
-                                                                                  fontFamily: 'Montserrat',
-                                                                                  color: Colors.white,
-                                                                                  fontSize: 15,
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                                                                child: Container(
+                                                                                  width: 185,
+                                                                                  height: 100,
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Color(0xFF1E37B8),
+                                                                                  ),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        getJsonField(nameItem, r'''$.Cnty_Name''').toString(),
+                                                                                        style: FlutterFlowTheme.title3.override(
+                                                                                          fontFamily: 'Montserrat',
+                                                                                          color: Colors.white,
+                                                                                          fontSize: 15,
+                                                                                        ),
+                                                                                      )
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              Container(
+                                                                                width: 100,
+                                                                                height: 100,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: Color(0xFF1E37B8),
+                                                                                ),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                                  children: [
+                                                                                    ToggleIcon(
+                                                                                      onPressed: () async {
+                                                                                        final nebraskaCountyUpdateData = createNebraskaCountyRecordData(
+                                                                                          agree: !rowNebraskaCountyRecord.agree,
+                                                                                        );
+                                                                                        await rowNebraskaCountyRecord.reference.update(nebraskaCountyUpdateData);
+                                                                                      },
+                                                                                      value: rowNebraskaCountyRecord.agree,
+                                                                                      onIcon: Icon(
+                                                                                        Icons.check_box,
+                                                                                        color: Colors.white,
+                                                                                        size: 25,
+                                                                                      ),
+                                                                                      offIcon: Icon(
+                                                                                        Icons.check_box_outline_blank,
+                                                                                        color: FlutterFlowTheme.tertiaryColor,
+                                                                                        size: 25,
+                                                                                      ),
+                                                                                    )
+                                                                                  ],
                                                                                 ),
                                                                               )
                                                                             ],
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                      Container(
-                                                                        width:
-                                                                            100,
-                                                                        height:
-                                                                            100,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              Color(0xFF1E37B8),
-                                                                        ),
-                                                                        child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.end,
-                                                                          children: [
-                                                                            ToggleIcon(
-                                                                              onPressed: () async {
-                                                                                final nebraskaCountyUpdateData = createNebraskaCountyRecordData(
-                                                                                  disagree: !columnNebraskaCountyRecord.disagree,
-                                                                                );
-                                                                                await columnNebraskaCountyRecord.reference.update(nebraskaCountyUpdateData);
-                                                                              },
-                                                                              value: columnNebraskaCountyRecord.disagree,
-                                                                              onIcon: Icon(
-                                                                                Icons.check_box,
-                                                                                color: Colors.white,
-                                                                                size: 25,
-                                                                              ),
-                                                                              offIcon: Icon(
-                                                                                Icons.check_box_outline_blank,
-                                                                                color: FlutterFlowTheme.tertiaryColor,
-                                                                                size: 25,
-                                                                              ),
-                                                                            )
-                                                                          ],
-                                                                        ),
-                                                                      )
-                                                                    ],
+                                                                      );
+                                                                    }),
                                                                   ),
-                                                                ),
-                                                              );
-                                                            }),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  )
-                                                ],
+                                                                );
+                                                              },
+                                                            );
+                                                          },
+                                                        ),
+                                                      );
+                                                    }),
+                                                  );
+                                                },
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -2519,9 +2534,11 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                 .fromSTEB(0, 0,
                                                                     0, 25),
                                                         child: FFButtonWidget(
-                                                          onPressed: () {
-                                                            print(
-                                                                'Button pressed ...');
+                                                          onPressed: () async {
+                                                            countyName =
+                                                                await nebraskaCountiesCall();
+
+                                                            setState(() {});
                                                           },
                                                           text:
                                                               'Update Location',
