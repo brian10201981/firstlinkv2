@@ -55,21 +55,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30,
-                              borderWidth: 1,
-                              buttonSize: 50,
-                              icon: Icon(
-                                Icons.menu_sharp,
-                                color: Colors.white,
-                                size: 30,
+                          Visibility(
+                            visible: currentUserEmailVerified ?? true,
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                              child: FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30,
+                                borderWidth: 1,
+                                buttonSize: 50,
+                                icon: Icon(
+                                  Icons.menu_sharp,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
                               ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
-                              },
                             ),
                           )
                         ],

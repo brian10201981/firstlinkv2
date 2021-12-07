@@ -455,6 +455,8 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
                               final selectedMedia =
                                   await selectMediaWithSourceBottomSheet(
                                 context: context,
+                                maxWidth: 200.00,
+                                maxHeight: 200.00,
                                 allowPhoto: true,
                                 pickerFontFamily: 'Montserrat',
                               );

@@ -87,6 +87,10 @@ abstract class AgenciesRecord
   String get websiteAddress;
 
   @nullable
+  @BuiltValueField(wireName: 'sat_open_time')
+  String get satOpenTime;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -108,7 +112,8 @@ abstract class AgenciesRecord
     ..emailAddress = ''
     ..primaryCategory = ''
     ..secondaryCategories = ''
-    ..websiteAddress = '';
+    ..websiteAddress = ''
+    ..satOpenTime = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('agencies');
@@ -147,6 +152,7 @@ Map<String, dynamic> createAgenciesRecordData({
   String primaryCategory,
   String secondaryCategories,
   String websiteAddress,
+  String satOpenTime,
 }) =>
     serializers.toFirestore(
         AgenciesRecord.serializer,
@@ -169,4 +175,5 @@ Map<String, dynamic> createAgenciesRecordData({
           ..emailAddress = emailAddress
           ..primaryCategory = primaryCategory
           ..secondaryCategories = secondaryCategories
-          ..websiteAddress = websiteAddress));
+          ..websiteAddress = websiteAddress
+          ..satOpenTime = satOpenTime));

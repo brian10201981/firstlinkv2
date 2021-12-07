@@ -32,17 +32,20 @@ class EditMyBusinessWidget extends StatefulWidget {
 
 class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
   ApiCallResponse countyName;
-  String dropDownValue43;
+  String dropDownValue40;
   String dropDownValue10;
   String dropDownValue11;
   String dropDownValue12;
   String dropDownValue1;
   String dropDownValue2;
   String dropDownValue3;
+  String satOpenAMValue;
+  String satOpenhourValue;
+  String satOpenminuteValue;
+  bool switchListTileValue1;
   String dropDownValue4;
   String dropDownValue5;
   String dropDownValue6;
-  bool switchListTileValue1;
   String dropDownValue7;
   String dropDownValue8;
   String dropDownValue9;
@@ -50,37 +53,34 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
   String dropDownValue13;
   String dropDownValue14;
   String dropDownValue15;
+  bool switchListTileValue3;
   String dropDownValue16;
   String dropDownValue17;
   String dropDownValue18;
-  bool switchListTileValue3;
   String dropDownValue19;
   String dropDownValue20;
   String dropDownValue21;
+  bool switchListTileValue4;
   String dropDownValue22;
   String dropDownValue23;
   String dropDownValue24;
-  bool switchListTileValue4;
   String dropDownValue25;
   String dropDownValue26;
   String dropDownValue27;
+  bool switchListTileValue5;
   String dropDownValue28;
   String dropDownValue29;
   String dropDownValue30;
-  bool switchListTileValue5;
   String dropDownValue31;
   String dropDownValue32;
   String dropDownValue33;
+  bool switchListTileValue6;
   String dropDownValue34;
   String dropDownValue35;
   String dropDownValue36;
-  bool switchListTileValue6;
   String dropDownValue37;
   String dropDownValue38;
   String dropDownValue39;
-  String dropDownValue40;
-  String dropDownValue41;
-  String dropDownValue42;
   bool switchListTileValue7;
   String uploadedFileUrl = '';
   TextEditingController businessEditNameController1;
@@ -1257,10 +1257,6 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                   ],
                                                 ),
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [],
-                                              ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 5, 0, 5),
@@ -1349,7 +1345,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue1 =
+                                                                  satOpenhourValue =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1396,7 +1392,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue2 =
+                                                                  satOpenminuteValue =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1440,7 +1436,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue3 =
+                                                                  satOpenAMValue =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1514,7 +1510,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue4 =
+                                                                dropDownValue1 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -1554,7 +1550,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue5 =
+                                                                dropDownValue2 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -1590,7 +1586,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue6 =
+                                                                dropDownValue3 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -1739,7 +1735,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue7 =
+                                                                  dropDownValue4 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1786,7 +1782,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue8 =
+                                                                  dropDownValue5 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1830,7 +1826,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue9 =
+                                                                  dropDownValue6 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1904,7 +1900,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue10 =
+                                                                dropDownValue7 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -1944,7 +1940,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue11 =
+                                                                dropDownValue8 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -1980,7 +1976,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue12 =
+                                                                dropDownValue9 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2116,7 +2112,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue13 =
+                                                                  dropDownValue10 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2163,7 +2159,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue14 =
+                                                                  dropDownValue11 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2207,7 +2203,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue15 =
+                                                                  dropDownValue12 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2281,7 +2277,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue16 =
+                                                                dropDownValue13 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2321,7 +2317,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue17 =
+                                                                dropDownValue14 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2357,7 +2353,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue18 =
+                                                                dropDownValue15 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2493,7 +2489,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue19 =
+                                                                  dropDownValue16 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2540,7 +2536,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue20 =
+                                                                  dropDownValue17 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2584,7 +2580,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue21 =
+                                                                  dropDownValue18 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2658,7 +2654,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue22 =
+                                                                dropDownValue19 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2698,7 +2694,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue23 =
+                                                                dropDownValue20 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2734,7 +2730,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue24 =
+                                                                dropDownValue21 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2870,7 +2866,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue25 =
+                                                                  dropDownValue22 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2917,7 +2913,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue26 =
+                                                                  dropDownValue23 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2961,7 +2957,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue27 =
+                                                                  dropDownValue24 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -3035,7 +3031,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue28 =
+                                                                dropDownValue25 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3075,7 +3071,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue29 =
+                                                                dropDownValue26 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3111,7 +3107,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue30 =
+                                                                dropDownValue27 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3263,7 +3259,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue31 =
+                                                                  dropDownValue28 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -3310,7 +3306,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue32 =
+                                                                  dropDownValue29 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -3354,7 +3350,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue33 =
+                                                                  dropDownValue30 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -3428,7 +3424,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue34 =
+                                                                dropDownValue31 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3468,7 +3464,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue35 =
+                                                                dropDownValue32 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3504,7 +3500,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue36 =
+                                                                dropDownValue33 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3656,7 +3652,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue37 =
+                                                                  dropDownValue34 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -3703,7 +3699,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue38 =
+                                                                  dropDownValue35 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -3747,7 +3743,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue39 =
+                                                                  dropDownValue36 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -3821,7 +3817,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue40 =
+                                                                dropDownValue37 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3861,7 +3857,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue41 =
+                                                                dropDownValue38 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3897,7 +3893,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue42 =
+                                                                dropDownValue39 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -3960,6 +3956,46 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                     ),
                                                   )
                                                 ],
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0, 0.55),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 0, 25),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      final agenciesUpdateData =
+                                                          createAgenciesRecordData(
+                                                        satOpenTime:
+                                                            '${satOpenhourValue}:${satOpenminuteValue}${satOpenAMValue}',
+                                                      );
+                                                      await addUsersAgenciesRecord
+                                                          .reference
+                                                          .update(
+                                                              agenciesUpdateData);
+                                                    },
+                                                    text: 'Update Hours',
+                                                    options: FFButtonOptions(
+                                                      width: 170,
+                                                      height: 45,
+                                                      color: Color(0xFFC70039),
+                                                      textStyle:
+                                                          FlutterFlowTheme
+                                                              .subtitle2
+                                                              .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                      ),
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius: 12,
+                                                    ),
+                                                  ),
+                                                ),
                                               )
                                             ],
                                           ),
@@ -4513,7 +4549,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                 children: [
                                                   FlutterFlowDropDown(
                                                     initialOption:
-                                                        dropDownValue43 ??=
+                                                        dropDownValue40 ??=
                                                             'Choose your County',
                                                     options: [
                                                       'Adams',
@@ -4612,7 +4648,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                     ].toList(),
                                                     onChanged: (val) =>
                                                         setState(() =>
-                                                            dropDownValue43 =
+                                                            dropDownValue40 =
                                                                 val),
                                                     width:
                                                         MediaQuery.of(context)
