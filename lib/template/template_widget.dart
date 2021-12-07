@@ -20,9 +20,6 @@ class TemplateWidget extends StatefulWidget {
 
 class _TemplateWidgetState extends State<TemplateWidget>
     with TickerProviderStateMixin {
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
       curve: Curves.linear,
@@ -31,6 +28,7 @@ class _TemplateWidgetState extends State<TemplateWidget>
       slideOffset: Offset(0, -600),
     ),
   };
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -238,7 +236,6 @@ class _TemplateWidgetState extends State<TemplateWidget>
                                           ),
                                           borderRadius: 12,
                                         ),
-                                        loading: _loadingButton1,
                                       )
                                     ],
                                   ),
@@ -274,7 +271,6 @@ class _TemplateWidgetState extends State<TemplateWidget>
                                           ),
                                           borderRadius: 12,
                                         ),
-                                        loading: _loadingButton2,
                                       )
                                     ],
                                   )

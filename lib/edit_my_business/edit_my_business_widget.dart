@@ -31,28 +31,25 @@ class EditMyBusinessWidget extends StatefulWidget {
 
 class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
   String dropDownValue10;
-  String dropDownValue8;
-  String dropDownValue9;
+  String dropDownValue11;
+  String dropDownValue12;
+  String dropDownValue1;
   String dropDownValue2;
   String dropDownValue3;
   String dropDownValue4;
   String dropDownValue5;
   String dropDownValue6;
-  String dropDownValue7;
   bool switchListTileValue1;
-  String dropDownValue11;
-  String dropDownValue12;
-  String dropDownValue13;
+  String dropDownValue7;
+  String dropDownValue8;
+  String dropDownValue9;
   bool switchListTileValue2;
-  String dropDownValue1;
   String uploadedFileUrl = '';
   TextEditingController businessEditNameController1;
   TextEditingController businessEditPhoneController;
   TextEditingController businessEditNameController2;
   TextEditingController businessEditNameController3;
-  bool _loadingButton1 = false;
-  String dropDownValue14;
-  bool _loadingButton2 = false;
+  String dropDownValue13;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -503,9 +500,9 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                 ),
                               );
                             }
-                            final tabBarAgenciesRecord = snapshot.data;
+                            final addUsersAgenciesRecord = snapshot.data;
                             return DefaultTabController(
-                              length: 5,
+                              length: 6,
                               initialIndex: 0,
                               child: Column(
                                 children: [
@@ -528,7 +525,10 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                         text: 'County',
                                       ),
                                       Tab(
-                                        text: 'Example 5',
+                                        text: 'Social',
+                                      ),
+                                      Tab(
+                                        text: 'Users',
                                       )
                                     ],
                                   ),
@@ -576,7 +576,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               businessEditNameController1 ??=
                                                                   TextEditingController(
                                                             text:
-                                                                tabBarAgenciesRecord
+                                                                addUsersAgenciesRecord
                                                                     .agencyName,
                                                           ),
                                                           obscureText: false,
@@ -688,7 +688,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             businessEditPhoneController ??=
                                                                 TextEditingController(
                                                           text:
-                                                              tabBarAgenciesRecord
+                                                              addUsersAgenciesRecord
                                                                   .phoneNumber,
                                                         ),
                                                         obscureText: false,
@@ -797,7 +797,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             businessEditNameController2 ??=
                                                                 TextEditingController(
                                                           text:
-                                                              tabBarAgenciesRecord
+                                                              addUsersAgenciesRecord
                                                                   .emailAddress,
                                                         ),
                                                         obscureText: false,
@@ -905,7 +905,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         controller:
                                                             businessEditNameController3 ??=
                                                                 TextEditingController(
-                                                          text: tabBarAgenciesRecord
+                                                          text: addUsersAgenciesRecord
                                                               .websiteAddress,
                                                         ),
                                                         obscureText: false,
@@ -1088,7 +1088,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             ),
                                                             child:
                                                                 Image.network(
-                                                              tabBarAgenciesRecord
+                                                              addUsersAgenciesRecord
                                                                   .agencyAvatar,
                                                               fit: BoxFit
                                                                   .contain,
@@ -1130,165 +1130,6 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                   )
                                                 ],
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 5, 0, 0),
-                                                    child: Text(
-                                                      'Location',
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  FlutterFlowDropDown(
-                                                    initialOption:
-                                                        dropDownValue1 ??=
-                                                            'Choose your County',
-                                                    options: [
-                                                      'Adams',
-                                                      'Antelope',
-                                                      'Arthur',
-                                                      'Banner',
-                                                      'Blaine',
-                                                      'Boone',
-                                                      'Box Butte',
-                                                      'Boyd',
-                                                      'Brown',
-                                                      'Buffalo',
-                                                      'Burt',
-                                                      'Butler',
-                                                      'Cass',
-                                                      'Cedar',
-                                                      'Chase',
-                                                      'Cherry',
-                                                      'Cheyenne',
-                                                      'Clay',
-                                                      'Colfax',
-                                                      'Cuming',
-                                                      'Custer',
-                                                      'Dakota',
-                                                      'Dawes',
-                                                      'Dawson',
-                                                      'Deuel',
-                                                      'Dixon',
-                                                      'Dodge',
-                                                      'Douglas',
-                                                      'Dundy',
-                                                      'Fillmore',
-                                                      'Franklin',
-                                                      'Frontier',
-                                                      'Furnas',
-                                                      'Gage',
-                                                      'Garden',
-                                                      'Garfield',
-                                                      'Gosper',
-                                                      'Grant',
-                                                      'Greeley',
-                                                      'Hall',
-                                                      'Hamilton',
-                                                      'Harlan',
-                                                      'Hayes',
-                                                      'Hitchcock',
-                                                      'Holt',
-                                                      'Hooker',
-                                                      'Howard',
-                                                      'Jefferson',
-                                                      'Johnson',
-                                                      'Kearney',
-                                                      'Keith',
-                                                      'Keya Paha',
-                                                      'Kimball',
-                                                      'Knox',
-                                                      'Lancaster',
-                                                      'Lincoln',
-                                                      'Logan',
-                                                      'Loup',
-                                                      'McPherson',
-                                                      'Madison',
-                                                      'Merrick',
-                                                      'Morrill',
-                                                      'Nance',
-                                                      'Nemaha',
-                                                      'Nuckolls',
-                                                      'Otoe',
-                                                      'Pawnee',
-                                                      'Perkins',
-                                                      'Phelps',
-                                                      'Pierce',
-                                                      'Platte',
-                                                      'Polk',
-                                                      'Red Willow',
-                                                      'Richardson',
-                                                      'Rock',
-                                                      'Saline',
-                                                      'Sarpy',
-                                                      'Saunders',
-                                                      'Scotts Bluff',
-                                                      'Seward',
-                                                      'Sheridan',
-                                                      'Sherman',
-                                                      'Sioux',
-                                                      'Stanton',
-                                                      'Thayer',
-                                                      'Thomas',
-                                                      'Thurston',
-                                                      'Valley',
-                                                      'Washington',
-                                                      'Wayne',
-                                                      'Webster',
-                                                      'Wheeler',
-                                                      'York'
-                                                    ].toList(),
-                                                    onChanged: (val) =>
-                                                        setState(() =>
-                                                            dropDownValue1 =
-                                                                val),
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.89,
-                                                    height: 50,
-                                                    textStyle: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Montserrat',
-                                                      color: Colors.white,
-                                                    ),
-                                                    icon: Icon(
-                                                      Icons.arrow_drop_down,
-                                                      color: FlutterFlowTheme
-                                                          .tertiaryColor,
-                                                      size: 15,
-                                                    ),
-                                                    fillColor:
-                                                        Color(0xFF1E37B8),
-                                                    elevation: 2,
-                                                    borderColor:
-                                                        Color(0x00FFFFFF),
-                                                    borderWidth: 0,
-                                                    borderRadius: 8,
-                                                    margin:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                8, 4, 8, 4),
-                                                    hidesUnderline: true,
-                                                  )
-                                                ],
-                                              ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 10, 0, 0),
@@ -1309,23 +1150,14 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                     0, 25),
                                                         child: FFButtonWidget(
                                                           onPressed: () async {
-                                                            setState(() =>
-                                                                _loadingButton1 =
-                                                                    true);
-                                                            try {
-                                                              final agenciesUpdateData =
-                                                                  createAgenciesRecordData(
-                                                                agencyName: '',
-                                                              );
-                                                              await tabBarAgenciesRecord
-                                                                  .reference
-                                                                  .update(
-                                                                      agenciesUpdateData);
-                                                            } finally {
-                                                              setState(() =>
-                                                                  _loadingButton1 =
-                                                                      false);
-                                                            }
+                                                            final agenciesUpdateData =
+                                                                createAgenciesRecordData(
+                                                              agencyName: '',
+                                                            );
+                                                            await addUsersAgenciesRecord
+                                                                .reference
+                                                                .update(
+                                                                    agenciesUpdateData);
                                                           },
                                                           text:
                                                               'Update Business',
@@ -1352,8 +1184,6 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             ),
                                                             borderRadius: 12,
                                                           ),
-                                                          loading:
-                                                              _loadingButton1,
                                                         ),
                                                       ),
                                                     )
@@ -1476,7 +1306,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue2 =
+                                                                  dropDownValue1 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1523,7 +1353,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue3 =
+                                                                  dropDownValue2 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1567,7 +1397,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue4 =
+                                                                  dropDownValue3 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1641,7 +1471,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue5 =
+                                                                dropDownValue4 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -1681,7 +1511,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue6 =
+                                                                dropDownValue5 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -1717,7 +1547,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue7 =
+                                                                dropDownValue6 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -1866,7 +1696,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue8 =
+                                                                  dropDownValue7 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1913,7 +1743,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                           ].toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue9 =
+                                                                  dropDownValue8 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -1957,7 +1787,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                               .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
-                                                                  dropDownValue10 =
+                                                                  dropDownValue9 =
                                                                       val),
                                                           width: 80,
                                                           height: 50,
@@ -2031,7 +1861,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue11 =
+                                                                dropDownValue10 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2071,7 +1901,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                         ].toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue12 =
+                                                                dropDownValue11 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2107,7 +1937,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
-                                                                dropDownValue13 =
+                                                                dropDownValue12 =
                                                                     val),
                                                         width: 80,
                                                         height: 50,
@@ -2170,6 +2000,36 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                     ),
                                                   )
                                                 ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [],
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [],
                                               )
                                             ],
                                           ),
@@ -2213,7 +2073,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                  'Main Office Location',
+                                                  'Satellite Office',
                                                   style: FlutterFlowTheme
                                                       .bodyText1
                                                       .override(
@@ -2223,6 +2083,10 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                   ),
                                                 )
                                               ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [],
                                             )
                                           ],
                                         ),
@@ -2259,7 +2123,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                 children: [
                                                   FlutterFlowDropDown(
                                                     initialOption:
-                                                        dropDownValue14 ??=
+                                                        dropDownValue13 ??=
                                                             'Choose your County',
                                                     options: [
                                                       'Adams',
@@ -2358,7 +2222,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                     ].toList(),
                                                     onChanged: (val) =>
                                                         setState(() =>
-                                                            dropDownValue14 =
+                                                            dropDownValue13 =
                                                                 val),
                                                     width:
                                                         MediaQuery.of(context)
@@ -2529,7 +2393,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                               context)
                                                                           .size
                                                                           .width *
-                                                                      0.89,
+                                                                      0.86,
                                                                   height: 60,
                                                                   constraints:
                                                                       BoxConstraints(
@@ -2541,71 +2405,88 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     color: Color(
-                                                                        0xFFEEEEEE),
+                                                                        0xFF1E37B8),
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(8),
                                                                   ),
-                                                                  child: Column(
+                                                                  child: Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Row(
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              185,
+                                                                          height:
+                                                                              100,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFF1E37B8),
+                                                                          ),
+                                                                          child:
+                                                                              Row(
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
                                                                             children: [
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                                                                child: Column(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  children: [
-                                                                                    Text(
-                                                                                      columnNebraskaCountyRecord.countyName,
-                                                                                      style: FlutterFlowTheme.bodyText1,
-                                                                                    )
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(150, 0, 0, 0),
-                                                                                child: Column(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  mainAxisAlignment: MainAxisAlignment.end,
-                                                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                                                  children: [
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                                                                                      child: ToggleIcon(
-                                                                                        onPressed: () async {
-                                                                                          final nebraskaCountyUpdateData = createNebraskaCountyRecordData(
-                                                                                            agree: !columnNebraskaCountyRecord.agree,
-                                                                                          );
-                                                                                          await columnNebraskaCountyRecord.reference.update(nebraskaCountyUpdateData);
-                                                                                        },
-                                                                                        value: columnNebraskaCountyRecord.agree,
-                                                                                        onIcon: Icon(
-                                                                                          Icons.check_box,
-                                                                                          color: Colors.black,
-                                                                                          size: 25,
-                                                                                        ),
-                                                                                        offIcon: Icon(
-                                                                                          Icons.check_box_outline_blank,
-                                                                                          color: Colors.black,
-                                                                                          size: 25,
-                                                                                        ),
-                                                                                      ),
-                                                                                    )
-                                                                                  ],
+                                                                              Text(
+                                                                                columnNebraskaCountyRecord.countyName,
+                                                                                style: FlutterFlowTheme.title3.override(
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: Colors.white,
+                                                                                  fontSize: 15,
                                                                                 ),
                                                                               )
                                                                             ],
-                                                                          )
-                                                                        ],
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+                                                                        width:
+                                                                            100,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0xFF1E37B8),
+                                                                        ),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.end,
+                                                                          children: [
+                                                                            ToggleIcon(
+                                                                              onPressed: () async {
+                                                                                final nebraskaCountyUpdateData = createNebraskaCountyRecordData(
+                                                                                  disagree: !columnNebraskaCountyRecord.disagree,
+                                                                                );
+                                                                                await columnNebraskaCountyRecord.reference.update(nebraskaCountyUpdateData);
+                                                                              },
+                                                                              value: columnNebraskaCountyRecord.disagree,
+                                                                              onIcon: Icon(
+                                                                                Icons.check_box,
+                                                                                color: Colors.white,
+                                                                                size: 25,
+                                                                              ),
+                                                                              offIcon: Icon(
+                                                                                Icons.check_box_outline_blank,
+                                                                                color: FlutterFlowTheme.tertiaryColor,
+                                                                                size: 25,
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
                                                                       )
                                                                     ],
                                                                   ),
@@ -2667,8 +2548,6 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                             ),
                                                             borderRadius: 12,
                                                           ),
-                                                          loading:
-                                                              _loadingButton2,
                                                         ),
                                                       ),
                                                     )
@@ -2678,13 +2557,164 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                             ],
                                           ),
                                         ),
-                                        Text(
-                                          'Tab View 5',
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 32,
-                                          ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 10, 0, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'Facebook',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Colors.white,
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 10, 0, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'Add your facebook address below to link your\nbusiness page.',
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [],
+                                            )
+                                          ],
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 5, 0, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'Primary User',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 5),
+                                                  child: Text(
+                                                    'Secondary Users',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Card(
+                                                  clipBehavior: Clip
+                                                      .antiAliasWithSaveLayer,
+                                                  color: Color(0xFFF5F5F5),
+                                                  child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.89,
+                                                    height: 100,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xFFEEEEEE),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 10, 0, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 10, 0, 5),
+                                                    child: Text(
+                                                      'Add a new user to manage your profiles',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily:
+                                                            'Montserrat',
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ],
                                         )
                                       ],
                                     ),

@@ -42,7 +42,6 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
   TextEditingController streetAddressController;
   TextEditingController suiteAptController;
   TextEditingController zipCodeController;
-  bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -756,46 +755,40 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                       0, 0, 0, 25),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      setState(() => _loadingButton = true);
-                                      try {
-                                        final agenciesUpdateData =
-                                            createAgenciesRecordData(
-                                          streetAddress:
-                                              streetAddressController.text,
-                                          suiteApt: suiteAptController.text,
-                                          poBox: poBoxController.text,
-                                          city: cityController.text,
-                                          state: dropDownValue,
-                                          zipCode: zipCodeController.text,
-                                        );
-                                        await columnAgenciesRecord.reference
-                                            .update(agenciesUpdateData);
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                CreateBusiness3Widget(
-                                              countyName: widget.countyName,
-                                              businessName: widget.businessName,
-                                              businessEmailAddress:
-                                                  widget.businessEmailAddress,
-                                              businessWebsite:
-                                                  widget.businessWebsite,
-                                              businessPhone:
-                                                  widget.businessPhone,
-                                              businessLogo: widget.businessLogo,
-                                              streetAddress:
-                                                  streetAddressController.text,
-                                              poBox: poBoxController.text,
-                                              city: cityController.text,
-                                              state: dropDownValue,
-                                              zipCode: zipCodeController.text,
-                                            ),
+                                      final agenciesUpdateData =
+                                          createAgenciesRecordData(
+                                        streetAddress:
+                                            streetAddressController.text,
+                                        suiteApt: suiteAptController.text,
+                                        poBox: poBoxController.text,
+                                        city: cityController.text,
+                                        state: dropDownValue,
+                                        zipCode: zipCodeController.text,
+                                      );
+                                      await columnAgenciesRecord.reference
+                                          .update(agenciesUpdateData);
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              CreateBusiness3Widget(
+                                            countyName: widget.countyName,
+                                            businessName: widget.businessName,
+                                            businessEmailAddress:
+                                                widget.businessEmailAddress,
+                                            businessWebsite:
+                                                widget.businessWebsite,
+                                            businessPhone: widget.businessPhone,
+                                            businessLogo: widget.businessLogo,
+                                            streetAddress:
+                                                streetAddressController.text,
+                                            poBox: poBoxController.text,
+                                            city: cityController.text,
+                                            state: dropDownValue,
+                                            zipCode: zipCodeController.text,
                                           ),
-                                        );
-                                      } finally {
-                                        setState(() => _loadingButton = false);
-                                      }
+                                        ),
+                                      );
                                     },
                                     text: 'Next Step',
                                     options: FFButtonOptions(
@@ -813,7 +806,6 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                       ),
                                       borderRadius: 12,
                                     ),
-                                    loading: _loadingButton,
                                   ),
                                 ),
                               )

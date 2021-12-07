@@ -14,10 +14,6 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
-  bool _loadingButton3 = false;
-  bool _loadingButton4 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -62,18 +58,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              setState(() => _loadingButton1 = true);
-                              try {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        ServicesCountyPageWidget(),
-                                  ),
-                                );
-                              } finally {
-                                setState(() => _loadingButton1 = false);
-                              }
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ServicesCountyPageWidget(),
+                                ),
+                              );
                             },
                             text: 'Directory',
                             options: FFButtonOptions(
@@ -91,7 +82,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                               borderRadius: 12,
                             ),
-                            loading: _loadingButton1,
                           ),
                         )
                       ],
@@ -127,7 +117,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                               borderRadius: 12,
                             ),
-                            loading: _loadingButton2,
                           ),
                         )
                       ],
@@ -154,17 +143,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              setState(() => _loadingButton3 = true);
-                              try {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginPageWidget(),
-                                  ),
-                                );
-                              } finally {
-                                setState(() => _loadingButton3 = false);
-                              }
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginPageWidget(),
+                                ),
+                              );
                             },
                             text: 'Login',
                             options: FFButtonOptions(
@@ -182,7 +166,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                               borderRadius: 12,
                             ),
-                            loading: _loadingButton3,
                           ),
                         )
                       ],
@@ -218,7 +201,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                               borderRadius: 12,
                             ),
-                            loading: _loadingButton4,
                           ),
                         )
                       ],

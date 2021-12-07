@@ -41,7 +41,6 @@ class CreateBusiness3Widget extends StatefulWidget {
 }
 
 class _CreateBusiness3WidgetState extends State<CreateBusiness3Widget> {
-  bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -673,18 +672,13 @@ class _CreateBusiness3WidgetState extends State<CreateBusiness3Widget> {
                                 alignment: AlignmentDirectional(0, 0.55),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    setState(() => _loadingButton = true);
-                                    try {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              MainProfilePageWidget(),
-                                        ),
-                                      );
-                                    } finally {
-                                      setState(() => _loadingButton = false);
-                                    }
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            MainProfilePageWidget(),
+                                      ),
+                                    );
                                   },
                                   text: 'Complete profile setup',
                                   options: FFButtonOptions(
@@ -702,7 +696,6 @@ class _CreateBusiness3WidgetState extends State<CreateBusiness3Widget> {
                                     ),
                                     borderRadius: 12,
                                   ),
-                                  loading: _loadingButton,
                                 ),
                               )
                             ],

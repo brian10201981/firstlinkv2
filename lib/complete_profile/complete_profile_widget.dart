@@ -22,7 +22,6 @@ class CompleteProfileWidget extends StatefulWidget {
 
 class _CompleteProfileWidgetState extends State<CompleteProfileWidget> {
   String uploadedFileUrl = '';
-  bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -257,17 +256,12 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 25),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      setState(() => _loadingButton = true);
-                      try {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MainProfilePageWidget(),
-                          ),
-                        );
-                      } finally {
-                        setState(() => _loadingButton = false);
-                      }
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainProfilePageWidget(),
+                        ),
+                      );
                     },
                     text: 'Complete Profile',
                     options: FFButtonOptions(
@@ -284,7 +278,6 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget> {
                       ),
                       borderRadius: 12,
                     ),
-                    loading: _loadingButton,
                   ),
                 ),
               )

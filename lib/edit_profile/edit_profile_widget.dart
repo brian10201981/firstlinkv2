@@ -29,7 +29,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   TextEditingController firstNameController;
   TextEditingController lastNameController;
   TextEditingController emailAddressController;
-  bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -483,25 +482,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 25),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            setState(() => _loadingButton = true);
-                            try {
-                              final users2UpdateData = createUsers2RecordData(
-                                photoUrl: uploadedFileUrl,
-                                email: emailAddressController?.text ?? '',
-                                firstName: firstNameController?.text ?? '',
-                                lastName: lastNameController?.text ?? '',
-                              );
-                              await currentUserReference
-                                  .update(users2UpdateData);
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MainProfilePageWidget(),
-                                ),
-                              );
-                            } finally {
-                              setState(() => _loadingButton = false);
-                            }
+                            final users2UpdateData = createUsers2RecordData(
+                              photoUrl: uploadedFileUrl,
+                              email: emailAddressController?.text ?? '',
+                              firstName: firstNameController?.text ?? '',
+                              lastName: lastNameController?.text ?? '',
+                            );
+                            await currentUserReference.update(users2UpdateData);
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainProfilePageWidget(),
+                              ),
+                            );
                           },
                           text: 'Update Profile',
                           options: FFButtonOptions(
@@ -518,7 +511,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             ),
                             borderRadius: 12,
                           ),
-                          loading: _loadingButton,
                         ),
                       ),
                     )

@@ -19,8 +19,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   TextEditingController emailAddressController;
   TextEditingController passwordController;
   bool passwordVisibility;
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
   TextEditingController emailController;
   TextEditingController firstNameController;
   TextEditingController lastNameController;
@@ -28,7 +26,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   bool passOriginalVisibility;
   TextEditingController passConfirmController;
   bool passConfirmVisibility;
-  bool _loadingButton3 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -378,37 +375,28 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                           child: FFButtonWidget(
                                                             onPressed:
                                                                 () async {
-                                                              setState(() =>
-                                                                  _loadingButton1 =
-                                                                      true);
-                                                              try {
-                                                                final user =
-                                                                    await signInWithEmail(
-                                                                  context,
-                                                                  emailAddressController
-                                                                      .text,
-                                                                  passwordController
-                                                                      .text,
-                                                                );
-                                                                if (user ==
-                                                                    null) {
-                                                                  return;
-                                                                }
-
-                                                                await Navigator
-                                                                    .push(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            MainProfilePageWidget(),
-                                                                  ),
-                                                                );
-                                                              } finally {
-                                                                setState(() =>
-                                                                    _loadingButton1 =
-                                                                        false);
+                                                              final user =
+                                                                  await signInWithEmail(
+                                                                context,
+                                                                emailAddressController
+                                                                    .text,
+                                                                passwordController
+                                                                    .text,
+                                                              );
+                                                              if (user ==
+                                                                  null) {
+                                                                return;
                                                               }
+
+                                                              await Navigator
+                                                                  .push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          MainProfilePageWidget(),
+                                                                ),
+                                                              );
                                                             },
                                                             text: 'Login',
                                                             options:
@@ -439,8 +427,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                               ),
                                                               borderRadius: 8,
                                                             ),
-                                                            loading:
-                                                                _loadingButton1,
                                                           ),
                                                         )
                                                       ],
@@ -492,8 +478,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                               ),
                                                               borderRadius: 8,
                                                             ),
-                                                            loading:
-                                                                _loadingButton2,
                                                           ),
                                                         )
                                                       ],
@@ -1334,57 +1318,47 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                 FFButtonWidget(
                                                               onPressed:
                                                                   () async {
-                                                                setState(() =>
-                                                                    _loadingButton3 =
-                                                                        true);
-                                                                try {
-                                                                  if (passOriginalController
-                                                                          .text !=
-                                                                      passConfirmController
-                                                                          .text) {
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .showSnackBar(
-                                                                      SnackBar(
-                                                                        content:
-                                                                            Text(
-                                                                          "Passwords don't match!",
-                                                                        ),
+                                                                if (passOriginalController
+                                                                        .text !=
+                                                                    passConfirmController
+                                                                        .text) {
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        "Passwords don't match!",
                                                                       ),
-                                                                    );
-                                                                    return;
-                                                                  }
-
-                                                                  final user =
-                                                                      await createAccountWithEmail(
-                                                                    context,
-                                                                    emailController
-                                                                        .text,
-                                                                    passOriginalController
-                                                                        .text,
-                                                                  );
-                                                                  if (user ==
-                                                                      null) {
-                                                                    return;
-                                                                  }
-
-                                                                  await Navigator
-                                                                      .pushAndRemoveUntil(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              CompleteProfileWidget(),
                                                                     ),
-                                                                    (r) =>
-                                                                        false,
                                                                   );
-                                                                  await sendEmailVerification();
-                                                                } finally {
-                                                                  setState(() =>
-                                                                      _loadingButton3 =
-                                                                          false);
+                                                                  return;
                                                                 }
+
+                                                                final user =
+                                                                    await createAccountWithEmail(
+                                                                  context,
+                                                                  emailController
+                                                                      .text,
+                                                                  passOriginalController
+                                                                      .text,
+                                                                );
+                                                                if (user ==
+                                                                    null) {
+                                                                  return;
+                                                                }
+
+                                                                await Navigator
+                                                                    .pushAndRemoveUntil(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            CompleteProfileWidget(),
+                                                                  ),
+                                                                  (r) => false,
+                                                                );
+                                                                await sendEmailVerification();
                                                               },
                                                               text: 'Register',
                                                               options:
@@ -1415,8 +1389,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                 ),
                                                                 borderRadius: 8,
                                                               ),
-                                                              loading:
-                                                                  _loadingButton3,
                                                             ),
                                                           )
                                                         ],

@@ -16,7 +16,6 @@ class ServicesCountyPageWidget extends StatefulWidget {
 
 class _ServicesCountyPageWidgetState extends State<ServicesCountyPageWidget> {
   String dropDownValue;
-  bool _loadingButton = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -115,19 +114,14 @@ class _ServicesCountyPageWidgetState extends State<ServicesCountyPageWidget> {
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
-                      setState(() => _loadingButton = true);
-                      try {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => TemplateWidget(
-                              countyName: dropDownValue,
-                            ),
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TemplateWidget(
+                            countyName: dropDownValue,
                           ),
-                        );
-                      } finally {
-                        setState(() => _loadingButton = false);
-                      }
+                        ),
+                      );
                     },
                     text: 'See Local Services',
                     options: FFButtonOptions(
@@ -147,7 +141,6 @@ class _ServicesCountyPageWidgetState extends State<ServicesCountyPageWidget> {
                       ),
                       borderRadius: 8,
                     ),
-                    loading: _loadingButton,
                   )
                 ],
               ),

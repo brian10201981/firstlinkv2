@@ -31,7 +31,6 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
   TextEditingController businessNewNameController;
   TextEditingController businessNewPhoneController;
   TextEditingController businessNewWebsiteController;
-  bool _loadingButton = false;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -670,47 +669,39 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
                         alignment: AlignmentDirectional(0, 0.55),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            setState(() => _loadingButton = true);
-                            try {
-                              if (!formKey.currentState.validate()) {
-                                return;
-                              }
-                              final agenciesCreateData =
-                                  createAgenciesRecordData(
-                                agencyName: businessNewNameController.text,
-                                dateCreated: getCurrentTimestamp,
-                                createdBy: currentUserUid,
-                                phoneNumber: businessNewPhoneController.text,
-                                emailAddress: businessNewEmailController.text,
-                                websiteAddress:
-                                    businessNewWebsiteController.text,
-                                primaryCounty: dropDownValue,
-                                uid: businessNewNameController.text,
-                                agencyAvatar: uploadedFileUrl,
-                              );
-                              await AgenciesRecord.collection
-                                  .doc()
-                                  .set(agenciesCreateData);
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CreateBusiness2Widget(
-                                    countyName: dropDownValue,
-                                    businessName:
-                                        businessNewNameController.text,
-                                    businessEmailAddress:
-                                        businessNewWebsiteController.text,
-                                    businessWebsite:
-                                        businessNewWebsiteController.text,
-                                    businessPhone:
-                                        businessNewPhoneController.text,
-                                    businessLogo: uploadedFileUrl,
-                                  ),
-                                ),
-                              );
-                            } finally {
-                              setState(() => _loadingButton = false);
+                            if (!formKey.currentState.validate()) {
+                              return;
                             }
+                            final agenciesCreateData = createAgenciesRecordData(
+                              agencyName: businessNewNameController.text,
+                              dateCreated: getCurrentTimestamp,
+                              createdBy: currentUserUid,
+                              phoneNumber: businessNewPhoneController.text,
+                              emailAddress: businessNewEmailController.text,
+                              websiteAddress: businessNewWebsiteController.text,
+                              primaryCounty: dropDownValue,
+                              uid: businessNewNameController.text,
+                              agencyAvatar: uploadedFileUrl,
+                            );
+                            await AgenciesRecord.collection
+                                .doc()
+                                .set(agenciesCreateData);
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CreateBusiness2Widget(
+                                  countyName: dropDownValue,
+                                  businessName: businessNewNameController.text,
+                                  businessEmailAddress:
+                                      businessNewWebsiteController.text,
+                                  businessWebsite:
+                                      businessNewWebsiteController.text,
+                                  businessPhone:
+                                      businessNewPhoneController.text,
+                                  businessLogo: uploadedFileUrl,
+                                ),
+                              ),
+                            );
                           },
                           text: 'Next Step',
                           options: FFButtonOptions(
@@ -727,7 +718,6 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
                             ),
                             borderRadius: 12,
                           ),
-                          loading: _loadingButton,
                         ),
                       )
                     ],
