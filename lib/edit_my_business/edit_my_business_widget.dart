@@ -4754,87 +4754,102 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                   )
                                                 ],
                                               ),
-                                              StreamBuilder<
-                                                  List<NebraskaCountyRecord>>(
-                                                stream:
-                                                    queryNebraskaCountyRecord(),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 50,
-                                                        height: 50,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  List<NebraskaCountyRecord>
-                                                      rowNebraskaCountyRecordList =
-                                                      snapshot.data;
-                                                  return Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: List.generate(
-                                                        rowNebraskaCountyRecordList
-                                                            .length,
-                                                        (rowIndex) {
-                                                      final rowNebraskaCountyRecord =
-                                                          rowNebraskaCountyRecordList[
-                                                              rowIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(0, 10,
-                                                                    0, 0),
-                                                        child: FutureBuilder<
-                                                            ApiCallResponse>(
-                                                          future:
-                                                              nebraskaCountiesCall(),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50,
-                                                                  height: 50,
-                                                                  child:
-                                                                      CircularProgressIndicator(
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            final columnNebraskaCountiesResponse =
-                                                                snapshot.data;
-                                                            return Builder(
-                                                              builder:
-                                                                  (context) {
-                                                                final name = getJsonField(
-                                                                            columnNebraskaCountiesResponse.jsonBody,
-                                                                            r'''$.Cnty_Name''')
-                                                                        ?.toList() ??
-                                                                    [];
-                                                                return SingleChildScrollView(
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    children: List.generate(
-                                                                        name.length,
-                                                                        (nameIndex) {
-                                                                      final nameItem =
-                                                                          name[
-                                                                              nameIndex];
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 10, 0, 0),
+                                                    child: FutureBuilder<
+                                                        ApiCallResponse>(
+                                                      future:
+                                                          nebraskaCountiesCall(),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50,
+                                                              height: 50,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        final columnNebraskaCountiesResponse =
+                                                            snapshot.data;
+                                                        return Builder(
+                                                          builder: (context) {
+                                                            final countyname = getJsonField(
+                                                                        columnNebraskaCountiesResponse
+                                                                            .jsonBody,
+                                                                        r'''$.features.*.*.Cnty_Name''')
+                                                                    ?.toList() ??
+                                                                [];
+                                                            return SingleChildScrollView(
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: List.generate(
+                                                                    countyname
+                                                                        .length,
+                                                                    (countynameIndex) {
+                                                                  final countynameItem =
+                                                                      countyname[
+                                                                          countynameIndex];
+                                                                  return StreamBuilder<
+                                                                      List<
+                                                                          NebraskaCountyRecord>>(
+                                                                    stream:
+                                                                        queryNebraskaCountyRecord(
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      // Customize what your widget looks like when it's loading.
+                                                                      if (!snapshot
+                                                                          .hasData) {
+                                                                        return Center(
+                                                                          child:
+                                                                              SizedBox(
+                                                                            width:
+                                                                                50,
+                                                                            height:
+                                                                                50,
+                                                                            child:
+                                                                                CircularProgressIndicator(
+                                                                              color: Colors.white,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }
+                                                                      List<NebraskaCountyRecord>
+                                                                          cardNebraskaCountyRecordList =
+                                                                          snapshot
+                                                                              .data;
+                                                                      // Return an empty Container when the document does not exist.
+                                                                      if (snapshot
+                                                                          .data
+                                                                          .isEmpty) {
+                                                                        return Container();
+                                                                      }
+                                                                      final cardNebraskaCountyRecord = cardNebraskaCountyRecordList
+                                                                              .isNotEmpty
+                                                                          ? cardNebraskaCountyRecordList
+                                                                              .first
+                                                                          : null;
                                                                       return Card(
                                                                         clipBehavior:
                                                                             Clip.antiAliasWithSaveLayer,
@@ -4880,7 +4895,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Text(
-                                                                                        getJsonField(nameItem, r'''$.Cnty_Name''').toString(),
+                                                                                        getJsonField(countynameItem, r'''$.features.*.*.Cnty_Name''').toString(),
                                                                                         style: FlutterFlowTheme.title3.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: Colors.white,
@@ -4904,11 +4919,11 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                                     ToggleIcon(
                                                                                       onPressed: () async {
                                                                                         final nebraskaCountyUpdateData = createNebraskaCountyRecordData(
-                                                                                          agree: !rowNebraskaCountyRecord.agree,
+                                                                                          agree: !cardNebraskaCountyRecord.agree,
                                                                                         );
-                                                                                        await rowNebraskaCountyRecord.reference.update(nebraskaCountyUpdateData);
+                                                                                        await cardNebraskaCountyRecord.reference.update(nebraskaCountyUpdateData);
                                                                                       },
-                                                                                      value: rowNebraskaCountyRecord.agree,
+                                                                                      value: cardNebraskaCountyRecord.agree,
                                                                                       onIcon: Icon(
                                                                                         Icons.check_box,
                                                                                         color: Colors.white,
@@ -4927,17 +4942,17 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                           ),
                                                                         ),
                                                                       );
-                                                                    }),
-                                                                  ),
-                                                                );
-                                                              },
+                                                                    },
+                                                                  );
+                                                                }),
+                                                              ),
                                                             );
                                                           },
-                                                        ),
-                                                      );
-                                                    }),
-                                                  );
-                                                },
+                                                        );
+                                                      },
+                                                    ),
+                                                  )
+                                                ],
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional

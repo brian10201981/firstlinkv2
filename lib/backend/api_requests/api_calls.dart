@@ -8,7 +8,7 @@ Future<ApiCallResponse> nebraskaCountiesCall({
   return ApiManager.instance.makeApiCall(
     callName: 'Nebraska Counties',
     apiUrl:
-        'https://gis.ne.gov/Enterprise/rest/services/boundaries/FeatureServer/16/query?where=1%3D1&outFields=Cnty_Name&outSR=4326&f=json',
+        'https://gis.ne.gov/Enterprise/rest/services/boundaries/FeatureServer/16/query?where=1%3D1&outFields=Cnty_Name&returnGeometry=false&outSR=4326&f=json',
     callType: ApiCallType.GET,
     headers: {},
     params: {
