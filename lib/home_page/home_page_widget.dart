@@ -1,3 +1,5 @@
+import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -29,13 +31,50 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/images/firstlinkwhite.png',
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Image.asset(
+                        'assets/images/firstlinkwhite.png',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      )
+                    ],
+                  ),
+                  Visibility(
+                    visible: currentUserEmailVerified ?? true,
+                    child: AuthUserStreamWidget(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30,
+                              borderWidth: 1,
+                              buttonSize: 50,
+                              icon: Icon(
+                                Icons.menu_sharp,
+                                color: Colors.white,
+                                size: 30,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   )
                 ],
               ),
