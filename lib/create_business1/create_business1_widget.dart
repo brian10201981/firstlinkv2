@@ -40,7 +40,7 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
     businessNewEmailController = TextEditingController();
     businessNewNameController = TextEditingController();
     businessNewPhoneController = TextEditingController();
-    businessNewWebsiteController = TextEditingController();
+    businessNewWebsiteController = TextEditingController(text: 'https://www.');
   }
 
   @override
@@ -676,8 +676,10 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
                               agencyName: businessNewNameController.text,
                               dateCreated: getCurrentTimestamp,
                               createdBy: currentUserUid,
-                              phoneNumber: businessNewPhoneController.text,
-                              emailAddress: businessNewEmailController.text,
+                              phoneNumber:
+                                  'tel:${businessNewPhoneController.text}',
+                              emailAddress:
+                                  'mailto:${businessNewEmailController.text}',
                               websiteAddress: businessNewWebsiteController.text,
                               primaryCounty: dropDownValue,
                               uid: businessNewNameController.text,

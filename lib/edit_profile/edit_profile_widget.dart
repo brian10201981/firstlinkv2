@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../main_profile_page/main_profile_page_widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -180,8 +181,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
-                                    child: Image.network(
-                                      columnUsers2Record.photoUrl,
+                                    child: CachedNetworkImage(
+                                      imageUrl: columnUsers2Record.photoUrl,
+                                      fit: BoxFit.fitWidth,
                                     ),
                                   ),
                                   Align(
@@ -203,6 +205,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           final selectedMedia =
                                               await selectMediaWithSourceBottomSheet(
                                             context: context,
+                                            maxWidth: 200.00,
+                                            maxHeight: 200.00,
                                             allowPhoto: true,
                                           );
                                           if (selectedMedia != null &&

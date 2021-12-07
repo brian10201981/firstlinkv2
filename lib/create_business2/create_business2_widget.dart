@@ -38,7 +38,6 @@ class CreateBusiness2Widget extends StatefulWidget {
 class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
   String dropDownValue;
   TextEditingController cityController;
-  TextEditingController poBoxController;
   TextEditingController streetAddressController;
   TextEditingController suiteAptController;
   TextEditingController zipCodeController;
@@ -48,7 +47,6 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
   void initState() {
     super.initState();
     cityController = TextEditingController();
-    poBoxController = TextEditingController();
     streetAddressController = TextEditingController();
     suiteAptController = TextEditingController();
     zipCodeController = TextEditingController();
@@ -535,64 +533,6 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: TextFormField(
-                                  controller: poBoxController,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'P.O. Box',
-                                    labelStyle:
-                                        FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF95A1AC),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                    hintText: 'Enter your p.o. box here...',
-                                    hintStyle:
-                                        FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF95A1AC),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF1E37B8),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF1E37B8),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    filled: true,
-                                    fillColor: Color(0xFF1E37B8),
-                                    contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
-                                            16, 24, 0, 24),
-                                  ),
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -760,7 +700,6 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                         streetAddress:
                                             streetAddressController.text,
                                         suiteApt: suiteAptController.text,
-                                        poBox: poBoxController.text,
                                         city: cityController.text,
                                         state: dropDownValue,
                                         zipCode: zipCodeController.text,
@@ -782,7 +721,6 @@ class _CreateBusiness2WidgetState extends State<CreateBusiness2Widget> {
                                             businessLogo: widget.businessLogo,
                                             streetAddress:
                                                 streetAddressController.text,
-                                            poBox: poBoxController.text,
                                             city: cityController.text,
                                             state: dropDownValue,
                                             zipCode: zipCodeController.text,
