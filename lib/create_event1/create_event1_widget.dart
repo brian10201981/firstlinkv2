@@ -25,6 +25,7 @@ class CreateEvent1Widget extends StatefulWidget {
 class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
   DateTime datePicked1;
   DateTime datePicked2;
+  String eventCategoryValue;
   TextEditingController businessNewNameController;
   TextEditingController eventNewNameController;
   String dropDownValue1;
@@ -344,7 +345,6 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
                               ),
-                              keyboardType: TextInputType.multiline,
                               validator: (val) {
                                 if (val.isEmpty) {
                                   return 'Event info Required';
@@ -352,6 +352,156 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
 
                                 return null;
                               },
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Category',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.title2.override(
+                              fontFamily: 'Montserrat',
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            child: FlutterFlowDropDown(
+                              initialOption: eventCategoryValue ??=
+                                  'Choose your County',
+                              options: [
+                                'Adams',
+                                'Antelope',
+                                'Arthur',
+                                'Banner',
+                                'Blaine',
+                                'Boone',
+                                'Box Butte',
+                                'Boyd',
+                                'Brown',
+                                'Buffalo',
+                                'Burt',
+                                'Butler',
+                                'Cass',
+                                'Cedar',
+                                'Chase',
+                                'Cherry',
+                                'Cheyenne',
+                                'Clay',
+                                'Colfax',
+                                'Cuming',
+                                'Custer',
+                                'Dakota',
+                                'Dawes',
+                                'Dawson',
+                                'Deuel',
+                                'Dixon',
+                                'Dodge',
+                                'Douglas',
+                                'Dundy',
+                                'Fillmore',
+                                'Franklin',
+                                'Frontier',
+                                'Furnas',
+                                'Gage',
+                                'Garden',
+                                'Garfield',
+                                'Gosper',
+                                'Grant',
+                                'Greeley',
+                                'Hall',
+                                'Hamilton',
+                                'Harlan',
+                                'Hayes',
+                                'Hitchcock',
+                                'Holt',
+                                'Hooker',
+                                'Howard',
+                                'Jefferson',
+                                'Johnson',
+                                'Kearney',
+                                'Keith',
+                                'Keya Paha',
+                                'Kimball',
+                                'Knox',
+                                'Lancaster',
+                                'Lincoln',
+                                'Logan',
+                                'Loup',
+                                'McPherson',
+                                'Madison',
+                                'Merrick',
+                                'Morrill',
+                                'Nance',
+                                'Nemaha',
+                                'Nuckolls',
+                                'Otoe',
+                                'Pawnee',
+                                'Perkins',
+                                'Phelps',
+                                'Pierce',
+                                'Platte',
+                                'Polk',
+                                'Red Willow',
+                                'Richardson',
+                                'Rock',
+                                'Saline',
+                                'Sarpy',
+                                'Saunders',
+                                'Scotts Bluff',
+                                'Seward',
+                                'Sheridan',
+                                'Sherman',
+                                'Sioux',
+                                'Stanton',
+                                'Thayer',
+                                'Thomas',
+                                'Thurston',
+                                'Valley',
+                                'Washington',
+                                'Wayne',
+                                'Webster',
+                                'Wheeler',
+                                'York'
+                              ].toList(),
+                              onChanged: (val) =>
+                                  setState(() => eventCategoryValue = val),
+                              width: MediaQuery.of(context).size.width * 0.89,
+                              height: 50,
+                              textStyle: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Montserrat',
+                                color: Colors.white,
+                              ),
+                              icon: Icon(
+                                Icons.arrow_drop_down,
+                                color: FlutterFlowTheme.tertiaryColor,
+                                size: 15,
+                              ),
+                              fillColor: Color(0xFF1E37B8),
+                              elevation: 2,
+                              borderColor: Color(0x00FFFFFF),
+                              borderWidth: 0,
+                              borderRadius: 8,
+                              margin:
+                                  EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
+                              hidesUnderline: true,
                             ),
                           )
                         ],
@@ -380,16 +530,13 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                       padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 5, 20, 0),
+                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                                 child: Text(
                                   'Date & Time',
                                   textAlign: TextAlign.center,
@@ -403,94 +550,101 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                               )
                             ],
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 20,
-                                    borderWidth: 1,
-                                    buttonSize: 40,
-                                    fillColor: Color(0xFFC70039),
-                                    icon: FaIcon(
-                                      FontAwesomeIcons.clock,
-                                      color: Colors.white,
-                                      size: 20,
-                                    ),
-                                    onPressed: () async {
-                                      await DatePicker.showDateTimePicker(
-                                        context,
-                                        showTitleActions: true,
-                                        onConfirm: (date) {
-                                          setState(() => datePicked1 = date);
-                                        },
-                                        currentTime: getCurrentTimestamp,
-                                        minTime: getCurrentTimestamp,
-                                      );
-                                    },
-                                  )
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Start',
-                                    style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                EdgeInsetsDirectional.fromSTEB(60, 0, 0, 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 20,
-                                      borderWidth: 1,
-                                      buttonSize: 40,
-                                      fillColor: Color(0xFFC70039),
-                                      icon: FaIcon(
-                                        FontAwesomeIcons.clock,
-                                        color: Colors.white,
-                                        size: 20,
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 0, 0, 0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 20,
+                                            borderWidth: 1,
+                                            buttonSize: 40,
+                                            fillColor: Color(0xFFC70039),
+                                            icon: FaIcon(
+                                              FontAwesomeIcons.clock,
+                                              color: Colors.white,
+                                              size: 20,
+                                            ),
+                                            onPressed: () async {
+                                              await DatePicker
+                                                  .showDateTimePicker(
+                                                context,
+                                                showTitleActions: true,
+                                                onConfirm: (date) {
+                                                  setState(
+                                                      () => datePicked1 = date);
+                                                },
+                                                currentTime:
+                                                    getCurrentTimestamp,
+                                                minTime: getCurrentTimestamp,
+                                              );
+                                            },
+                                          ),
+                                          Text(
+                                            'Start',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                      onPressed: () async {
-                                        await DatePicker.showDateTimePicker(
-                                          context,
-                                          showTitleActions: true,
-                                          onConfirm: (date) {
-                                            setState(() => datePicked2 = date);
-                                          },
-                                          currentTime: getCurrentTimestamp,
-                                          minTime: getCurrentTimestamp,
-                                        );
-                                      },
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'End',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.white,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          40, 0, 0, 0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 20,
+                                            borderWidth: 1,
+                                            buttonSize: 40,
+                                            fillColor: Color(0xFFC70039),
+                                            icon: FaIcon(
+                                              FontAwesomeIcons.clock,
+                                              color: Colors.white,
+                                              size: 20,
+                                            ),
+                                            onPressed: () async {
+                                              await DatePicker
+                                                  .showDateTimePicker(
+                                                context,
+                                                showTitleActions: true,
+                                                onConfirm: (date) {
+                                                  setState(
+                                                      () => datePicked2 = date);
+                                                },
+                                                currentTime:
+                                                    getCurrentTimestamp,
+                                                minTime: getCurrentTimestamp,
+                                              );
+                                            },
+                                          ),
+                                          Text(
+                                            'End',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     )
                                   ],
@@ -591,6 +745,7 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                               FlutterFlowDropDown(
                                 initialOption: dropDownValue2 ??= 'Recurring?',
                                 options: [
+                                  'Once',
                                   'Daily',
                                   'Weekly',
                                   'Monthly',
@@ -682,7 +837,7 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
-                                              'https://picsum.photos/seed/980/600',
+                                              columnAgenciesRecord.agencyAvatar,
                                               fit: BoxFit.fitWidth,
                                             ),
                                           ),
@@ -742,7 +897,7 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                                                       children: [
                                                         Text(
                                                           dateTimeFormat(
-                                                              'M/d h:m a',
+                                                              'd/M h:m a',
                                                               datePicked1),
                                                           style:
                                                               FlutterFlowTheme
@@ -817,7 +972,7 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                                                                   .fromSTEB(0,
                                                                       1, 0, 5),
                                                           child: Text(
-                                                            'Category: ',
+                                                            dropDownValue2,
                                                             style:
                                                                 FlutterFlowTheme
                                                                     .bodyText1
