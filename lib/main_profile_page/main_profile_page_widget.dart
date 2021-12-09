@@ -1,7 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../create_business1/create_business1_widget.dart';
-import '../create_event1/create_event1_widget.dart';
+import '../create_event/create_event_widget.dart';
 import '../edit_profile/edit_profile_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -535,7 +535,7 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => CreateEvent1Widget(),
+                              builder: (context) => CreateEventWidget(),
                             ),
                           );
                         },
