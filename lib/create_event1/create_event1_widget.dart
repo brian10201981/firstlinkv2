@@ -175,7 +175,44 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                       ],
                     ),
                     Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Sponsoring Business',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.title2.override(
+                              fontFamily: 'Montserrat',
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            columnAgenciesRecord.agencyName,
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.title2.override(
+                              fontFamily: 'Montserrat',
+                              color: Color(0xFF9E9E9E),
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -307,6 +344,7 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
                               ),
+                              keyboardType: TextInputType.multiline,
                               validator: (val) {
                                 if (val.isEmpty) {
                                   return 'Event info Required';
@@ -314,43 +352,6 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
 
                                 return null;
                               },
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            'Sponsoring Business',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.title2.override(
-                              fontFamily: 'Montserrat',
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            columnAgenciesRecord.agencyName,
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.title2.override(
-                              fontFamily: 'Montserrat',
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
                             ),
                           )
                         ],
@@ -623,14 +624,14 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 5),
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 5),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                             child: Text(
-                              'Location',
+                              'Event Quick View Preview',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.title2.override(
                                 fontFamily: 'Montserrat',
@@ -647,81 +648,258 @@ class _CreateEvent1WidgetState extends State<CreateEvent1Widget> {
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
                         children: [
                           Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             color: Color(0xFFF5F5F5),
+                            elevation: 5,
                             child: Container(
                               width: 330,
-                              height: 100,
+                              height: 125,
                               decoration: BoxDecoration(
                                 color: Color(0xFFEEEEEE),
                               ),
-                              child: Column(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
-                                            child: Container(
-                                              width: 90,
-                                              height: 90,
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Image.network(
-                                                columnAgenciesRecord
-                                                    .agencyAvatar,
-                                                fit: BoxFit.fitWidth,
-                                              ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 10, 0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 0, 0, 0),
+                                          child: Container(
+                                            width: 80,
+                                            height: 80,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
                                             ),
-                                          )
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10, 0, 0, 0),
-                                        child: Column(
+                                            child: Image.network(
+                                              'https://picsum.photos/seed/980/600',
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 0, 0, 0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              dateTimeFormat(
-                                                  'M/d h:m a', datePicked1),
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.black,
+                                            Container(
+                                              width: 215,
+                                              height: 83,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFFEEEEEE),
                                               ),
-                                            ),
-                                            Text(
-                                              eventNewNameController.text,
-                                              style: FlutterFlowTheme.bodyText1,
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 10, 0, 0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 0, 5),
+                                                          child: Text(
+                                                            eventNewNameController
+                                                                .text,
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Montserrat',
+                                                              fontSize: 18,
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          dateTimeFormat(
+                                                              'M/d h:m a',
+                                                              datePicked1),
+                                                          style:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: Colors.black,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(2,
+                                                                      0, 0, 0),
+                                                          child: Text(
+                                                            'to',
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(2,
+                                                                      0, 0, 0),
+                                                          child: Text(
+                                                            dateTimeFormat(
+                                                                'd/M h:m a',
+                                                                datePicked2),
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      1, 0, 5),
+                                                          child: Text(
+                                                            'Category: ',
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Montserrat',
+                                                              fontSize: 14,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      1, 0, 5),
+                                                          child: Text(
+                                                            'Category: ',
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Montserrat',
+                                                              fontSize: 14,
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
                                             )
                                           ],
                                         ),
-                                      )
-                                    ],
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 225,
+                                              height: 40,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFFEEEEEE),
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    2, 0, 0, 0),
+                                                        child: Text(
+                                                          'Learn More',
+                                                          style:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Montserrat',
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 20,
+                                                        borderWidth: 1,
+                                                        buttonSize: 40,
+                                                        icon: Icon(
+                                                          Icons.arrow_forward,
+                                                          color: Colors.black,
+                                                          size: 20,
+                                                        ),
+                                                        onPressed: () {
+                                                          print(
+                                                              'IconButton pressed ...');
+                                                        },
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),
