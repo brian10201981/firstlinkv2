@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../create_business1/create_business1_widget.dart';
+import '../create_event1/create_event1_widget.dart';
 import '../edit_profile/edit_profile_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -427,8 +428,15 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                             color: Color(0xFFC70039),
                             size: 20,
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
+                          onPressed: () async {
+                            await signOut();
+                            await Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePageWidget(),
+                              ),
+                              (r) => false,
+                            );
                           },
                         ),
                         Padding(
@@ -522,48 +530,59 @@ class _MainProfilePageWidgetState extends State<MainProfilePageWidget> {
                         ],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: Icon(
-                              Icons.event,
-                              color: Colors.white,
-                              size: 44,
+                      child: InkWell(
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CreateEvent1Widget(),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                            child: AutoSizeText(
-                              'My Events',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.subtitle1.override(
-                                fontFamily: 'Lexend Deca',
+                          );
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                              child: Icon(
+                                Icons.event,
                                 color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
+                                size: 44,
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: Padding(
+                            Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
-                              child: Text(
-                                'Active and upcoming events',
+                                  EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                              child: AutoSizeText(
+                                'My Events',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.getFont(
-                                  'Lexend Deca',
-                                  color: Color(0xB3FFFFFF),
-                                  fontSize: 12,
+                                style: FlutterFlowTheme.subtitle1.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                          )
-                        ],
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
+                                child: Text(
+                                  'Active and upcoming events',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.getFont(
+                                    'Lexend Deca',
+                                    color: Color(0xB3FFFFFF),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     Container(

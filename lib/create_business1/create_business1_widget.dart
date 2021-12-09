@@ -684,7 +684,8 @@ class _CreateBusiness1WidgetState extends State<CreateBusiness1Widget> {
                                   'mailto:${businessNewEmailController.text}',
                               websiteAddress: businessNewWebsiteController.text,
                               primaryCounty: dropDownValue,
-                              uid: businessNewNameController.text,
+                              uid:
+                                  '${currentUserUid}${dateTimeFormat('relative', getCurrentTimestamp)}',
                               agencyAvatar: uploadedFileUrl,
                             );
                             await AgenciesRecord.collection

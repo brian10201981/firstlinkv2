@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -54,29 +53,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     child: AuthUserStreamWidget(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Visibility(
-                            visible: currentUserEmailVerified ?? true,
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                borderWidth: 1,
-                                buttonSize: 50,
-                                icon: Icon(
-                                  Icons.menu_sharp,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
-                                },
-                              ),
-                            ),
-                          )
-                        ],
+                        children: [],
                       ),
                     ),
                   )

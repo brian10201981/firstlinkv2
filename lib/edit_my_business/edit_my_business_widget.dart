@@ -4895,7 +4895,7 @@ class _EditMyBusinessWidgetState extends State<EditMyBusinessWidget> {
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Text(
-                                                                                        getJsonField(countynameItem, r'''$.features.*.*.Cnty_Name''').toString(),
+                                                                                        getJsonField(columnNebraskaCountiesResponse.jsonBody, r'''$.features.*.*.Cnty_Name''').toString(),
                                                                                         style: FlutterFlowTheme.title3.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: Colors.white,
